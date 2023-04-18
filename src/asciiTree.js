@@ -32,8 +32,18 @@ function shouldBeIgnored(path, ignoredPaths) {
   });
 }
 
-function generateFilteredTree(treeObject, ignoredPaths) {
-  if (shouldBeIgnored(treeObject.path, ignoredPaths)) {
+function isPathInSelectedFiles(path, files) {
+  return files.some(file => file.includes(path));
+}
+
+function generateFilteredTree(treeObject, ignoredPaths, files, asciiTreePrune, ignoreFile) {
+  const pathShouldBeIgnored = asciiTreePrune ? false : shouldBeIgnored(treeObject.path, ignoredPaths);
+
+  if (pathShouldBeIgnored) {
+    return null;
+  }
+
+  if (asciiTreePrune && !isPathInSelectedFiles(treeObject.path, files)) {
     return null;
   }
 
@@ -41,14 +51,14 @@ function generateFilteredTree(treeObject, ignoredPaths) {
 
   if (treeObject.children && treeObject.children.length > 0) {
     node.nodes = treeObject.children
-      .map(child => generateFilteredTree(child, ignoredPaths))
+      .map(child => generateFilteredTree(child, ignoredPaths, files, asciiTreePrune, ignoreFile))
       .filter(child => child !== null);
   }
 
   return node;
 }
 
-async function generateAsciiTree(rootPath, maxDepth, ignoreFile = '.gitignore') {
+async function generateAsciiTree(rootPath, maxDepth, ignoreFile = '.gitignore', files = [], asciiTreePrune = false) {
   const ignoreFilePath = path.join(rootPath, ignoreFile);
   const ignoredPaths = await getIgnoredPaths(ignoreFilePath);
 
@@ -57,13 +67,14 @@ async function generateAsciiTree(rootPath, maxDepth, ignoreFile = '.gitignore') 
   };
 
   const treeObject = dirTree(rootPath, options);
-  const filteredTree = generateFilteredTree(treeObject, ignoredPaths);
+  const filteredTree = generateFilteredTree(treeObject, ignoredPaths, files, asciiTreePrune, ignoreFile);
   const tree = archy(filteredTree);
 
   console.log('generateAsciiTree parameters:', { rootPath, maxDepth, ignoreFile });
 
   return tree;
 }
+
 
 module.exports = {
   generateAsciiTree,

@@ -28,9 +28,22 @@ function wrapFileContents(files, contents, prependComment, appendComment) {
   });
 }
 
+function sortFilesByPath(files) {
+  return files.sort((a, b) => {
+    const pathA = a.fsPath;
+    const pathB = b.fsPath;
+
+    if (pathA < pathB) return -1;
+    if (pathA > pathB) return 1;
+    return 0;
+  });
+}
+
+
 /**
  * @param {vscode.ExtensionContext} context
  */
+
 function activate(context) {
   console.log('Activating Commander V...');
 
@@ -40,14 +53,18 @@ function activate(context) {
       return;
     }
 
-    const files = allUris.map(fileUri => fileUri.fsPath);
+    let files = allUris.map(fileUri => fileUri.fsPath);
     console.log('Selected files:', files);
+
+    // Sort the files by path and reassign to the 'files' variable
+    files = sortFilesByPath(files);
+    console.log('Sorted files:', files);
 
     // Read the configuration
     const globalConfig = vscode.workspace.getConfiguration('commanderV');
 
     // Check if local configuration file exists
-    const localConfigPath = path.join(vscode.workspace.workspaceFolders[0].uri.fsPath, '.com.v.config.js');
+    const localConfigPath = path.join(vscode.workspace.workspaceFolders[0].uri.fsPath, '.com-v.config.js');
     const localConfigUri = vscode.Uri.file(localConfigPath);
     let localConfigExists = false;
     let localConfig = {};
@@ -69,14 +86,16 @@ function activate(context) {
 
     const asciiTreePrepend = finalConfig.asciiTreePrepend;
     const asciiTreeMaxDepth = finalConfig.asciiTreeMaxDepth;
+    const asciiTreePrune = finalConfig.asciiTreePrune;
     const ignoreFile = finalConfig.ignoreFile;
     const prependComment = finalConfig.prependComment || '/* --- Begin $path --- */';
     const appendComment = finalConfig.appendComment || '/* --- End $path --- */';
 
     let asciiTree = '';
+
     if (asciiTreePrepend) {
       //vscode.window.showInformationMessage('Analyzing directory tree...');
-      asciiTree = await generateAsciiTree(vscode.workspace.workspaceFolders[0].uri.fsPath, asciiTreeMaxDepth, ignoreFile);
+      asciiTree = await generateAsciiTree(vscode.workspace.workspaceFolders[0].uri.fsPath, asciiTreeMaxDepth, ignoreFile, files, asciiTreePrune);
       console.log('Generated ASCII tree:\n', asciiTree);
     }
 
@@ -100,7 +119,7 @@ function activate(context) {
     // Play a sound and show information message
     const playDoneSound = finalConfig.playDoneSound;
     if (playDoneSound) {
-      player.play(path.join(__dirname, 'src', 'done.wav'), (err) => {
+      player.play(path.join(__dirname, 'src', 'success.wav'), (err) => {
         if (err) {
           console.error('Error playing sound:', err);
         }
@@ -109,7 +128,7 @@ function activate(context) {
 
     // Success message
     const manageExtensionLink = new vscode.MarkdownString(`[Manage Extension](command:workbench.extensions.action.showExtension?%22kerns.commander-v%22)`);
-    vscode.window.showInformationMessage(`Copied ${numberOfFiles} files with a total of ${totalChars} chars to the clipboard!`, manageExtensionLink);
+    vscode.window.showInformationMessage(`The Commander shipped ${numberOfFiles} files with a total of ${totalChars} chars to your clipboard.`, manageExtensionLink);
 
   });
 

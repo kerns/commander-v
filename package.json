@@ -7,7 +7,7 @@
     "url": "https://github.com/kerns/commander-v"
   },
   "description": "Concatenate files with an ASCII tree view of your project – all instantly to your clipboard. For the wonderful humans helping to fix our code, and the AIs (racing ahead) to fix theirs.",
-  "version": "0.5.1",
+  "version": "0.5.3",
   "keywords": [
     "clipboard",
     "ai",
@@ -53,40 +53,56 @@
       "title": "Commander V",
       "properties": {
         "commanderV.asciiTreePrepend": {
+          "order": 1,
           "type": "boolean",
           "default": true,
-          "description": "Prepend an ASCII tree of the directory structure to the copied content.",
-          "order": 1
+          "title": "Include ASCII Tree",
+          "description": "Prepend an ASCII tree of your project's directory structure to the clipboard payload. Helpful to both humans and AIs needing to understand your project's structure."
         },
         "commanderV.asciiTreeMaxDepth": {
+          "order": 2,
           "type": "number",
-          "default": 5,
-          "description": "The maximum depth of directories to include in the generated ASCII tree.",
-          "order": 2
+          "default": 3,
+          "title": "Maximum Tree Depth",
+          "description": "The maximum depth of directories to include in the generated ASCII tree. Only applies when \"Prune Tree to Included Files\" is disabled."
+        },
+        "commanderV.asciiTreePrune": {
+          "order": 3,
+          "type": "boolean",
+          "default": true,
+          "title": "Prune Tree to Included Files",
+          "description": "If enabled, the generated tree will be limited to the files being concatenated."
         },
         "commanderV.ignoreFile": {
+          "order": 4,
           "type": "string",
           "default": ".gitignore",
-          "description": "Path to the file containing patterns to exclude from the generated ASCII tree. A .gitignore file is usually ag ",
-          "order": 3
+          "title": "Ignore File",
+          "description": "Path to your ignore file, containing patterns to exclude from the generated ASCII tree. The ignore file is not applied when \"Prune Tree to Included Files\" is enabled.",
+          "examples": [
+            ".com-v.ignore"
+          ]
         },
         "commanderV.prependFileComment": {
+          "order": 5,
           "type": "string",
           "default": "/* --- Begin $path --- */",
           "description": "The opening comment shown at the beginning of every file. Use $path as a placeholder for the file path.",
-          "order": 4
+          "title": "Begin File Comment"
         },
         "commanderV.appendFileComment": {
+          "order": 6,
+          "title": "End File Comment",
           "type": "string",
           "default": "/* --- End $path --- */",
-          "description": "The closing comment shown at the end of every file. Use $path as a placeholder for the file path.",
-          "order": 5
+          "description": "The closing comment shown at the end of every file. Use $path as a placeholder for the file path."
         },
         "commanderV.playDoneSound": {
+          "order": 7,
+          "title": "Success Chime",
           "type": "boolean",
           "default": true,
-          "description": "Play a sound when operations are successfully completed and output has been moved to you clipboard.",
-          "order": 6
+          "description": "Play a sound when operations are successful and output is delivered to you clipboard."
         }
       }
     }

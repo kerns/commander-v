@@ -7,7 +7,6 @@
 /out
 /.vscode
 /.vscode-test
-/.DS_Store
 
 # VS Code workspace settings
 /.vscode/settings.json
@@ -17,4 +16,6 @@
 # misc
 /.idea
 /.cache
-.DS_Store
+*.psd
+*.DS_Store
+*.comv
