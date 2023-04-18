@@ -1,0 +1,107 @@
+{
+  "name": "commander-v",
+  "displayName": "Commander V",
+  "publisher": "kerns",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kerns/commander-v"
+  },
+  "description": "Concatenates multiple files with an ASCII tree view of your project. For humans who need to fix your code and AIs who need to fix theirs.",
+  "version": "0.5.0",
+  "keywords": [
+    "clipboard",
+    "ai",
+    "openAI",
+    "Commander Vee",
+    "concatenate",
+    "ascii tree",
+    "tree view",
+    "Commander",
+    "paste",
+    "copy"
+  ],
+  "icon": "src/commander_v_icon.png",
+  "engines": {
+    "vscode": "^1.77.0"
+  },
+  "categories": [
+    "Formatters",
+    "Machine Learning",
+    "Debuggers",
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.commanderV"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.commanderV",
+        "title": "Commander V"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.commanderV",
+          "when": "resource"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Commander V",
+      "properties": {
+        "commanderV.asciiTreePrepend": {
+          "type": "boolean",
+          "default": true,
+          "description": "Prepend an ASCII tree of the directory structure to the copied content.",
+          "order": 1
+        },
+        "commanderV.asciiTreeMaxDepth": {
+          "type": "number",
+          "default": 5,
+          "description": "The maximum depth of directories to include in the generated ASCII tree.",
+          "order": 2
+        },
+        "commanderV.ignoreFile": {
+          "type": "string",
+          "default": ".gitignore",
+          "description": "Path to the file containing patterns to exclude from the generated ASCII tree. A .gitignore file is usually ag ",
+          "order": 3
+        },
+        "commanderV.prependFileComment": {
+          "type": "string",
+          "default": "/* --- Begin $path --- */",
+          "description": "The opening comment shown at the beginning of every file. Use $path as a placeholder for the file path.",
+          "order": 4
+        },
+        "commanderV.appendFileComment": {
+          "type": "string",
+          "default": "/* --- End $path --- */",
+          "description": "The closing comment shown at the end of every file. Use $path as a placeholder for the file path.",
+          "order": 5
+        },
+        "commanderV.playDoneSound": {
+          "type": "boolean",
+          "default": true,
+          "description": "Play a sound when operations are successfully completed and output has been moved to you clipboard.",
+          "order": 6
+        }
+      }
+    }
+  },
+  "scripts": {
+    "prepublishOnly": "vsce package",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/node": "^16.0.0",
+    "@vscode/test-electron": "^2.3.0"
+  },
+  "dependencies": {
+    "archy": "^1.0.0",
+    "directory-tree": "^3.5.0",
+    "play-sound": "^1.1.5"
+  }
+}
