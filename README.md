@@ -1,6 +1,6 @@
-# Commander V Lives and Works Inside Visual Studio Code. But also your Heart.
+# Commander V for Visual Studio Code
 
-For the brave humans trying to fix your terrible code, and the increasingly powerful AIs racing (ahead) to fix theirs. Commander V is a powerful but discreet extension for Visual Studio Code, able to combine multiple files into a single, easy-to-read and _ready-to-paste_ blob of text with tremendous speed. Commander V also offers to generate an ASCII tree view of your project, which can be included in the final output.
+Commander V is a powerful but discreet extension for Visual Studio Code, able to combine multiple files into a single, easy-to-read and _ready-to-paste_ blob of text with tremendous speed. Commander V also offers to generate an ASCII tree view of your project, which can be included in the final output.
 
 Call on Commander V by selecting multiple files in the file explorer sidebar of Visual Studio Code. Then right-click on one of the selected files, choose **"Commander V"** from the context menu, and a concatenated payload will be delivered to your clipboard.
 
