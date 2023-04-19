@@ -1,8 +1,12 @@
 # Commander V for Visual Studio Code
 
-> _For the wonderful humans helping to fix our terrible code, and for the AIs racing ahead to fix theirs...\_godspeed to us all_. **I am coming home.**
->
-> _— <cite>Commander V, Last words</cite>_
+_For the wonderful humans helping to fix our terrible code,  
+and for the AIs racing ahead to fix theirs...  
+To each and everyone of us, godspeed.  
+**I am coming home**._
+
+<cite>Commander V  
+ Last words</cite>
 
 ## The Story (Prologue)
 
@@ -82,14 +86,14 @@ The Commander is listening. Bugs, ideas, feedback and pull requests welcome at [
 
 ## The Rest of the Story (Epilogue)
 
-As the story goes, a restless young boy from America once spent the better part of a year at sea in close quarters with Commander V. He was enthralled and ultimately transformed by the Commander's passion for tidiness, coherence and context.
+As the story goes, a restless boy spent the better part of a formative year at sea in close quarters with Commander V. He was enthralled and ultimately transformed by the Commander's passion for tidiness, coherence and context.
 
-As their time together came to an end, and the boy – who was becoming a man – turned toward home, he felt the pain of unpayable debt to the Commander. Not for the year of food, shelter, and companionship – but for the most important thing he was ever given: the gift of a new, you could say, _different_ way of thinking.
+As their time together came to an end, and the boy – who was becoming a man – turned toward home, he felt the weight and pain of a debt that he never repay. Not for the year of food, shelter, and companionship – but for the most important thing he was ever given: the gift of a new, you could say, _different_ way of thinking.
 
-As he readied himself to leave, he turned to The Commander and offered this solemn promise: to one day pay tribute to his new friend and mentor of mentors. And to do whatever he could to make a world that would know and remember his name.
+As he readied himself to leave, he turned to The Commander and offered this solemn promise: to one day pay tribute to his new friend and chief mentor. And to do whatever he could to make a world that would know and forever remember his name.
 
-Today much of the world not only _knows_ The Commander's name – much of the world touches it, _literally_, **every day**. All of this is thanks to that man.
+Today much of the world not only _knows_ The Commander's name – much of the world touches it, _literally_, **every day**.
 
-That man's name? **STEVE JOBS**. His tribute? No less than the most indispensable and widely used combination of keyboard keys ever conceived of, and featured on every Mac since 1984: **Command + V**
+All of this is thanks to that boy who became a man, a man _we_ remember as **STEVE JOBS**. His tribute? No less than the most indispensable and widely used combination of keyboard keys ever conceived of, and featured on every Mac since 1984: **Command + V**
 
 _Think about it._
