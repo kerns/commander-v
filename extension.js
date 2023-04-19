@@ -9,6 +9,7 @@ const path = require('path');
 const player = require('play-sound')({});
 const { generateAsciiTree } = require('./src/asciiTree');
 
+// Read the contents of the selected files
 async function readFileContents(filePaths) {
   const fileContents = [];
 
@@ -21,6 +22,7 @@ async function readFileContents(filePaths) {
   return fileContents;
 }
 
+// Wrap file contents with comments including the file path
 function wrapFileContents(files, contents, prependComment, appendComment) {
   return contents.map((content, index) => {
     const filePath = files[index].replace(vscode.workspace.workspaceFolders[0].uri.fsPath, '');
@@ -28,22 +30,20 @@ function wrapFileContents(files, contents, prependComment, appendComment) {
   });
 }
 
+// Sort the files by their paths
 function sortFilesByPath(files) {
   return files.sort((a, b) => {
     const pathA = a.fsPath;
     const pathB = b.fsPath;
-
     if (pathA < pathB) return -1;
     if (pathA > pathB) return 1;
     return 0;
   });
 }
 
-
 /**
  * @param {vscode.ExtensionContext} context
  */
-
 function activate(context) {
   console.log('Activating Commander V...');
 
@@ -53,6 +53,7 @@ function activate(context) {
       return;
     }
 
+    // Get the file paths of the selected files
     let files = allUris.map(fileUri => fileUri.fsPath);
     console.log('Selected files:', files);
 
@@ -60,7 +61,7 @@ function activate(context) {
     files = sortFilesByPath(files);
     console.log('Sorted files:', files);
 
-    // Read the configuration
+    // Read the global configuration
     const globalConfig = vscode.workspace.getConfiguration('commanderV');
 
     // Check if local configuration file exists
@@ -84,6 +85,7 @@ function activate(context) {
     const finalConfig = { ...globalConfig, ...localConfig };
     console.log('Final configuration:', finalConfig);
 
+    // Get configurations for ASCII tree and comments
     const asciiTreePrepend = finalConfig.asciiTreePrepend;
     const asciiTreeMaxDepth = finalConfig.asciiTreeMaxDepth;
     const asciiTreePrune = finalConfig.asciiTreePrune;
@@ -94,7 +96,7 @@ function activate(context) {
     let asciiTree = '';
 
     if (asciiTreePrepend) {
-      //vscode.window.showInformationMessage('Analyzing directory tree...');
+      // Generate ASCII tree if enabled
       asciiTree = await generateAsciiTree(vscode.workspace.workspaceFolders[0].uri.fsPath, asciiTreeMaxDepth, ignoreFile, files, asciiTreePrune);
       console.log('Generated ASCII tree:\n', asciiTree);
     }
@@ -128,7 +130,7 @@ function activate(context) {
 
     // Success message
     const manageExtensionLink = new vscode.MarkdownString(`[Manage Extension](command:workbench.extensions.action.showExtension?%22kerns.commander-v%22)`);
-    vscode.window.showInformationMessage(`The Commander shipped ${numberOfFiles} files with a total of ${totalChars} chars to your clipboard.`, manageExtensionLink);
+    vscode.window.showInformationMessage(`✌️ Commander copied ${numberOfFiles} files (${totalChars} chars) to your clipboard`, manageExtensionLink);
 
   });
 

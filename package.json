@@ -6,8 +6,8 @@
     "type": "git",
     "url": "https://github.com/kerns/commander-v"
   },
-  "description": "Concatenate files with an ASCII tree view of your project – all instantly to your clipboard. For the wonderful humans helping to fix our code, and the AIs (racing ahead) to fix theirs.",
-  "version": "0.5.3",
+  "description": "Concatenates and formats multiple files together with an optional ASCII tree view of your project. Delivered swiftly to your clipboard in just a click.",
+  "version": "0.5.4",
   "keywords": [
     "clipboard",
     "ai",

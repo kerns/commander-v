@@ -2,6 +2,12 @@
 
 Notable changes to the extension will be documented in this file. Reverse chron. order.
 
+## 0.5.4 - April 19, 2023
+
+- IMPROVED with comments and cleanup
+- IMPROVED with updates to README.md
+- ADDED Commander backstory
+
 ## 0.5.3 - April 18, 2023
 
 - IMPROVED pruning of the ASCII tree (asciiTreePrune) as a setting in the config file. If true, the tree will be limited to the files being concatenated. If false, the tree will be the full project tree. Defaults to true.
