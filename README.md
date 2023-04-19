@@ -90,7 +90,7 @@ The Commander is listening. Bugs, ideas, feedback and pull requests welcome at [
 
 As the story goes, a restless boy who had lost his way once spent the better part of a formative year at sea, in close quarters with Commander V. He was enthralled and ultimately transformed by the Commander's passion for tidiness, coherence and context.
 
-As their time together came to an end, and the boy – who was becoming a man – turned toward home, he felt the weight and pain of a debt that he never repay. Not for the year of food, shelter, and companionship – but for the most important thing he was ever given: the gift of a new, you could say, _different_ way of thinking.
+As their time together came to an end, and the boy – who was becoming a man – turned toward home, he felt the weight and pain of a debt he could never repay. Not for the year of food, shelter, and companionship – but for the most important thing he was ever given: the gift of a new, or as he would come to say, _different_ way of thinking.
 
 As he readied himself to leave, he turned to The Commander and offered this solemn promise: to one day pay tribute to his new friend and chief mentor. And to do whatever he could to make a world that would know and forever remember his name.
 
