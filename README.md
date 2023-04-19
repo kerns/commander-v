@@ -12,15 +12,17 @@ To each and everyone of us, godspeed.
 
 **Commander V was a discreetly gifted human being who gave his life to take the form of an extension for Microsoft's Visual Studio Code.**
 
-He did so in exchange for the power to combine multiple files with tremendous speed into a single, beautiful, symphony of code and text – output that is both *easy to read **and** easy to paste*.
+He did so in exchange for the power to combine multiple files with tremendous speed into a single, beautiful, symphony of code and text – output that is both *easy to read **and** ready to paste*.
 
 He is also blessed with the ability to generate an ASCII tree view of your project, and may optionally include it in the final output. This gives additional context to the files you've collected, and improves the chances that the problems with your code can be understood.
 
-Those lucky enough to have spent time with Commander V well remember his endless praise of tidy file structures everywhere. "ETR! RTP!", he was known to muse at inspection. Later ...much, _too much_ later – we learned it meant "_Easy-to-Read and Ready-to-Paste!_". Which makes total sense, as this is _exactly_ what Commander V offers now.
+Those lucky enough to have spent time with Commander V well remember his endless praise of tidy file structures everywhere. "ETR! RTP!", he was known to muse at inspection. Later ...much, _too much_ later – we learned it meant "_Easy to Read and Ready to Paste!_". Which makes total sense, as this is _exactly_ what Commander V offers now.
 
 ## Calling Commander V
 
 Call on Commander V by selecting multiple files in the file explorer sidebar of Visual Studio Code. Then right-click on one of the selected files, choose **"Commander V"** from the context menu, and a concatenated payload will be delivered to your clipboard nanoseconds later.
+
+![cv](https://user-images.githubusercontent.com/20254/233205570-dda646a4-9859-48b3-8dbf-25af37e84ace.gif)
 
 _Always choose Commander V._
 
@@ -86,7 +88,7 @@ The Commander is listening. Bugs, ideas, feedback and pull requests welcome at [
 
 ## The Rest of the Story (Epilogue)
 
-As the story goes, a restless boy spent the better part of a formative year at sea in close quarters with Commander V. He was enthralled and ultimately transformed by the Commander's passion for tidiness, coherence and context.
+As the story goes, a restless boy who had lost his way once spent the better part of a formative year at sea, in close quarters with Commander V. He was enthralled and ultimately transformed by the Commander's passion for tidiness, coherence and context.
 
 As their time together came to an end, and the boy – who was becoming a man – turned toward home, he felt the weight and pain of a debt that he never repay. Not for the year of food, shelter, and companionship – but for the most important thing he was ever given: the gift of a new, you could say, _different_ way of thinking.
 
