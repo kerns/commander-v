@@ -8,15 +8,18 @@ To each and everyone of us, godspeed.
 <cite>Commander V  
  Last words</cite>
 
+![before-we-get-started](https://user-images.githubusercontent.com/20254/233301117-cfdb95c7-ed39-47c9-a39f-cefaec3082c9.png)
+
+
 ## The Story (Prologue)
 
-**Commander V was a discreetly gifted human being who gave his life to take the form of an extension for Microsoft's Visual Studio Code.**
+**COMMANDER V WAS A UNIQUELY GIFTED HUMAN BEING WHO GAVE HIS LIFE TO TAKE THE FORM OF AN EXTENSION FOR MICROSOFT'S VISUAL STUDIO CODE.**
 
-He did so in exchange for the power to combine multiple files with tremendous speed into a single, beautiful, symphony of code and text – output that is both *easy to read **and** ready to paste*.
+He did so in exchange for the power to combine multiple files with tremendous speed into a singular, beautiful, and visually digestable latticework of infomration – with output that is both *easy to read **and** ready to paste*.
 
-He is also blessed with the ability to generate an ASCII tree view of your project, and may optionally include it in the final output. This gives additional context to the files you've collected, and improves the chances that the problems with your code can be understood.
+He is also blessed with the ability to generate an ASCII tree view of your project, and may optionally include it in the final output. This gives additional context to the files you deign worthu of collection, and improves the chances that the problems with your code can be understood.
 
-Those lucky enough to have spent time with Commander V well remember his endless praise of tidy file structures everywhere. "ETR! RTP!", he was known to muse at inspection. Later ...much, _too much_ later – we learned it meant "_Easy to Read and Ready to Paste!_". Which makes total sense, as this is _exactly_ what Commander V offers now.
+Those lucky enough to have spent time with Commander V well remember his endless praise of tidy file structures everywhere. "ETR! RTP!", he was known to muse at inspection. Only later ..._too much_ later – did we learn that it meant "_Easy to Read and Ready to Paste!_". Which makes total sense, as this is _exactly_ what Commander V concerns himself with now.
 
 ## Calling Commander V
 
