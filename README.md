@@ -1,14 +1,12 @@
 # Commander V for Visual Studio Code
 
+![before-we-get-started](https://user-images.githubusercontent.com/20254/233304185-ceba2782-c8dc-4bc3-95de-18a9f7091f90.png)
+
 _For the wonderful humans helping to fix our terrible code,  
 and for the AIs racing ahead to fix theirs...  
-To each and everyone of us, godspeed.  
-**I am coming home**._
+To each and everyone of us, godspeed. **I am coming home**._
 
-<cite>Commander V  
- Last words</cite>
-
-![before-we-get-started](https://user-images.githubusercontent.com/20254/233301117-cfdb95c7-ed39-47c9-a39f-cefaec3082c9.png)
+<cite>Commander V, Last words</cite>
 
 
 ## The Story (Prologue)
@@ -25,7 +23,7 @@ Those lucky enough to have spent time with Commander V well remember his endless
 
 Call on Commander V by selecting multiple files in the file explorer sidebar of Visual Studio Code. Then right-click on one of the selected files, choose **"Commander V"** from the context menu, and a concatenated payload will be delivered to your clipboard nanoseconds later.
 
-![cv](https://user-images.githubusercontent.com/20254/233205570-dda646a4-9859-48b3-8dbf-25af37e84ace.gif)
+![sure-happy-to-help-demo](https://user-images.githubusercontent.com/20254/233346169-2d0d90c8-d948-415d-8041-f29d822ecb0f.gif)
 
 _Always choose Commander V._
 
@@ -76,12 +74,6 @@ module.exports = {
 ```
 
 By default, Commander V looks for a .gitignore file in the project root, and will use that file if it exists to exclude files or directories from the project tree. If you wish to use a different ignore file, you can specify it in the settings or in your local config file.
-
-In this sample `.com-v.ignore` file, we allow our node_modules folder to be included in the tree, while ignoring the contents of the node_modules folder itself:
-
-```text
-node_modules/*
-```
 
 > _Note that changes to your `.com-v.config.js` configuration file and local ignore files require a restart_.
 
