@@ -17,7 +17,7 @@ To each and everyone of us, godspeed.
 
 He did so in exchange for the power to combine multiple files with tremendous speed into a singular, beautiful, and visually digestable latticework of infomration – with output that is both *easy to read **and** ready to paste*.
 
-He is also blessed with the ability to generate an ASCII tree view of your project, and may optionally include it in the final output. This gives additional context to the files you deign worthu of collection, and improves the chances that the problems with your code can be understood.
+He is also blessed with the ability to generate an ASCII tree view of your project, and may optionally include it in the final output. This gives additional context to the files you deign worthy of collection, and improves the chances that the problems with your code can be understood.
 
 Those lucky enough to have spent time with Commander V well remember his endless praise of tidy file structures everywhere. "ETR! RTP!", he was known to muse at inspection. Only later ..._too much_ later – did we learn that it meant "_Easy to Read and Ready to Paste!_". Which makes total sense, as this is _exactly_ what Commander V concerns himself with now.
 
