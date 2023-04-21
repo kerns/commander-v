@@ -18,7 +18,16 @@ async function getIgnoredPaths(ignoreFilePath) {
     // Read the ignore file and split it into lines
     const content = await fs.promises.readFile(ignoreFilePath, 'utf8');
     const lines = content.split('\n').map(line => line.trim());
-    ignoredPaths.push(...lines);
+
+    // Precompile the regular expressions for each ignored path
+    lines.forEach(line => {
+      if (line.startsWith('#') || line === '') {
+        return;
+      }
+      const regex = new RegExp(line.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
+      ignoredPaths.push(regex);
+    });
+
   } catch (err) {
     console.error('Error reading ignore file:', err);
   }
@@ -28,15 +37,7 @@ async function getIgnoredPaths(ignoreFilePath) {
 
 // Check if the given path should be ignored based on the ignoredPaths list
 function shouldBeIgnored(path, ignoredPaths) {
-  return ignoredPaths.some(ignoredPath => {
-    if (ignoredPath.startsWith('#') || ignoredPath === '') {
-      return false;
-    }
-
-    // Convert the ignored path to a regex and test against the given path
-    const regex = new RegExp(ignoredPath.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
-    return regex.test(path);
-  });
+  return ignoredPaths.some(ignoredPathRegex => ignoredPathRegex.test(path));
 }
 
 // Check if the given path is included in the selected files list
@@ -44,17 +45,19 @@ function isPathInSelectedFiles(path, files) {
   return files.some(file => file.includes(path));
 }
 
+// Check if the given path should be pruned based on pruneProjectTree and the selected files list
+function shouldBePruned(path, pruneProjectTree, files) {
+  return pruneProjectTree && !isPathInSelectedFiles(path, files);
+}
+
 // Recursively generate a filtered tree based on ignored paths and the selected files list
-function generateFilteredTree(treeObject, ignoredPaths, files, asciiTreePrune, ignoreFile) {
-  const pathShouldBeIgnored = asciiTreePrune ? false : shouldBeIgnored(treeObject.path, ignoredPaths);
+function generateFilteredTree(treeObject, ignoredPaths, files, pruneProjectTree, ignoreFile) {
+  // Check if the path should be ignored or pruned
+  const pathShouldBeIgnored = pruneProjectTree ? false : shouldBeIgnored(treeObject.path, ignoredPaths);
+  const pathShouldBePruned = shouldBePruned(treeObject.path, pruneProjectTree, files);
 
-  // If the path should be ignored, return null
-  if (pathShouldBeIgnored) {
-    return null;
-  }
-
-  // If pruning the tree and the path is not in the selected files, return null
-  if (asciiTreePrune && !isPathInSelectedFiles(treeObject.path, files)) {
+  // If the path should be ignored or pruned, return null
+  if (pathShouldBeIgnored || pathShouldBePruned) {
     return null;
   }
 
@@ -64,34 +67,60 @@ function generateFilteredTree(treeObject, ignoredPaths, files, asciiTreePrune, i
   // If the object has children, recursively generate nodes for each child
   if (treeObject.children && treeObject.children.length > 0) {
     node.nodes = treeObject.children
-      .map(child => generateFilteredTree(child, ignoredPaths, files, asciiTreePrune, ignoreFile))
+      .map(child => generateFilteredTree(child, ignoredPaths, files, pruneProjectTree, ignoreFile))
       .filter(child => child !== null);
   }
 
   return node;
 }
 
+// Calculate the maximum depth of the selected files relative to the root path
+function getMaxDepthOfSelectedFiles(rootPath, files) {
+  const rootPathDepth = rootPath.split(path.sep).length;
+  let maxDepth = 0;
+
+  files.forEach(file => {
+    const fileDepth = file.split(path.sep).length;
+    const relativeDepth = fileDepth - rootPathDepth;
+
+    if (relativeDepth > maxDepth) {
+      maxDepth = relativeDepth;
+    }
+  });
+
+  return maxDepth;
+}
+
+// Determine the appropriate directory tree depth based on the provided parameters
+function getDirectoryTreeDepth(pruneProjectTree, projectTreeDepth, rootPath, files) {
+  return pruneProjectTree ? getMaxDepthOfSelectedFiles(rootPath, files) : projectTreeDepth;
+}
+
 // Generate an ASCII tree for the directory structure based on provided parameters
-async function generateAsciiTree(rootPath, maxDepth, ignoreFile = '.gitignore', files = [], asciiTreePrune = false) {
+async function generateProjectTree(rootPath, projectTreeDepth, ignoreFile = '.gitignore', files = [], pruneProjectTree = false) {
   const ignoreFilePath = path.join(rootPath, ignoreFile);
   const ignoredPaths = await getIgnoredPaths(ignoreFilePath);
 
+  // Calculate the appropriate directory tree depth
+  const directoryTreeDepth = getDirectoryTreeDepth(pruneProjectTree, projectTreeDepth, rootPath, files);
+
   // Set the directory tree options
   const options = {
-    depth: maxDepth,
+    depth: directoryTreeDepth,
   };
 
   // Generate the directory tree and filter it based on ignored paths and selected files
   const treeObject = dirTree(rootPath, options);
-  const filteredTree = generateFilteredTree(treeObject, ignoredPaths, files, asciiTreePrune, ignoreFile);
+  const filteredTree = generateFilteredTree(treeObject, ignoredPaths, files, pruneProjectTree, ignoreFile);
   const tree = archy(filteredTree);
 
-  console.log('generateAsciiTree parameters:', { rootPath, maxDepth, ignoreFile });
+  console.log('generateProjectTree parameters:', { rootPath, projectTreeDepth, ignoreFile });
 
   return tree;
 }
 
-// Export the generateAsciiTree function for use in other modules
+// Export the generateProjectTree function for use in other modules
 module.exports = {
-  generateAsciiTree,
+  generateProjectTree,
 };
+

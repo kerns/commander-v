@@ -6,8 +6,8 @@
     "type": "git",
     "url": "https://github.com/kerns/commander-v"
   },
-  "description": "Concatenates and formats multiple files together with an optional ASCII tree view of your project. Delivered swiftly to your clipboard in just a click.",
-  "version": "0.5.7",
+  "description": "Concatenates and formats multiple files together with an optional ASCII view of your project's directory structure. Delivered swiftly to your clipboard in a click.",
+  "version": "1.0.0",
   "keywords": [
     "clipboard",
     "ai",
@@ -30,9 +30,6 @@
     "Debuggers",
     "Other"
   ],
-  "activationEvents": [
-    "onCommand:extension.commanderV"
-  ],
   "main": "./extension.js",
   "contributes": {
     "commands": [
@@ -52,57 +49,65 @@
     "configuration": {
       "title": "Commander V",
       "properties": {
-        "commanderV.asciiTreePrepend": {
+        "commanderV.includeProjectTree": {
           "order": 1,
           "type": "boolean",
           "default": true,
-          "title": "Include ASCII Tree",
-          "description": "Prepend an ASCII tree of your project's directory structure to the clipboard payload. Helpful to both humans and AIs needing to understand your project's structure."
+          "description": "Include an ASCII tree representing your project's directory structure in the payload sent to your clipboard"
         },
-        "commanderV.asciiTreeMaxDepth": {
+        "commanderV.projectTreeDepth": {
           "order": 2,
           "type": "number",
           "default": 3,
-          "title": "Maximum Tree Depth",
-          "description": "The maximum depth of directories to include in the generated ASCII tree. Only applies when \"Prune Tree to Included Files\" is disabled."
+          "description": "The maximum depth of directories to include in the generated ASCII tree. Not applied when \"Prune Project Tree\" is enabled."
         },
-        "commanderV.asciiTreePrune": {
-          "order": 3,
+        "commanderV.pruneProjectTree": {
+          "order": 4,
           "type": "boolean",
           "default": true,
-          "title": "Prune Tree to Included Files",
-          "description": "If enabled, the generated tree will be limited to the files being concatenated."
+          "description": "Limit the tree to only include files that have been selected"
+        },
+        "commanderV.orderFilesBy": {
+          "order": 5,
+          "type": "string",
+          "default": "treeOrder",
+          "enum": [
+            "treeOrder",
+            "selectionOrder"
+          ],
+          "enumDescriptions": [
+            "Order by position in the tree...",
+            "Order by order of selection..."
+          ],
+          "description": "Specify how to sort files when concatenating their content"
         },
         "commanderV.ignoreFile": {
-          "order": 4,
+          "order": 6,
           "type": "string",
           "default": ".gitignore",
           "title": "Ignore File",
-          "description": "Path to your ignore file, containing patterns to exclude from the generated ASCII tree. The ignore file is not applied when \"Prune Tree to Included Files\" is enabled.",
+          "description": "Path to your ignore file, containing patterns to exclude from the generated ASCII tree. Not applied when \"Prune Project Tree\" is enabled.",
           "examples": [
             ".com-v.ignore"
           ]
         },
-        "commanderV.prependFileComment": {
-          "order": 5,
+        "commanderV.commentAtFileBegin": {
+          "order": 7,
           "type": "string",
           "default": "/* --- Begin $path --- */",
-          "description": "The opening comment shown at the beginning of every file. Use $path as a placeholder for the file path.",
-          "title": "Begin File Comment"
+          "description": "Opening comment shown at the beginning of every file. Use $path as a placeholder for the file path"
         },
-        "commanderV.appendFileComment": {
-          "order": 6,
-          "title": "End File Comment",
+        "commanderV.commentAtFileEnd": {
+          "order": 8,
           "type": "string",
           "default": "/* --- End $path --- */",
-          "description": "The closing comment shown at the end of every file. Use $path as a placeholder for the file path."
+          "description": "Closing comment shown at the end of every file. Use $path as a placeholder for the file path"
         },
-        "commanderV.playDoneSound": {
-          "order": 7,
-          "title": "Success Chime",
+        "commanderV.playSoundOnComplete": {
+          "order": 9,
           "type": "boolean",
           "default": true,
-          "description": "Play a sound when operations are successful and output is delivered to you clipboard."
+          "description": "Play a sound when operations are successful and output is delivered to you clipboard"
         }
       }
     }

@@ -2,6 +2,13 @@
 
 Notable changes to the extension will be documented in this file. Reverse chron. order.
 
+## 1.0.0 - April 21, 2023 🍾
+
+- ADDED sorting of files to match the project tree
+- IMPROVED behavior of the project tree to override maxdepth if the selected file is deeper in the tree
+- IMPROVED performance of the project tree
+- REVISED function names and settings
+
 ## 0.5.4 - April 19, 2023
 
 - IMPROVED with comments and cleanup
