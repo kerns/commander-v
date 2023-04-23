@@ -2,7 +2,11 @@
 
 Notable changes to the extension will be documented in this file. Reverse chron. order.
 
-## 1.0.2 - April 23, 2023
+## 1.0.3 - April 23, 2023
+
+- ADDED keyboard bindings for The Commander (Mac: `Cmd+Shift+V` / Win: `Ctrl+Shift+V`)
+
+## 1.0.2
 
 - CHANGED $path variable to use $file, which is more accurate
 - IMPROVED with updates to README.md
