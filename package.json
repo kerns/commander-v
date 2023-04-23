@@ -7,7 +7,7 @@
     "url": "https://github.com/kerns/commander-v"
   },
   "description": "Concatenates and formats multiple files together with an optional ASCII view of your project's directory structure. Delivered swiftly to your clipboard in a click.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "keywords": [
     "clipboard",
     "ai",
@@ -94,14 +94,14 @@
         "commanderV.commentAtFileBegin": {
           "order": 7,
           "type": "string",
-          "default": "/* --- Begin $path --- */",
-          "description": "Opening comment shown at the beginning of every file. Use $path as a placeholder for the file path"
+          "default": "/* --- Begin $file --- */",
+          "description": "Opening comment shown at the beginning of every file. Use $file as a placeholder for the file path"
         },
         "commanderV.commentAtFileEnd": {
           "order": 8,
           "type": "string",
-          "default": "/* --- End $path --- */",
-          "description": "Closing comment shown at the end of every file. Use $path as a placeholder for the file path"
+          "default": "/* --- End $file --- */",
+          "description": "Closing comment shown at the end of every file. Use $file as a placeholder for the file path"
         },
         "commanderV.playSoundOnComplete": {
           "order": 9,

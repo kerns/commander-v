@@ -2,6 +2,11 @@
 
 Notable changes to the extension will be documented in this file. Reverse chron. order.
 
+## 1.0.2 - April 23, 2023
+
+- CHANGED $path variable to use $file, which is more accurate
+- IMPROVED with updates to README.md
+
 ## 1.0.0 - April 21, 2023 🍾
 
 - ADDED sorting of files to match the project tree
