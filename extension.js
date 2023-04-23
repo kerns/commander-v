@@ -40,7 +40,7 @@ async function readFileContents(filePaths) {
 function wrapFileContents(files, contents, commentAtFileBegin, commentAtFileEnd) {
   return contents.map((content, index) => {
     const filePath = files[index].replace(vscode.workspace.workspaceFolders[0].uri.fsPath, '');
-    return `${commentAtFileBegin.replace('$path', filePath)}\n\n${content}\n${commentAtFileEnd.replace('$path', filePath)}\n`;
+    return `${commentAtFileBegin.replace('$file', filePath)}\n\n${content}\n${commentAtFileEnd.replace('$file', filePath)}\n`;
   });
 }
 
@@ -94,8 +94,8 @@ function activate(context) {
     const pruneProjectTree = finalConfig.pruneProjectTree;
     const orderFilesBy = finalConfig.orderFilesBy;
     const ignoreFile = finalConfig.ignoreFile;
-    const commentAtFileBegin = finalConfig.commentAtFileBegin || '/* --- Begin $path --- */';
-    const commentAtFileEnd = finalConfig.commentAtFileEnd || '/* --- End $path --- */';
+    const commentAtFileBegin = finalConfig.commentAtFileBegin || '/* --- Begin $file --- */';
+    const commentAtFileEnd = finalConfig.commentAtFileEnd || '/* --- End $file --- */';
 
 
     // Get the file paths of the selected files

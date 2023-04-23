@@ -12,11 +12,11 @@ For each and everyone of us, godspeed. **I am coming home**._
 
 **Commander V was a uniquely gifted human being who gave his life to take the form of an extension for Microsoft's Visual Studio Code.**
 
-He did so in exchange for the power to combine multiple files with tremendous speed into a singular, consumable latticework of information in context. With output that is _easy to read **and** ready to paste_.
+He did so in exchange for the power to combine multiple files with tremendous speed into a singular, consumable latticework of information in context. With output that is both easy to read _*and*_ ready to paste\_.
 
-He is also blessed with the ability to generate an ASCII tree view of your project, and may optionally include it in the final output. This gives additional context to the files you deign worthy of collection, and improves the chances that the problems with your code can be understood.
+He is also blessed with the ability to generate an ASCII tree view of your project's directory structure, and may optionally include it in the final output. This gives full context to the files you deign worthy of collection, and improves the chances that the problems with your code can be understood.
 
-Those lucky enough to have spent time with Commander V well remember his endless praise of tidy file structures everywhere. "ETR! RTP!", he was known to muse at inspection. Only later ..._too much_ later, did we learn that it meant "_Easy to Read and Ready to Paste!_". Which makes total sense, as this is _exactly_ what Commander V concerns himself with now.
+Those lucky enough to have spent time in the human form of Commander V well remember his endless praise of tidy information structures. "ETR! RTP!", he was known to muse at inspection. Only later ..._too much_ later, did we learn that it meant "_Easy to Read and Ready to Paste!_". Which makes total sense, as this is _exactly_ what Commander V concerns himself with now.
 
 ## Commander V Enters the Chat
 
@@ -31,7 +31,7 @@ _Always choose Commander V._
 - Concatenates multiple files into a single, structured monolith of code and text, ready for pasting wherever needed
 - Gently wraps each file's content with custom comments to indicate the file's beginning and end points
 - Optionally prepends an ASCII tree of your project's folder structure, indicating the relative location of each file
-- Thoughtfully orders concatenated files to match your project's folder structure
+- Thoughtfully orders concatenated files to match your project's folder structure or the order in which they were selected – your choice
 - Supports a local configuration via an optional `v.config.js` file
 
 ## Installation
@@ -88,4 +88,4 @@ Today much of the world not only _knows_ The Commander's name – much of the w
 
 All of this is thanks to that boy who became a man, a man _we_ remember as **STEVE JOBS**. His tribute? No less than the most indispensable and widely used combination of keyboard keys ever conceived of, and featured on every Mac since 1984: **Command + V**
 
-_Think about it._
+*Think about it.*✌️
