@@ -2,9 +2,9 @@
 
 ![before-we-get-started](https://user-images.githubusercontent.com/20254/233304185-ceba2782-c8dc-4bc3-95de-18a9f7091f90.png)
 
-_For the wonderful humans helping to fix our terrible code,  
+_To the wonderful humans helping to fix our terrible code,  
 and for the AIs racing ahead to fix theirs...  
-For each and everyone of us, godspeed. **I am coming home**._
+To each and everyone of us, godspeed. **I am coming home**._
 
 <cite>— Last words of Commander V</cite>
 
@@ -12,11 +12,11 @@ For each and everyone of us, godspeed. **I am coming home**._
 
 **Commander V was a uniquely gifted human being who gave his life to take the form of an extension for Microsoft's Visual Studio Code.**
 
-He did so in exchange for the power to combine multiple files with tremendous speed into a singular, consumable latticework of information in context. With output that is both easy to read _*and*_ ready to paste\_.
+He did so in exchange for the power to combine multiple files with tremendous speed into a singular, consumable latticework of information in context. With output that is both easy to read _*and*_ ready to paste.
 
-He is also blessed with the ability to generate an ASCII tree view of your project's directory structure, and may optionally include it in the final output. This gives full context to the files you deign worthy of collection, and improves the chances that the problems with your code can be understood.
+He is also blessed with the ability to generate an ASCII tree view of your project's directory structure, and can optionally include it in the final output. This gives full context to the files you deign worthy of collection, and improves the chances that the problems with your code can be understood.
 
-Those lucky enough to have spent time in the human form of Commander V well remember his endless praise of tidy information structures. "ETR! RTP!", he was known to muse at inspection. Only later ..._too much_ later, did we learn that it meant "_Easy to Read and Ready to Paste!_". Which makes total sense, as this is _exactly_ what Commander V concerns himself with now.
+Those lucky enough to have spent time with Commander V in his human form will remember his endless praise of tidy, coherent information structures. "ETR! RTP!", he was known to muse at inspection. Only later ..._too much_ later, did we learn that it meant "_Easy to Read and Ready to Paste!_". Which makes total sense, as this is _exactly_ what Commander V concerns himself with now.
 
 ## Commander V Enters the Chat
 
@@ -28,7 +28,7 @@ _Always choose Commander V._
 
 ## Features
 
-- Concatenates multiple files into a single, structured monolith of code and text, ready for pasting wherever needed
+- Concatenates multiple files into a single, structured monolith – added to you clipboard and ready to paste
 - Gently wraps each file's content with custom comments to indicate the file's beginning and end points
 - Optionally prepends an ASCII tree of your project's folder structure, indicating the relative location of each file
 - Thoughtfully orders concatenated files to match your project's folder structure or the order in which they were selected – your choice
@@ -84,8 +84,6 @@ As their time together came to an end, and the boy – who was becoming a man �
 
 As he readied himself to leave, he turned to The Commander and offered this solemn promise: to one day pay tribute to his new friend and chief mentor. And to do whatever he could to make a world that would know and forever remember his name.
 
-Today much of the world not only _knows_ The Commander's name – much of the world touches it, _literally_, **every day**.
+Today much of the world not only _knows_ The Commander's name – much of the world touches it, _literally_, **every day**. All of this is thanks to that boy who became a man, a man _we_ remember as **STEVE JOBS**. His tribute? No less than the most indispensable and widely used combination of keyboard keys ever conceived of, and featured on every Mac since 1984: **Command + V**
 
-All of this is thanks to that boy who became a man, a man _we_ remember as **STEVE JOBS**. His tribute? No less than the most indispensable and widely used combination of keyboard keys ever conceived of, and featured on every Mac since 1984: **Command + V**
-
-*Think about it.*✌️
+✌️**Think about it.**

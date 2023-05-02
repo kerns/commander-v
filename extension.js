@@ -30,17 +30,17 @@ async function readFileContents(filePaths) {
 }
 
 /**
- * Wrap file contents with comments including the file path.
- * @param {string[]} files - An array of file paths.
- * @param {string[]} contents - An array of file contents as strings.
- * @param {string} commentAtFileBegin - The comment template to be placed at the beginning of each file.
- * @param {string} commentAtFileEnd - The comment template to be placed at the end of each file.
- * @returns {string[]} - An array of wrapped file contents.
+ * Wrap content with comments including the given label.
+ * @param {string[]} labels - An array of labels to be used in comments.
+ * @param {string[]} contents - An array of content as strings.
+ * @param {string} commentAtContentBegin - The comment template to be placed at the beginning of each content.
+ * @param {string} commentAtContentEnd - The comment template to be placed at the end of each content.
+ * @returns {string[]} - An array of wrapped content.
  */
-function wrapFileContents(files, contents, commentAtFileBegin, commentAtFileEnd) {
+function wrapWithComments(labels, contents, commentAtContentBegin, commentAtContentEnd) {
   return contents.map((content, index) => {
-    const filePath = files[index].replace(vscode.workspace.workspaceFolders[0].uri.fsPath, '');
-    return `${commentAtFileBegin.replace('$file', filePath)}\n\n${content}\n${commentAtFileEnd.replace('$file', filePath)}\n`;
+    const label = labels[index];
+    return `${commentAtContentBegin.replace('$file', label)}\n\n${content}\n${commentAtContentEnd.replace('$file', label)}\n`;
   });
 }
 
@@ -49,8 +49,6 @@ function wrapFileContents(files, contents, commentAtFileBegin, commentAtFileEnd)
  * @param {vscode.Uri[]} files - An array of file URIs.
  * @returns {vscode.Uri[]} - An array of sorted file URIs.
  */
-
-// Sorts the files by their paths
 function orderFilesByPath(filePaths) {
   return filePaths.sort((a, b) => {
     return a.localeCompare(b, undefined, { sensitivity: 'base' });
@@ -94,12 +92,12 @@ function activate(context) {
     const pruneProjectTree = finalConfig.pruneProjectTree;
     const orderFilesBy = finalConfig.orderFilesBy;
     const ignoreFile = finalConfig.ignoreFile;
-    const commentAtFileBegin = finalConfig.commentAtFileBegin || '/* --- Begin $file --- */';
-    const commentAtFileEnd = finalConfig.commentAtFileEnd || '/* --- End $file --- */';
-
+    const commentAtContentBegin = finalConfig.commentAtFileBegin || '/* --- Begin $file --- */';
+    const commentAtContentEnd = finalConfig.commentAtFileEnd || '/* --- End $file --- */';
 
     // Get the file paths of the selected files
     let files = allUris.map(fileUri => fileUri.fsPath);
+
     // Sort the files based on the chosen order (treeOrder or selectionOrder)
     files = orderFilesBy === 'treeOrder' ? orderFilesByPath(files) : files;
 
@@ -108,18 +106,23 @@ function activate(context) {
     if (includeProjectTree) {
       // Generate project tree if enabled
       projectTree = await generateProjectTree(vscode.workspace.workspaceFolders[0].uri.fsPath, projectTreeDepth, ignoreFile, files, pruneProjectTree);
+      // Wrap the project tree in comments
+      // projectTree = wrapWithComments(['Project Tree'], [projectTree], commentAtContentBegin, commentAtContentEnd)[0];
     }
 
     // Read the contents of the selected files
     const fileContents = await readFileContents(files);
 
-    // Wrap file contents with comments
-    const wrappedFileContents = wrapFileContents(files, fileContents, commentAtFileBegin, commentAtFileEnd);
+    // Get the relative file paths
+    const relativeFilePaths = files.map(file => file.replace(vscode.workspace.workspaceFolders[0].uri.fsPath, ''));
 
-    // Concatenate the project tree (if enabled) and wrap file contents with comments
+    // Wrap file contents with comments
+    const wrappedFileContents = wrapWithComments(relativeFilePaths, fileContents, commentAtContentBegin, commentAtContentEnd);
+
+    // Concatenate the project tree (if enabled) and wrapped file contents with comments
     const result = (projectTree ? `${projectTree}\n\n` : '') + wrappedFileContents.join('\n\n');
 
-    // Copy the result to the clipboard
+    // Copy the result to the clipboard ✌️
     vscode.env.clipboard.writeText(result);
 
     // Calculate the number of files and total characters
