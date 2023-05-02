@@ -7,7 +7,7 @@
     "url": "https://github.com/kerns/commander-v"
   },
   "description": "Concatenates and formats multiple files together with an optional ASCII view of your project's directory structure. Delivered swiftly to your clipboard in a click.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "keywords": [
     "clipboard",
     "ai",
