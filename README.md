@@ -4,23 +4,23 @@
 
 _To the wonderful humans helping to fix our terrible code,  
 and for the AIs racing ahead to fix theirs...  
-To each and everyone of us, godspeed. **I am coming home**._
+To each and every one of us, godspeed. **I am coming home**._
 
-<cite>— Last words of Commander V</cite>
+## <cite>— Final words of Commander V</cite>
 
-## The Story (Prologue)
+** Thank you for 500 Installs in Six Months **
 
-**Commander V was a uniquely gifted human being who gave his life to take the form of an extension for Microsoft's Visual Studio Code.**
+---
 
-He did so in exchange for the power to combine multiple files with tremendous speed into a singular, consumable latticework of information in context. With output that is both easy to read _*and*_ ready to paste.
+## Prologue
 
-He is also blessed with the ability to generate an ASCII tree view of your project's directory structure, and can optionally include it in the final output. This gives full context to the files you deign worthy of collection, and improves the chances that the problems with your code can be understood.
+**Commander V was a gifted man who gave his life to take the form of an extension for Microsoft's Visual Studio Code.** He did so in return for the power to combine multiple files with great speed into a singular, consumable, shareable monolith of information.
 
-Those lucky enough to have spent time with Commander V in his human form will remember his endless praise of tidy, coherent information structures. "ETR! RTP!", he was known to muse at inspection. Only later ..._too much_ later, did we learn that it meant "_Easy to Read and Ready to Paste!_". Which makes total sense, as this is _exactly_ what Commander V concerns himself with now.
+Commander V also got power to generate an ASCII tree view of your project's directory structure, and include it at the beginning of the output. This gives needed context to the files you gather, and improves the chances that the problems with your code can be better understood in context – by machines, yes – but also by humans.
 
 ## Commander V Enters the Chat
 
-Summon Commander V by selecting multiple files in the file explorer sidebar of Visual Studio Code. Then right-click on one of the selected files, choose **"Commander V"** from the context menu, and a concatenated payload will be delivered to your clipboard nanoseconds later.
+Summon Commander V by selecting one or more files from the file explorer sidebar in Visual Studio Code. Then right-click on the selected file(s), choose **"Commander V"** (or Shift + Cmd + V) to have them added to your clipboard, formatted according to your detailed settings or our sensible defaults.
 
 ![sure-happy-to-help-demo](https://user-images.githubusercontent.com/20254/233346169-2d0d90c8-d948-415d-8041-f29d822ecb0f.gif)
 
@@ -28,11 +28,11 @@ _Always choose Commander V._
 
 ## Features
 
-- Concatenates multiple files into a single, structured monolith – added to you clipboard and ready to paste
-- Gently wraps each file's content with custom comments to indicate the file's beginning and end points
+- Concatenates multiple files into a single, structured monolith – pushed to your clipboard, ready to paste.
+- Wraps file contents with custom comments to clearly demark beginning and end points of your file(s).
 - Optionally prepends an ASCII tree of your project's folder structure, indicating the relative location of each file
-- Thoughtfully orders concatenated files to match your project's folder structure or the order in which they were selected – your choice
-- Supports a local configuration via an optional `v.config.js` file
+- Orders concatenated files to match your project's folder structure or the order in which they were selected
+- Supports local configuration via optional `v.config.js` file
 
 ## Installation
 
@@ -44,18 +44,18 @@ _Always choose Commander V._
 
 1. In the Visual Studio Code explorer sidebar, select multiple files while holding down `Ctrl` (Windows) or `Cmd` (Mac).
 2. Right-click on one of the selected files and choose "Commander V" from the context menu.
-3. The concatenated content, along with the ASCII tree (if enabled), will be copied to your clipboard.
+3. The concatenated content, optionally with an ASCII tree view of your project, will be pushed to your clipboard.
 
 ## Configuration
 
-Global settings can be configured in your Visual Studio Code extension settings, under "Commander V". A local override of your global settings can be configured on a per-project basis via a`v.config.js` placed on the root of your project. Commander V will automatically pick that file up, hold it up in the light with his long, sea-worn fingers for inspection – and if he likes what he sees – apply it. Well. **After a restart**.
+Global settings can be configured in your Visual Studio Code extension settings, under "Commander V". A local override of your global settings can be configured on a per-project basis via a `v.config.js` placed on the root of your project. Commander V will automatically retrieve the settings file and apply the changes upon a restart of VS Code.
 
-The following settings are configurable:
+Configurable settings:
 
 - **`includeProjectTree`**: Prepends your project's directory structure to the output in ASCII format _(boolean)_
 - **`projectTreeDepth`**: Maximum depth for the project tree _(number)_
 - **`pruneProjectTree`**: Limits the project tree to only show the files being concatenated _(boolean)_
-- **`orderFilesBy`:** Sets the order in which files should appear – their natural order in the tree or the order in which they were selected _(treeOrder || selectionOrder)_
+- **`orderFilesBy`:** Sets the order in which files should appear – their order in the tree or the order in which they were selected _('treeOrder' or 'selectionOrder')_
 - **`ignoreFile`**: File to use for ignoring files or folders from the project tree (defaults to `.gitignore`) _(string)_
 - **`commentAtFileBegin`**: Comment to prepend before each file's content _(string)_
 - **`commentAtFileEnd`**: Comment to append after each file's content _(string)_
@@ -70,20 +70,20 @@ module.exports = {
 };
 ```
 
-> _Note that changes to your **`v.config.js`** configuration or custom ignore file will require a restart_.
+> _Changes to your **`v.config.js`** configuration or custom ignore file will require a restart_.
 
 ## Feedback
 
-The Commander is listening. Bugs, ideas, feedback and pull requests welcome at [GitHub issue tracker](https://github.com/kerns/commander-v/issues).
+Bugs, ideas, feedback and pull requests can go to [GitHub issue tracker](https://github.com/kerns/commander-v/issues). The Commander is listening.
 
-## The Rest of the Story (Epilogue)
+## The _Rest_ of the Story (Epilogue)
 
-A restless boy who had lost his way once spent the better part of a very formative year at sea, in close quarters with Commander V. He was enthralled and ultimately transformed by the Commander's passion for tidiness, coherence and context.
+A restless boy lost his way home after spending the better part of a year at sea, in close quarters with Commander V. He was enthralled and ultimately transformed by the Commander's passion for tidiness, coherence and context.
 
-As their time together came to an end, and the boy – who was becoming a man – turned toward home, he felt a pain in his heart and it burdened him. It was the feeling of owning a debt he felt he could never repay. Not for the year of food, shelter, and companionship – but for the most important thing he was ever given: the gift of a new – or as he would one day come to describe it – _different_ way of thinking.
+As their time together came to an end, and becoming a man, he turned toward home. He did it with the pain of owing a debt he could not repay. For more than, but also for the year of food, shelter, and companionship. But chiefly the gift of a new – or as he would one day come to describe it – _different_ way of thinking.
 
-As he readied himself to leave, he turned to The Commander and offered this solemn promise: to one day pay tribute to his new friend and chief mentor. And to do whatever he could to make a world that would know and forever remember his name.
+On the day they said goodbye to The Commander, but not before giving his solemn promise: to one day pay tribute to his mentor, to build a world that would know and remember his name.
 
-Today much of the world not only _knows_ The Commander's name – much of the world touches it, _literally_, **every day**. All of this is thanks to that boy who became a man, a man _we_ remember as **STEVE JOBS**. His tribute? No less than the most indispensable and widely used combination of keyboard keys ever conceived of, and featured on every Mac since 1984: **Command + V**
+Today the world not only _knows_ The Commander's name, the world touches it, _literally_, **every day**. Thanks to that boy. Who became a man. A man we called **STEVE JOBS**. His tribute? No less than the most indispensable and widely used combination of keyboard keys ever conceived by human brain cells. And featured on every Mac desktop and laptop since 1984: **Command + V**
 
-✌️**Think about it.**
+Think about it. ✌️
