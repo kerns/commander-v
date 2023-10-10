@@ -8,7 +8,7 @@ To each and every one of us, godspeed. **I am coming home**._
 
 ## <cite>— Final words of Commander V</cite>
 
-** Thank you for 500 Installs in Six Months **
+** v.1.1 Thank you for 500 Installs **
 
 ---
 
