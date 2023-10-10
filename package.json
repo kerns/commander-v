@@ -124,7 +124,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@types/node": "^16.0.0",
+    "@types/node": "^18.0.0",
     "@vscode/test-electron": "^2.3.0"
   },
   "dependencies": {
