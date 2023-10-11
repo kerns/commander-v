@@ -12,7 +12,7 @@ To each and every one of us, godspeed. **I am coming home**._
 
 **Commander V was a gifted man who gave his life to take the form of an extension for Microsoft's Visual Studio Code.** He did so in return for the power to combine multiple files with great speed into a singular, consumable, shareable monolith of information.
 
-Commander V also got power to generate an ASCII tree view of your project's directory structure, and include it at the beginning of the output. This gives needed context to the files you gather, and improves the chances that the problems with your code can be better understood in context – by machines, yes – but also by humans.
+Commander V also gained the power to generate an ASCII tree view of your project's directory structure, and include it at the beginning of the output. This gives needed context to the files you gather, and improves the chances that the problems with your code can be better understood in context – by machines and humans alike.
 
 ## Commander V Enters the Chat
 
@@ -80,6 +80,6 @@ As their time together came to an end, and becoming a man, he turned toward home
 
 On the day they said goodbye to The Commander, but not before giving his solemn promise: to one day pay tribute to his mentor, to build a world that would know and remember his name.
 
-Today the world not only _knows_ The Commander's name, the world touches it, _literally_, **every day**. Thanks to that boy. Who became a man. A man we called **STEVE JOBS**. His tribute? No less than the most indispensable and widely used combination of keyboard keys ever conceived by human brain cells. And featured on every Mac desktop and laptop since 1984: **Command + V**
+Today the world not only _knows_ The Commander's name, the world touches it, _literally_, **every day**. Thanks to that boy. Who became a man. A man we called **STEVE JOBS**. His tribute? No less than the most indispensable and widely used combination of keyboard keys ever conceived by human brain cells, and featured on every Mac desktop and laptop since 1984: **Command + V**
 
-Think about it. ✌️
+_Think about it_. ✌️
