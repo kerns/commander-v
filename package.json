@@ -6,17 +6,17 @@
     "type": "git",
     "url": "https://github.com/kerns/commander-v"
   },
-  "description": "Concatenates and formats multiple files together with an optional ASCII view of your project's directory structure. Delivered swiftly to your clipboard in a click.",
-  "version": "1.1.1",
+  "description": "Instantly orients any AI (or a human) in the structure and layout of your code by concatenating selected files, together with an optional ASCII view of your project's directory structure.",
+  "version": "1.1.2",
   "keywords": [
-    "clipboard",
-    "ai",
+    "Commander V",
+    "Command V",
     "openAI",
-    "Commander Vee",
+    "clipboard",
+    "AI",
     "concatenate",
     "ascii tree",
     "tree view",
-    "Commander",
     "paste",
     "copy"
   ],
