@@ -6,11 +6,7 @@ _To the wonderful humans helping to fix our terrible code,
 and for the AIs racing ahead to fix theirs...  
 To each and every one of us, godspeed. **I am coming home**._
 
-## <cite>— Final words of Commander V</cite>
-
-** v.1.1 Thank you for 500 Installs **
-
----
+<cite>— Final words of Commander V</cite>
 
 ## Prologue
 
@@ -28,8 +24,8 @@ _Always choose Commander V._
 
 ## Features
 
-- Concatenates multiple files into a single, structured monolith – pushed to your clipboard, ready to paste.
-- Wraps file contents with custom comments to clearly demark beginning and end points of your file(s).
+- Concatenates multiple files into a single, structured monolith and pushes it to your clipboard
+- Wraps file contents with custom comments to clearly demark beginning and end points of your file(s)
 - Optionally prepends an ASCII tree of your project's folder structure, indicating the relative location of each file
 - Orders concatenated files to match your project's folder structure or the order in which they were selected
 - Supports local configuration via optional `v.config.js` file
@@ -42,13 +38,13 @@ _Always choose Commander V._
 
 ## Usage
 
-1. In the Visual Studio Code explorer sidebar, select multiple files while holding down `Ctrl` (Windows) or `Cmd` (Mac).
-2. Right-click on one of the selected files and choose "Commander V" from the context menu.
-3. The concatenated content, optionally with an ASCII tree view of your project, will be pushed to your clipboard.
+1. In the Visual Studio Code explorer sidebar, select multiple files while holding down `Ctrl` (Windows) or `Cmd` (Mac)
+2. Right-click on one of the selected files and choose `Commander V` from the context menu
+3. The concatenated content, optionally with an ASCII tree view of your project, is pushed to your clipboard
 
 ## Configuration
 
-Global settings can be configured in your Visual Studio Code extension settings, under "Commander V". A local override of your global settings can be configured on a per-project basis via a `v.config.js` placed on the root of your project. Commander V will automatically retrieve the settings file and apply the changes upon a restart of VS Code.
+Global settings can be configured in your Visual Studio Code extension settings, under "Commander V". A local override of your global settings can be configured on a per-project basis via a `v.config.js` placed on the root of your project. Changes require a restart of VS Code.
 
 Configurable settings:
 
@@ -70,7 +66,7 @@ module.exports = {
 };
 ```
 
-> _Changes to your **`v.config.js`** configuration or custom ignore file will require a restart_.
+> _Changes to your **`v.config.js`** configuration or custom ignore file will require a restart of VS Code_.
 
 ## Feedback
 
