@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/kerns/commander-v"
   },
-  "description": "Instantly orients any AI (or a human) in the structure and layout of your code by concatenating selected files, together with an optional ASCII view of your project's directory structure.",
+  "description": "Instantly orients an AI (or human) in the structure and layout of your code by concatenating selected files, together with an optional ASCII view of your project's directory structure.",
   "version": "1.1.2",
   "keywords": [
     "Commander V",

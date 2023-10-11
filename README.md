@@ -74,12 +74,12 @@ Bugs, ideas, feedback and pull requests can go to [GitHub issue tracker](https:/
 
 ## The _Rest_ of the Story (Epilogue)
 
-A restless boy lost his way home after spending the better part of a year at sea, in close quarters with Commander V. He was enthralled and ultimately transformed by the Commander's passion for tidiness, coherence and context.
+A restless boy bent on seeing the world lost his way home after spending the better part of a year at sea, in close quarters with Commander V. He was enthralled and ultimately transformed by the Commander's inexorable passion for tidiness, coherence and context.
 
-As their time together came to an end, and becoming a man, he turned toward home. He did it with the pain of owing a debt he could not repay. For more than, but also for the year of food, shelter, and companionship. But chiefly the gift of a new – or as he would one day come to describe it – _different_ way of thinking.
+As their time together came to an end, and as the boy was becoming a man, he turned toward home with the pain of owing a debt he could never repay. Not for the year of food, shelter, and companionship – but for the gift of a new, or as he would one day come to describe it, _different_ way of thinking.
 
-On the day they said goodbye to The Commander, but not before giving his solemn promise: to one day pay tribute to his mentor, to build a world that would know and remember his name.
+On the day he said goodbye to The Commander he gave him a solemn promise: to do what he could to build a world that would know and remember his name.
 
-Today the world not only _knows_ The Commander's name, the world touches it, _literally_, **every day**. Thanks to that boy. Who became a man. A man we called **STEVE JOBS**. His tribute? No less than the most indispensable and widely used combination of keyboard keys ever conceived by human brain cells, and featured on every Mac desktop and laptop since 1984: **Command + V**
+Today the world not only _knows_ The Commander's name, much of the world touches it, _literally_, **every day**. Thanks to that boy. Who became a man. A man we called **STEVE JOBS**. His tribute? No less than the most indispensable and widely used combination of keyboard keys ever conceived by human brain cells, and featured on every Mac desktop and laptop since 1984: **Command + V**
 
 _Think about it_. ✌️
