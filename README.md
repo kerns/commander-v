@@ -10,9 +10,7 @@ To each and every one of us, godspeed. **I am coming home**._
 
 ## Prologue
 
-**Commander V was a gifted man who gave his life to take the form of an extension for Microsoft's Visual Studio Code.** He did so in return for the power to combine multiple files with great speed into a singular, consumable, shareable monolith of information.
-
-Commander V also gained the power to generate an ASCII tree view of your project's directory structure, and include it at the beginning of the output. This gives needed context to the files you gather, and improves the chances that the problems with your code can be better understood in context – by machines and humans alike.
+**Commander V was a gifted man who gave his life to take the form of an extension for Microsoft's Visual Studio Code.** He did so in return for the power to combine the contents of multiple files to your clipboard, together with an optional ASCII tree view of your project's directory structure. This gives needed context to the files you gather, and improves the chances that the problems with your code can be better understood by both machines and humans alike.
 
 ## Commander V Enters the Chat
 
