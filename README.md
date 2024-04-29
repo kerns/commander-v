@@ -8,14 +8,14 @@ To each and every one of us, godspeed. **I am coming home**._
 
 <cite>— Final words of Commander V</cite>
 
-## 🐳💦 SPRING UPDATE: Version 2.0 of Commander V Arrives
+## 🐬💦 SPRING UPDATE: Version 2.0 of Commander V Sets Sail
 
 New features include:
 
-- **Folder Support** You can now select a folder and Commander V will concatenate all non-binary files within that folder. Even select multiple folders, or mix and match selection of files and folders 🤯 ...**all will be joined**
-- Option to wrap the output in a code block for better formatting
-- Now supports context menus on tabs, with `Shift + Cmd + V`to trigger Commander V on the active / focused tab
-- Improved ASCII tree formatting, custom file separators, and more!
+- **Folder Support** You can now select a folder and Commander V will concatenate all non-binary files within that folder. Even select multiple folders, or mix and match selection of files and folders ..._all will be joined_
+- Trigger Commander V on the active / focused tab with `Shift + Cmd + V`
+- Option to wrap output in a code block for better formatting
+- Improved ASCII tree formatting, custom file separators, and ...a little more
 
 ## Prologue
 

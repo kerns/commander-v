@@ -1,9 +1,21 @@
-.vscode/**
-.vscode-test/**
-test/**
-.gitignore
-.yarnrc
-vsc-extension-quickstart.md
-**/jsconfig.json
-**/*.map
-**/.eslintrc.json
+# basics
+webpack.config.js
+README.md
+test/
+node_modules/
+
+# misc
+/.idea
+/.cache
+*.psd
+*.DS_Store
+*.comv
+src/commanded-x.band/projectData
+src/commanded-x.band/Alternatives/000/DisplayState.plist
+src/commanded-x.band/Alternatives/000/DisplayStateArchive
+src/commanded-x.band/Alternatives/000/MetaData.plist
+src/commanded-x.band/Alternatives/000/ProjectData
+src/commanded-x.band/Alternatives/000/WindowImage.jpg
+src/commanded-x.band/Media/Audio Files/boat-horn-6204.wav
+src/commanded-x.band/Media/Audio Files/seagull-sounds.wav
+src/commanded-x.band/Resources/ProjectInformation.plist

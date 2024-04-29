@@ -127,7 +127,7 @@ async function getSelectedItems(allUris) {
       if (!isBinaryFile(fileBytes)) {
         selectedItems.push({ type: 'file', path: filePath });
       } else if (allUris.length === 1) {
-        vscode.window.showInformationMessage('Commander V does not support binary files.');
+        vscode.window.showInformationMessage('👨🏾‍✈️ Commander V does not support binary files.');
         return []; // Exit early if a single binary file is selected
       }
     } else if (stat.type === vscode.FileType.Directory) {

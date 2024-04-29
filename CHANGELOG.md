@@ -2,6 +2,10 @@
 
 Notable changes to the extension will be documented in this file. Reverse chron. order.
 
+## 2.0.0 – 2.0.x - April 29, 2024
+
+Fixed bloated bundle. Removed unnecessary files. Major release.
+
 ## 1.0.3 - April 23, 2023
 
 - ADDED keyboard bindings for The Commander (Mac: `Cmd+Shift+V` / Win: `Ctrl+Shift+V`)
