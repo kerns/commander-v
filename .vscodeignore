@@ -1,21 +1,11 @@
-# basics
-webpack.config.js
-README.md
+# The Basics
 test/
-node_modules/
 
-# misc
-/.idea
-/.cache
-*.psd
+# Exclude devDependencies from node_modules
+node_modules/**/devDependencies
+
+# Others
+src/*.psd
 *.DS_Store
 *.comv
-src/commanded-x.band/projectData
-src/commanded-x.band/Alternatives/000/DisplayState.plist
-src/commanded-x.band/Alternatives/000/DisplayStateArchive
-src/commanded-x.band/Alternatives/000/MetaData.plist
-src/commanded-x.band/Alternatives/000/ProjectData
-src/commanded-x.band/Alternatives/000/WindowImage.jpg
-src/commanded-x.band/Media/Audio Files/boat-horn-6204.wav
-src/commanded-x.band/Media/Audio Files/seagull-sounds.wav
-src/commanded-x.band/Resources/ProjectInformation.plist
+src/commanded-x.band/**/*

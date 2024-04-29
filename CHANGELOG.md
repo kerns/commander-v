@@ -2,9 +2,9 @@
 
 Notable changes to the extension will be documented in this file. Reverse chron. order.
 
-## 2.0.0 – 2.0.x - April 29, 2024
+## 2.0.0 – 2.0.5 - April 29, 2024
 
-Fixed bloated bundle. Removed unnecessary files. Major release.
+Major release. Many updated. Many point releases fixing bloated bundle.
 
 ## 1.0.3 - April 23, 2023
 

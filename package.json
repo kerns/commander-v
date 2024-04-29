@@ -7,7 +7,7 @@
     "url": "https://github.com/kerns/commander-v"
   },
   "description": "Instantly orients an AI (or human) in the structure and layout of your code by concatenating selected files, together with an optional ASCII view of your project's directory structure.",
-  "version": "2.0.2",
+  "version": "2.0.5",
   "keywords": [
     "Commander V",
     "Command V",
@@ -167,7 +167,7 @@
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
-    "@agarimo/archy": "^1.0.0",
+    "archy": "^1.0.0",
     "directory-tree": "^3.5.0",
     "play-sound": "^1.1.5"
   }

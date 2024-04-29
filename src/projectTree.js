@@ -4,7 +4,7 @@
 // Date: 2023-04-18
 // License: MIT
 
-const archy = require('@agarimo/archy');
+const archy = require('archy');
 const dirTree = require('directory-tree');
 const fs = require('fs');
 const path = require('path');
