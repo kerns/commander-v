@@ -9,3 +9,4 @@ src/*.psd
 *.DS_Store
 *.comv
 src/commanded-x.band/**/*
+builds/**/*
