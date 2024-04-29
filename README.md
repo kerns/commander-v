@@ -8,13 +8,22 @@ To each and every one of us, godspeed. **I am coming home**._
 
 <cite>— Final words of Commander V</cite>
 
+## 🐳💦 SPRING UPDATE: Version 2.0 of Commander V Arrives
+
+New features include:
+
+- **Folder Support** You can now select a folder and Commander V will concatenate all non-binary files within that folder. Even select multiple folders, or mix and match selection of files and folders 🤯 ...**all will be joined**
+- Option to wrap the output in a code block for better formatting
+- Now supports context menus on tabs, with `Shift + Cmd + V`to trigger Commander V on the active / focused tab
+- Improved ASCII tree formatting, custom file separators, and more!
+
 ## Prologue
 
 **Commander V was a gifted man who gave his life to take the form of an extension for Microsoft's Visual Studio Code.** He did so in return for the power to combine the contents of multiple files to your clipboard, together with an optional ASCII tree view of your project's directory structure. This gives needed context to the files you gather, and improves the chances that the problems with your code can be better understood by both machines and humans alike.
 
 ## Commander V Enters the Chat
 
-Summon Commander V by selecting one or more files from the file explorer sidebar in Visual Studio Code. Then right-click on the selected file(s), choose **"Commander V"** (or Shift + Cmd + V) to have them added to your clipboard, formatted according to your detailed settings or our sensible defaults.
+Summon Commander V by selecting one or more items (files or folders!) from the file explorer sidebar in Visual Studio Code. Then right-click on the items, choose **"Commander V"** (or Shift + Cmd + V) to have them added to your clipboard as a single blob, formatted according to your settings or our sensible defaults.
 
 ![sure-happy-to-help-demo](https://user-images.githubusercontent.com/20254/233346169-2d0d90c8-d948-415d-8041-f29d822ecb0f.gif)
 
@@ -23,10 +32,13 @@ _Always choose Commander V._
 ## Features
 
 - Concatenates multiple files into a single, structured monolith and pushes it to your clipboard
-- Wraps file contents with custom comments to clearly demark beginning and end points of your file(s)
-- Optionally prepends an ASCII tree of your project's folder structure, indicating the relative location of each file
+- Wraps each file in a comment to clearly demark beginning and end
+- Optionally adds an ASCII tree of your project's structure, showing the relative location of files
 - Orders concatenated files to match your project's folder structure or the order in which they were selected
 - Supports local configuration via optional `v.config.js` file
+- Includes configurable separator character and length between file contents
+- Allows wrapping the output in a code block for better formatting in chat interfaces
+- Provides customizable file comment structure to suit different preferences
 
 ## Installation
 
@@ -36,9 +48,9 @@ _Always choose Commander V._
 
 ## Usage
 
-1. In the Visual Studio Code explorer sidebar, select multiple files while holding down `Ctrl` (Windows) or `Cmd` (Mac)
+1. In the VSC explorer sidebar, hold down `Ctrl` (Windows) or `Cmd` (Mac) and select multiple files
 2. Right-click on one of the selected files and choose `Commander V` from the context menu
-3. The concatenated content, optionally with an ASCII tree view of your project, is pushed to your clipboard
+3. The content of the selected files with an ASCII tree view of your project is merged and added to your clipboard
 
 ## Configuration
 
@@ -49,18 +61,26 @@ Configurable settings:
 - **`includeProjectTree`**: Prepends your project's directory structure to the output in ASCII format _(boolean)_
 - **`projectTreeDepth`**: Maximum depth for the project tree _(number)_
 - **`pruneProjectTree`**: Limits the project tree to only show the files being concatenated _(boolean)_
-- **`orderFilesBy`:** Sets the order in which files should appear – their order in the tree or the order in which they were selected _('treeOrder' or 'selectionOrder')_
+- **`orderFilesBy`:** Sets the order in which files should appear – their order in the tree or the order in which they were selected _('treeOrder' or 'selectionOrder')_
 - **`ignoreFile`**: File to use for ignoring files or folders from the project tree (defaults to `.gitignore`) _(string)_
 - **`commentAtFileBegin`**: Comment to prepend before each file's content _(string)_
 - **`commentAtFileEnd`**: Comment to append after each file's content _(string)_
+- **`includeSeparator`**: Includes a separator between file contents when concatenating _(boolean)_
+- **`separatorCharacter`**: The character to use for the separator between file contents _(string)_
+- **`separatorLength`**: The length of the separator between file contents _(number)_
+- **`wrapInCodeBlock`**: Wraps the concatenated file contents in a code block (```) _(boolean)_
 
 A sample `v.config.js` might look as follows:
 
 ```javascript
 module.exports = {
   pruneProjectTree: true,
-  ignoreFile: ".vignore",
+  ignoreFile: ".some-custom-ignore-file",
   orderFilesBy: "selectionOrder",
+  includeSeparator: false,
+  separatorCharacter: "*",
+  separatorLength: 80,
+  wrapInCodeBlock: false,
 };
 ```
 

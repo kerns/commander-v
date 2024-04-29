@@ -7,7 +7,7 @@
     "url": "https://github.com/kerns/commander-v"
   },
   "description": "Instantly orients an AI (or human) in the structure and layout of your code by concatenating selected files, together with an optional ASCII view of your project's directory structure.",
-  "version": "1.1.4",
+  "version": "2.0.0",
   "keywords": [
     "Commander V",
     "Command V",
@@ -44,6 +44,12 @@
           "command": "extension.commanderV",
           "when": "resource"
         }
+      ],
+      "editor/title/context": [
+        {
+          "command": "extension.commanderV",
+          "when": "resourceScheme == file"
+        }
       ]
     },
     "keybindings": [
@@ -62,17 +68,17 @@
           "default": true,
           "description": "Include an ASCII tree representing your project's directory structure in the payload sent to your clipboard"
         },
-        "commanderV.projectTreeDepth": {
+        "commanderV.pruneProjectTree": {
           "order": 2,
+          "type": "boolean",
+          "default": true,
+          "description": "Limit the tree to only include files that have been selected (recommended)"
+        },
+        "commanderV.projectTreeDepth": {
+          "order": 3,
           "type": "number",
           "default": 3,
           "description": "The maximum depth of directories to include in the generated ASCII tree. Not applied when \"Prune Project Tree\" is enabled."
-        },
-        "commanderV.pruneProjectTree": {
-          "order": 4,
-          "type": "boolean",
-          "default": true,
-          "description": "Limit the tree to only include files that have been selected"
         },
         "commanderV.orderFilesBy": {
           "order": 5,
@@ -83,8 +89,8 @@
             "selectionOrder"
           ],
           "enumDescriptions": [
-            "Order by position in the tree...",
-            "Order by order of selection..."
+            "by position in the tree...",
+            "by order of selection..."
           ],
           "description": "Specify how to sort files when concatenating their content"
         },
@@ -110,8 +116,37 @@
           "default": "/* --- End $file --- */",
           "description": "Closing comment shown at the end of every file. Use $file as a placeholder for the file path"
         },
-        "commanderV.playSoundOnComplete": {
+        "commanderV.includeSeparator": {
           "order": 9,
+          "type": "boolean",
+          "default": false,
+          "description": "Insert a visual separator between concatenated files to improve readability"
+        },
+        "commanderV.separatorCharacter": {
+          "order": 10,
+          "type": "string",
+          "default": "-",
+          "maxLength": 3,
+          "description": "The character to use for the separator between file contents (max 3 characters)",
+          "visibleWhen": "commanderV.includeSeparator == true"
+        },
+        "commanderV.separatorLength": {
+          "order": 11,
+          "type": "number",
+          "default": 30,
+          "minimum": 1,
+          "maximum": 120,
+          "description": "The length of the separator between file contents (1-120)",
+          "visibleWhen": "commanderV.includeSeparator == true"
+        },
+        "commanderV.wrapInCodeBlock": {
+          "order": 12,
+          "type": "boolean",
+          "default": false,
+          "description": "Wrap the concatenated file contents in a code block (```)"
+        },
+        "commanderV.playSoundOnComplete": {
+          "order": 13,
           "type": "boolean",
           "default": true,
           "description": "Play a sound when operations are successful and output is delivered to you clipboard"
@@ -128,7 +163,7 @@
     "@vscode/test-electron": "^2.3.0"
   },
   "dependencies": {
-    "archy": "^1.0.0",
+    "@agarimo/archy": "^1.0.0",
     "directory-tree": "^3.5.0",
     "play-sound": "^1.1.5"
   }
