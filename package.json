@@ -2,23 +2,25 @@
   "name": "commander-v",
   "displayName": "Commander V",
   "publisher": "kerns",
+  "activationEvents": [
+    "onCommand:extension.commanderV"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/kerns/commander-v"
   },
   "description": "Instantly orients an AI (or human) in the structure and layout of your code by concatenating selected files, together with an optional ASCII view of your project's directory structure.",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "keywords": [
     "Commander V",
     "Command V",
-    "openAI",
-    "clipboard",
     "AI",
+    "AI Development",
+    "AI Prompt",
+    "openAI",
     "concatenate",
     "ascii tree",
-    "tree view",
-    "paste",
-    "copy"
+    "tree view"
   ],
   "icon": "src/commander_v_icon.png",
   "engines": {
@@ -68,17 +70,17 @@
           "default": true,
           "description": "Include an ASCII tree representing your project's directory structure in the payload sent to your clipboard"
         },
-        "commanderV.pruneProjectTree": {
-          "order": 2,
-          "type": "boolean",
-          "default": true,
-          "description": "Limit the tree to only include files that have been selected (recommended)"
-        },
         "commanderV.projectTreeDepth": {
-          "order": 3,
+          "order": 2,
           "type": "number",
           "default": 3,
           "description": "The maximum depth of directories to include in the generated ASCII tree. Not applied when \"Prune Project Tree\" is enabled."
+        },
+        "commanderV.pruneProjectTree": {
+          "order": 4,
+          "type": "boolean",
+          "default": true,
+          "description": "Limit the tree to only include files that have been selected"
         },
         "commanderV.orderFilesBy": {
           "order": 5,
@@ -119,7 +121,7 @@
         "commanderV.includeSeparator": {
           "order": 9,
           "type": "boolean",
-          "default": false,
+          "default": true,
           "description": "Insert a visual separator between concatenated files to improve readability"
         },
         "commanderV.separatorCharacter": {
@@ -142,7 +144,7 @@
         "commanderV.wrapInCodeBlock": {
           "order": 12,
           "type": "boolean",
-          "default": false,
+          "default": true,
           "description": "Wrap the concatenated file contents in a code block (```)"
         },
         "commanderV.playSoundOnComplete": {
@@ -160,14 +162,10 @@
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
-    "@vscode/test-electron": "^2.3.0",
-    "terser-webpack-plugin": "^5.3.10",
-    "webpack": "^5.91.0",
-    "webpack-cli": "^5.1.4",
-    "webpack-node-externals": "^3.0.0"
+    "@vscode/test-electron": "^2.3.0"
   },
   "dependencies": {
-    "archy": "^1.0.0",
+    "@agarimo/archy": "^1.0.0",
     "directory-tree": "^3.5.0",
     "play-sound": "^1.1.5"
   }

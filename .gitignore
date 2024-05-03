@@ -8,6 +8,7 @@
 /.vscode
 /.vscode-test
 /**/*.vsix
+builds/**/*
 
 # VS Code workspace settings
 /.vscode/settings.json
@@ -15,10 +16,8 @@
 /.vscode/tasks.json
 
 # misc
+*.DS_Store
 /.idea
 /.cache
 *.psd
-*.DS_Store
-*.comv
 src/commanded-x.band/**/*
-builds/**/*

@@ -4,7 +4,7 @@
 // Date: 2023-04-18
 // License: MIT
 
-const archy = require('archy');
+const archy = require('@agarimo/archy');
 const dirTree = require('directory-tree');
 const fs = require('fs');
 const path = require('path');
@@ -14,6 +14,7 @@ const path = require('path');
  * @param {string} ignoreFilePath - The path to the ignore file.
  * @returns {Promise<RegExp[]>} - An array of regular expressions representing ignored paths.
  */
+
 async function getIgnoredPaths(ignoreFilePath) {
   const ignoredPaths = [];
 

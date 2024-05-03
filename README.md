@@ -12,10 +12,10 @@ To each and every one of us, godspeed. **I am coming home**._
 
 New features include:
 
-- **Folder Support** You can now select a folder and Commander V will concatenate all non-binary files within that folder. Even select multiple folders, or mix and match selection of files and folders ..._all will be joined_
-- Trigger Commander V on the active / focused tab with `Shift + Cmd + V`
-- Option to wrap output in a code block for better formatting
-- Improved ASCII tree formatting, custom file separators, and ...a little more
+- **Folder Support** – You can now select a folder and Commander V will concatenate all non-binary files within that folder. Even select multiple folders, or mix and match selection of files and folders ..._all will be joined_
+- **Improved KB Support** – Trigger Commander V on the active / focused tab with `Shift + Cmd + V`
+- **Better Formatting** – Option to wrap output in a code block for better formatting in some chat interfaces
+- Improved ASCII tree formatting, custom file separators, and more
 
 ## Prologue
 
@@ -49,7 +49,7 @@ _Always choose Commander V._
 ## Usage
 
 1. In the VSC explorer sidebar, hold down `Ctrl` (Windows) or `Cmd` (Mac) and select multiple files
-2. Right-click on one of the selected files and choose `Commander V` from the context menu
+2. Right-click on one of the selected files and choose `Commander V` from the context menu – or use the keyboard shortcut `Shift + Cmd + V` to trigger Commander V on the active tab
 3. The content of the selected files with an ASCII tree view of your project is merged and added to your clipboard
 
 ## Configuration
@@ -70,7 +70,7 @@ Configurable settings:
 - **`separatorLength`**: The length of the separator between file contents _(number)_
 - **`wrapInCodeBlock`**: Wraps the concatenated file contents in a code block (```) _(boolean)_
 
-A sample `v.config.js` might look as follows:
+A sample `v.config.js` could look as follows:
 
 ```javascript
 module.exports = {
