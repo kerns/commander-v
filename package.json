@@ -10,7 +10,7 @@
     "url": "https://github.com/kerns/commander-v"
   },
   "description": "Instantly orients an AI (or human) in the structure and layout of your code by concatenating selected files, together with an optional ASCII view of your project's directory structure.",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "keywords": [
     "Commander V",
     "Command V",
@@ -121,7 +121,7 @@
         "commanderV.includeSeparator": {
           "order": 9,
           "type": "boolean",
-          "default": true,
+          "default": false,
           "description": "Insert a visual separator between concatenated files to improve readability"
         },
         "commanderV.separatorCharacter": {
@@ -144,7 +144,7 @@
         "commanderV.wrapInCodeBlock": {
           "order": 12,
           "type": "boolean",
-          "default": true,
+          "default": false,
           "description": "Wrap the concatenated file contents in a code block (```)"
         },
         "commanderV.playSoundOnComplete": {
