@@ -97,11 +97,11 @@ h1 {
 2. Right-click on one of the selected files and choose `Commander V` from the context menu – or use the keyboard shortcut `Shift + Cmd + V` to trigger Commander V on the active tab
 3. The content of the selected files with an ASCII tree view of your project is merged and added to your clipboard
 
-## Configuration
+## Optional Configuration
 
-Global settings can be configured in your Visual Studio Code extension settings, under "Commander V". A local override of your global settings can be configured on a per-project basis via a `v.config.js` placed on the root of your project. Changes require a restart of VS Code.
+Global settings can be configured in your Visual Studio Code extension settings, under "Commander V". A local override of your global settings can also be configured on a per-project basis via a `v.config.js` placed on the root of your project. Changes require a restart of VS Code.
 
-### Configurable settings:
+### Configurable settings (Optional):
 
 - **`includeProjectTree`**: Prepends your project's directory structure to the output in ASCII format _(boolean)_
 - **`projectTreeDepth`**: Maximum depth for the project tree _(number)_
