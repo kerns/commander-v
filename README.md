@@ -1,4 +1,4 @@
-# Commander V – The Captain of Concatenation
+# Commander V – Your AI Captain of Concatenation
 
 [![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/kerns.commander-v?label=Visual%20Studio%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v)
 [![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/kerns.commander-v?label=Installs)](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v)
@@ -69,7 +69,7 @@ export default HelloWorld;
 
 /* --- End /index.ts --- */
 
-----------------------------------
+----------------
 
 /* --- Begin /style/global.css --- */
 
