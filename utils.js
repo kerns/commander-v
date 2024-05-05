@@ -90,26 +90,26 @@ async function getSelectedItems(allUris) {
  * @returns {Promise<string[]>} - An array of selected file paths.
  */
 async function getSelectedFilePaths(selectedItems, orderBy) {
-  let selectedFilePaths = [];
+  const selectedFilePaths = new Set();
 
   // Collect file paths from selected items (files and directories)
   for (const item of selectedItems) {
     if (item.type === 'file') {
-      selectedFilePaths.push(item.path);
+      selectedFilePaths.add(item.path);
     } else if (item.type === 'directory') {
       const folderFiles = await getNonBinaryFilesInFolder(item.path);
-      selectedFilePaths.push(...folderFiles);
+      folderFiles.forEach(filePath => selectedFilePaths.add(filePath));
     }
   }
 
-  // Order file paths based on the specified order (tree order or selection order)
+  // Convert the set to an array and order file paths based on the specified order (tree order or selection order)
+  let orderedFilePaths = Array.from(selectedFilePaths);
   if (orderBy === 'treeOrder') {
-    selectedFilePaths = orderFilesByPath(selectedFilePaths);
+    orderedFilePaths = orderFilesByPath(orderedFilePaths);
   }
 
-  return selectedFilePaths;
+  return orderedFilePaths;
 }
-
 /**
  * Read the contents of the selected files.
  * @param {string[]} filePaths - An array of file paths.
