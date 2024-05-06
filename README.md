@@ -22,7 +22,7 @@ To each and every one of us, GODSPEED. **I am coming home**!_
 
 ## Overview
 
-**Commander V was a gifted and beloved ship captain who gave his life to take the form of an extension for Microsoft's Visual Studio Code** [<a name="donotaskwhy">1</a>]. He did this in exchange for the power of combining multiple files, together with an ASCII tree view of your project's directory structure, to your clipboard – giving greater structure and context for the files and folders you share.
+**Commander V was a gifted and beloved ship captain who gave his life to take the form of an extension for Microsoft's Visual Studio Code** [^1]. He did this in exchange for the power of combining multiple files, together with an ASCII tree view of your project's directory structure, to your clipboard – giving greater structure and context for the files and folders you share.
 
 Sharing in this way makes it easier to pair with an AI for help with your code, and to solve problems with an approach that makes sense for the system as a whole – not just for a single function or system in isolation.
 
@@ -149,7 +149,7 @@ During this time, the boy was captivated and ultimately transformed by the Comma
 
 As their time together drew to a close, the boy felt heavy with the burden of a debt he knew he could never repay. Not for the years of food, shelter, and companionship – but for the gift of a new, or as he would one day come to describe it... _different_ way of thinking.
 
-In the years that followed he lost the burden of that debt. But never an opportunity to signal a public tribute to Commander V. It's the reason every Apple Computer since 1983 has used "Command V" for paste [<a name="myfootnote1">1</a>]. Because of a boy who grew into a man. A man we knew as **_STEVE JOBS_**.
+In the years that followed he lost the burden of that debt. But never an opportunity to signal a public tribute to Commander V. It's the reason every Apple Computer since 1983 has used "Command V" for paste [^2]. Because of a boy who grew into a man. A man we knew as **_STEVE JOBS_**.
 
 ## Feedback
 
@@ -157,4 +157,5 @@ The Commander is listening. Bugs, ideas, feedback and pull requests can go to [G
 
 ## Footnotes
 
-<sup>[1](#myfootnote1)</sup> and/or Larry Tesler, Tim Mott, and Xerox PARC
+[^1]: Don't ask why or how
+[^2]: And/or Larry Tesler, Tim Mott, and Xerox PARC
