@@ -32,13 +32,13 @@ Watch...👇👀🍿
 
 ## Features
 
-- Concatenates selected files into a single, structured monolith of information, pushed instantly to your clipboard
+- Concatenates files into a single, structured monolith of information and pushes it to your clipboard
 - Includes an ASCII tree of your project's structure, showing the relative location of files
 - Wraps each file in a comment to clearly demark the beginning and end
-- Orders concatenated files to match your project's folder structure or the order in which they were selected – your choice
+- Orders concatenated files after project's folder structure _or_ the selection order
 - Supports local configuration via optional `v.config.js` file
 - Includes configurable separator character and length between file contents
-- Allows wrapping the output in a code block for better formatting in chat interfaces (Claude seems to prefer this)
+- Option to wrap the output in a code block
 - Provides customizable file comment structure to suit your preferences
 
 ## Commander V Enters the Chat
