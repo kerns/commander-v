@@ -121,7 +121,7 @@
         "commanderV.includeSeparator": {
           "order": 9,
           "type": "boolean",
-          "default": false,
+          "default": true,
           "description": "Insert a visual separator between concatenated files to improve readability"
         },
         "commanderV.separatorCharacter": {
@@ -135,7 +135,7 @@
         "commanderV.separatorLength": {
           "order": 11,
           "type": "number",
-          "default": 30,
+          "default": 16,
           "minimum": 1,
           "maximum": 120,
           "description": "The length of the separator between file contents (1-120)",

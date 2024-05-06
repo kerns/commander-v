@@ -7,7 +7,7 @@
 ![before-we-get-started](https://user-images.githubusercontent.com/20254/233304185-ceba2782-c8dc-4bc3-95de-18a9f7091f90.png)
 
 _To the wonderful humans working to fix their terrible code,  
-...to all of the magical AIs racing ahead to help us.  
+...and to all of the magical AIs racing ahead to help us.  
 To each and every one of us, GODSPEED. **I am coming home**!_
 
 <cite>— The last words spoken by Commander V, before he transformed into a VS Code extension</cite>
@@ -17,7 +17,7 @@ To each and every one of us, GODSPEED. **I am coming home**!_
 ### New in v.2.1
 
 - **Folder Support** – You can now select a folder and Commander V will concatenate all non-binary files within that folder. Even select multiple folders, or mix and match selection of files and folders ..._all will be joined_
-- **Improved KB Support** – Trigger Commander V on the active / focused tab with `Shift + Cmd + V`
+- **Improved KB Support** – Trigger Commander V on the active tab with `Shift + Cmd + V`
 - Improved ASCII tree formatting, custom file separators, and more
 
 ## Overview
@@ -133,7 +133,7 @@ A restless boy, determined to see the world, lost his way back home at what he t
 
 He went on to spend the better part of a decade at sea, in close quarters with Commander V. During this time, he was captivated and ultimately transformed by the Commander's unwavering passion for tidiness, coherence, and context.
 
-As their time together drew to a close, the man who was once a boy turned toward home with the burden of a debt he knew he could never repay. Not for the years of food, shelter, and companionship – but for the gift of a new, or as he would one day come to describe it, different way of thinking.
+As their time together drew to a close, the man who was once a boy turned toward home with the burden of a debt he knew he could never repay. Not for the years of food, shelter, and companionship – but for the gift of a new, or as he would one day come to describe it, _different_ way of thinking.
 
 On the day he bid farewell to The Commander, he made a solemn promise: to do everything in his power to create a world that would know and remember the Commander's name.
 
@@ -149,4 +149,4 @@ _Think about it_. ✌️
 
 ## Feedback
 
-Bugs, ideas, feedback and pull requests can go to [GitHub issue tracker](https://github.com/kerns/commander-v/issues). The Commander is listening. If you're using and enjoying Commander V, please consider leaving a review on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v). This motivates the Commander to stay sailing!
+Bugs, ideas, feedback and pull requests can go to [GitHub issue tracker](https://github.com/kerns/commander-v/issues). The Commander is listening. If you're using and enjoying Commander V, please consider leaving a review on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v). This motivates The Commander to continue sailing.
