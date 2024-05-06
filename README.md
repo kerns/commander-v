@@ -33,17 +33,15 @@ Watch...👇👀🍿
 ## Features
 
 - Concatenates files into a single, structured monolith of information and pushes it to your clipboard
-- Includes an ASCII tree of your project's structure, showing the relative location of files
-- Wraps each file in a comment to clearly demark the beginning and end
-- Orders concatenated files after project's folder structure _or_ the selection order
+- Adds an ASCII tree of your project's structure illustrating the relative location of files
+- Sensible comment structure to clearly demark file beginning/end
+- Optionally orders files after project's folder structure _or_ the selection order
 - Supports local configuration via optional `v.config.js` file
-- Includes configurable separator character and length between file contents
-- Option to wrap the output in a code block
-- Provides customizable file comment structure to suit your preferences
+- More. But not a lot more.
 
 ## Commander V Enters the Chat
 
-Summon Commander V by selecting one or more items (files _or_ folders) from the file explorer sidebar in Visual Studio Code. Then right-click on the items, and choose **"Commander V"** (Shift + Cmd + V) to have them added to your clipboard as a single blob, easily digestible blob.
+Summon Commander V by selecting one or more items (files _or_ folders) from the file explorer sidebar in Visual Studio Code. Then right-click on the items, and choose **"Commander V"** (Shift + Cmd + V) to have them added to your clipboard as a highly digestible blob.
 
 _Always choose Commander V._
 
@@ -95,11 +93,11 @@ h1 {
 
 ```
 
-## Installation
+## Installation Steps
 
 1. Open Visual Studio Code
 2. Open the command palette (Mac: `Cmd+P` / Win: `Ctrl+P`) and type `ext install kerns.commander-v` and press `Enter` – or just search for "Commander V" in the extensions tab
-3. There is no step 3
+3. Enjoy Commander V
 
 ## Usage
 
@@ -111,7 +109,7 @@ h1 {
 
 ## Optional Configuration
 
-Global settings can be configured in your Visual Studio Code extension settings, under "Commander V". A local override of your global settings can also be configured on a per-project basis via a `v.config.js` placed on the root of your project. Changes require a restart of VS Code.
+Global settings can be configured in your Visual Studio Code extension settings, under "Commander V". A local override can be configured on a per-project basis via a `v.config.js` placed on the root of your project. May require a restart of VS Code.
 
 ### Configurable settings (Optional):
 
@@ -163,4 +161,4 @@ _Think about it_. ✌️
 
 ## Feedback
 
-Bugs, ideas, feedback and pull requests can go to [GitHub issue tracker](https://github.com/kerns/commander-v/issues). The Commander is listening. If you're using and enjoying Commander V, please consider leaving a review on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v). This motivates The Commander to continue sailing.
+Bugs, ideas, feedback and pull requests can go to [GitHub issue tracker](https://github.com/kerns/commander-v/issues). The Commander is listening. If you're using and enjoying Commander V, please consider leaving a review on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v). This motivates The Commander to stay sailin'.
