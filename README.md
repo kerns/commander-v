@@ -16,15 +16,17 @@ To each and every one of us, GODSPEED. **I am coming home**!_
 
 ### New in v.2.1
 
-- **Folder Support** – You can now select a folder and Commander V will concatenate all non-binary files within that folder. Even select multiple folders, or mix and match selection of files and folders ..._all will be joined_
+- **Folder Support** - Commander V now concatenates all non-binary files within any selected folder. Even select multiple folders, or mix and match a selection of files and folders. _All will be joined_.
 - **Improved KB Support** – Trigger Commander V on the active tab with `Shift + Cmd + V`
-- Improved ASCII tree formatting, custom file separators, and more
+- Improved **ASCII tree formatting**, **custom file separators**, and **more**
 
 ## Overview
 
-**Commander V was a gifted man who gave his life to take the form of an extension for Microsoft's Visual Studio Code.** Don't ask why or how. He did so in return for the power to make your codebase more easily understood by both machines and humans alike.
+**Commander V was a gifted and beloved ship captain who gave his life to take the form of an extension for Microsoft's Visual Studio Code** He did this for the power combine multiple files, together with an ASCII tree view of your project's directory structure to your clipboard – giving greater structure and context for the files and folders you share.
 
-He does this by combining multiple files to your clipboard, together with an ASCII tree view of your project's directory structure. This gives context to the files you share, and improves the chances that the problems with your code are solved in a way that makes sense for the system as a whole.
+Sharing like this makes it easier to pair with an AI for help with your code, and to solve problems in a way that makes sense for the system as a whole – not just that one system or function.
+
+It can also help overcome limits of memory and reduce the drifting toward hallucination that smaller, self-hosted models are known to experience when pressed at length.
 
 Watch...👇👀🍿
 
@@ -141,24 +143,20 @@ module.exports = {
 
 ## The _Rest_ of the Story (Epilogue)
 
-A restless boy, determined to see the world, lost his way back home at what he thought was the end of his journey. It turned out to be the true beginning.
+A restless boy, determined to see the world, lost his way back home at what he thought was the end of his journey. Fate had him spend a decade more at sea, in close quarters with a man he would come to know as Commander V.
 
-He went on to spend the better part of a decade at sea, in close quarters with Commander V. During this time, he was captivated and ultimately transformed by the Commander's unwavering passion for tidiness, coherence, and context.
+During this time, the boy was captivated and ultimately transformed by the Commander's unwavering passion for tidiness, coherence, and context in all aspects of his care for the ship.
 
-As their time together drew to a close, the man who was once a boy turned toward home with the burden of a debt he knew he could never repay. Not for the years of food, shelter, and companionship – but for the gift of a new, or as he would one day come to describe it, _different_ way of thinking.
+As their time together drew to a close, the boy felt heavy with the burden of a debt he knew he could never repay. Not for the years of food, shelter, and companionship – but for the gift of a new, or as he would one day come to describe it, _different_ way of thinking.
 
-On the day he bid farewell to The Commander, he made a solemn promise: to do everything in his power to create a world that would know and remember the Commander's name.
+In the years that followed, he lost the burden of that debt. But never an opportunity to signal a public tribute to Commander V. Why, it's the reason [<a name="myfootnote1">1</a>] every Apple since the Lisa has used "Command V" for paste.
 
-"Don't worry, Commander," he said. "I will make sure the world knows who you are."
-
-Commander replied, "I am not worried, my friend. I have always known who I am. Besides. It is not about knowing. It's about _understanding_."
-
-Today, not only does the world know The Commander's name, but much of the world also interacts with it, literally, every day. All thanks to a boy, who grew into a man – a man we remember as **STEVE JOBS**.
-
-And his promised tribute to Commander V? None other than the most indispensable and widely used combination of keyboard keys ever conceived by human brain cells, featured on every Mac desktop and laptop since 1984: Command + V
-
-_Think about it_. ✌️
+All thanks to a boy, who grew into a man. And that man's name? **STEVE JOBS**.
 
 ## Feedback
 
-Bugs, ideas, feedback and pull requests can go to [GitHub issue tracker](https://github.com/kerns/commander-v/issues). The Commander is listening. If you're using and enjoying Commander V, please consider leaving a review on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v). This motivates The Commander to stay sailin'.
+Bugs, ideas, feedback and pull requests can go to [GitHub issue tracker](https://github.com/kerns/commander-v/issues). The Commander is listening. If you're using and enjoying Commander V, please consider leaving a review on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v). This motivates Commander to stay sailin'.
+
+## Footnotes
+
+<sup>[1](#myfootnote1)</sup> _Also_ Larry Tesler, Tim Mott, and Xerox PARC. But mostly Commander V.
