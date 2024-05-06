@@ -47,16 +47,30 @@ Summon Commander V by selecting one or more items (files _or_ folders) from the 
 
 _Always choose Commander V._
 
+![my_project_demo](https://github.com/kerns/commander-v/assets/20254/3b6b84d4-4a7c-49d3-aca0-4e8dd1e1a947)
+
 ### Sample Output
 
 ```
 My Project/
-├── index.ts
+├─┬ components/
+│ └── logo.tsx
+├── index.tsx
 └─┬ style/
   └── global.css
 
-/* --- Begin /index.ts --- */
 
+/* --- Begin /components/logo.tsx --- */
+import React from "react";
+
+const Logo = ({ logoUrl }) => <img src={logoUrl} alt="" />;
+
+export default Logo;
+
+/* --- End /components/logo.tsx --- */
+
+
+/* --- Begin /index.tsx --- */
 import React from "react";
 
 const HelloWorld = () => {
@@ -65,17 +79,15 @@ const HelloWorld = () => {
 
 export default HelloWorld;
 
-/* --- End /index.ts --- */
+/* --- End /index.tsx --- */
 
-----------------
 
 /* --- Begin /style/global.css --- */
-
 h1 {
-  font-size: 3.145em;
+  font-size: 24px;
   font-weight: bold;
   color: #333;
-  margin-bottom: 1em;
+  margin-bottom: 10px;
 }
 
 /* --- End /style/global.css --- */
@@ -94,6 +106,8 @@ h1 {
 1. In the VSC explorer sidebar, hold down `Ctrl` (Windows) or `Cmd` (Mac) and select multiple files
 2. Right-click on one of the selected files and choose `Commander V` from the context menu – or use the keyboard shortcut `Shift + Cmd + V` to trigger Commander V on the active tab
 3. The content of the selected files with an ASCII tree view of your project is merged and pushed to your clipboard
+
+![commander_v_notification](https://github.com/kerns/commander-v/assets/20254/930f0c95-ba3f-4e7d-9c3d-e9afecb0a92f)
 
 ## Optional Configuration
 
