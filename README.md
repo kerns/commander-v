@@ -22,11 +22,11 @@ To each and every one of us, GODSPEED. **I am coming home**!_
 
 ## Overview
 
-**Commander V was a gifted and beloved ship captain who gave his life to take the form of an extension for Microsoft's Visual Studio Code** He did this for the power combine multiple files, together with an ASCII tree view of your project's directory structure to your clipboard – giving greater structure and context for the files and folders you share.
+**Commander V was a gifted and beloved ship captain who gave his life to take the form of an extension for Microsoft's Visual Studio Code** [<a name="donotaskwhy">1</a>]. He did this in exchange for the power of combining multiple files, together with an ASCII tree view of your project's directory structure, to your clipboard – giving greater structure and context for the files and folders you share.
 
-Sharing like this makes it easier to pair with an AI for help with your code, and to solve problems in a way that makes sense for the system as a whole – not just that one system or function.
+Sharing in this way makes it easier to pair with an AI for help with your code, and to solve problems with an approach that makes sense for the system as a whole – not just for a single function or system in isolation.
 
-It can also help overcome limits of memory and reduce the drifting toward hallucination that smaller, self-hosted models are known to experience when pressed at length.
+Regularly reorienting your partner AI the current state of the files you're working with helps overcome limits of memory, and reduces the drift toward hallucination that smaller, self-hosted models are known to experience when pressed at length.
 
 Watch...👇👀🍿
 
@@ -145,13 +145,11 @@ module.exports = {
 
 A restless boy, determined to see the world, lost his way back home at what he thought was the end of his journey. Fate had him spend a decade more at sea, in close quarters with a man he would come to know as Commander V.
 
-During this time, the boy was captivated and ultimately transformed by the Commander's unwavering passion for tidiness, coherence, and context in all aspects of his care for the ship.
+During this time, the boy was captivated and ultimately transformed by the Commander's unwavering passion for tidiness, coherence, and context in all aspects of his care for the ship. Everything about life at sea with Commander V was a lesson in the importance of structure and order.
 
-As their time together drew to a close, the boy felt heavy with the burden of a debt he knew he could never repay. Not for the years of food, shelter, and companionship – but for the gift of a new, or as he would one day come to describe it, _different_ way of thinking.
+As their time together drew to a close, the boy felt heavy with the burden of a debt he knew he could never repay. Not for the years of food, shelter, and companionship – but for the gift of a new, or as he would one day come to describe it... _different_ way of thinking.
 
-In the years that followed, he lost the burden of that debt. But never an opportunity to signal a public tribute to Commander V. Why else has every Apple since 1983 used "Command V" for paste? [<a name="myfootnote1">1</a>] If not because of a boy, who grew into a man.
-
-A MAN WE KNEW AS **STEVE JOBS**!
+In the years that followed he lost the burden of that debt. But never an opportunity to signal a public tribute to Commander V. It's the reason every Apple Computer since 1983 has used "Command V" for paste [<a name="myfootnote1">1</a>]. Because of a boy who grew into a man. A man we knew as **_STEVE JOBS_**.
 
 ## Feedback
 
@@ -159,4 +157,4 @@ The Commander is listening. Bugs, ideas, feedback and pull requests can go to [G
 
 ## Footnotes
 
-<sup>[1](#myfootnote1)</sup> Besides Larry Tesler, Tim Mott, and Xerox PARC
+<sup>[1](#myfootnote1)</sup> and/or Larry Tesler, Tim Mott, and Xerox PARC
