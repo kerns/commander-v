@@ -149,14 +149,14 @@ During this time, the boy was captivated and ultimately transformed by the Comma
 
 As their time together drew to a close, the boy felt heavy with the burden of a debt he knew he could never repay. Not for the years of food, shelter, and companionship – but for the gift of a new, or as he would one day come to describe it, _different_ way of thinking.
 
-In the years that followed, he lost the burden of that debt. But never an opportunity to signal a public tribute to Commander V. Why, it's the reason [<a name="myfootnote1">1</a>] every Apple since the Lisa has used "Command V" for paste.
+In the years that followed, he lost the burden of that debt. But never an opportunity to signal a public tribute to Commander V. Why else has every Apple since 1983 used "Command V" for paste? [<a name="myfootnote1">1</a>] If not because of a boy, who grew into a man.
 
-All thanks to a boy, who grew into a man. And that man's name? **STEVE JOBS**.
+A MAN WE KNEW AS **STEVE JOBS**!
 
 ## Feedback
 
-Bugs, ideas, feedback and pull requests can go to [GitHub issue tracker](https://github.com/kerns/commander-v/issues). The Commander is listening. If you're using and enjoying Commander V, please consider leaving a review on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v). This motivates Commander to stay sailin'.
+The Commander is listening. Bugs, ideas, feedback and pull requests can go to [GitHub issue tracker](https://github.com/kerns/commander-v/issues). If you're using and enjoying Commander V, please consider leaving a review on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v). This motivates Commander to stay sailin'.
 
 ## Footnotes
 
-<sup>[1](#myfootnote1)</sup> _Also_ Larry Tesler, Tim Mott, and Xerox PARC. But mostly Commander V.
+<sup>[1](#myfootnote1)</sup> Besides Larry Tesler, Tim Mott, and Xerox PARC
