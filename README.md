@@ -151,12 +151,16 @@ As their time together drew to a close, the boy felt heavy with the burden of a 
 
 In the years that followed he lost the burden of that debt. But never an opportunity to signal a public tribute to Commander V. Why, it's the reason every Apple Computer since 1983 has used "Command V" for paste <sup>[2](#itsajoke)</sup>. Because of a boy who grew into a man. A man we knew as **_STEVE JOBS_**.
 
-## Feedback
+![steve_peace](https://github.com/kerns/commander-v/assets/20254/e86b32bd-1825-4949-8495-3ef7b7d24296)
+
+
+
+### Feedback
 
 The Commander is listening. Bugs, ideas, feedback and pull requests can go to [GitHub issue tracker](https://github.com/kerns/commander-v/issues). If you're using and enjoying Commander V, please consider leaving a review on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v). This motivates Commander to stay sailin'.
 
-## Footnotes
+### Footnotes
 
-[<a name="donotaskwhy">1</a>] don't ask why or how
+[<a name="donotaskwhy">1</a>] Do not ask why or how
 
-[<a name="itsajoke">2</a>]</a> and/or Larry Tesler, Tim Mott, Xerox PARC
+[<a name="itsajoke">2</a>]</a> And/or Larry Tesler, Tim Mott, Xerox PARC
