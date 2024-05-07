@@ -6,11 +6,11 @@
 
 ![before-we-get-started](https://user-images.githubusercontent.com/20254/233304185-ceba2782-c8dc-4bc3-95de-18a9f7091f90.png)
 
-_To the wonderful humans working to fix their terrible code,  
-...and to all of the magical AIs racing ahead to help us.  
-To each and every one of us, GODSPEED. **I am coming home**!_
+_To the humans working to fix their terrible code,  
+...and to the magical AIs racing ahead to help us.  
+To each and every one of us, GODSPEED. **I am coming home**_
 
-<cite>— The last words spoken by Commander V, before he transformed into a VS Code extension</cite>
+<cite>— Last words of Commander V, spoken as he transformed into a VS Code extension</cite>
 
 ## 🛳️🐬💦 SPRING 2024: Version 2.1 Hits the High Seas
 
@@ -26,7 +26,7 @@ To each and every one of us, GODSPEED. **I am coming home**!_
 
 Sharing in this way makes it easier to pair with an AI for help with your code, and to solve problems with an approach that makes sense for the system as a whole – not just for a single function or system in isolation.
 
-Regularly reorienting your partner AI the current state of the files you're working with helps overcome limits of memory, and reduces the drift toward hallucination that smaller, self-hosted models are known to experience when pressed at length.
+Regularly reorienting your partner AI in the updated state of your code can also help overcome limits on memory, and can reduce the drift toward hallucination that smaller, self-hosted models are known to experience when pressed at length.
 
 Watch...👇👀🍿
 
@@ -37,7 +37,7 @@ Watch...👇👀🍿
 - Concatenates files into a single, structured monolith of information and pushes it to your clipboard
 - Adds an ASCII tree of your project's structure illustrating the relative location of files
 - Sensible comment structure to clearly demark file beginning/end
-- Optionally orders files after project's folder structure _or_ the selection order
+- Optionally orders files after project's folder structure _or_ your selection order
 - Supports local configuration via optional `v.config.js` file
 - More, but not a lot more
 
@@ -152,8 +152,6 @@ As their time together drew to a close, the boy felt heavy with the burden of a 
 In the years that followed he lost the burden of that debt. But never an opportunity to signal a public tribute to Commander V. Why, it's the reason every Apple Computer since 1983 has used "Command V" for paste <sup>[2](#itsajoke)</sup>. Because of a boy who grew into a man. A man we knew as **_STEVE JOBS_**.
 
 ![steve_peace](https://github.com/kerns/commander-v/assets/20254/e86b32bd-1825-4949-8495-3ef7b7d24296)
-
-
 
 ### Feedback
 
