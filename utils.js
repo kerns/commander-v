@@ -22,7 +22,8 @@ function showBinaryFileError() {
  * @param {boolean} playSound - Whether to play a success sound.
  */
 function showSuccessMessage(numberOfFiles, totalChars, manageExtensionLink, playSound) {
-  vscode.window.showInformationMessage(`✌️ Commander copied ${numberOfFiles} files (${totalChars} chars) to your clipboard`, manageExtensionLink);
+  const fileOrFiles = numberOfFiles === 1 ? 'file' : 'files';
+  vscode.window.showInformationMessage(`✌️ Commander copied ${numberOfFiles} ${fileOrFiles} (${totalChars} chars) to your clipboard`, manageExtensionLink);
 
   if (playSound) {
     player.play(path.join(__dirname, 'src', 'success.wav'), (err) => {

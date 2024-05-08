@@ -2,9 +2,13 @@
 
 Notable changes to the extension will be documented in this file. Reverse chron. order.
 
+## 2.3.x – May 2024
+
+Recursive folder support, bug fixes, and design + performance improvements.
+
 ## 2.0.0 – 2.0.5 - April 29, 2024
 
-Major release. Many updated. Many point releases fixing bloated bundle.
+Major release. Many updates and point releases fixing bloated bundle.
 
 ## 1.0.3 - April 23, 2023
 
