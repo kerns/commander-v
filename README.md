@@ -8,7 +8,8 @@
 
 _To the humans working to fix their terrible code,  
 ...and to the magical AIs racing ahead to help us.  
-To each and every one of us, GODSPEED. **I am coming home**_
+To each and every one of us, GODSPEED.  
+**I am coming home**_
 
 <cite>— Last words of Commander V, spoken as he transformed into a VS Code extension</cite>
 
@@ -147,18 +148,18 @@ A restless boy, determined to see the world, lost his way back home at what he t
 
 During this time, the boy was captivated and ultimately transformed by the Commander's unwavering passion for tidiness, coherence, and context in all aspects of his care for the ship. Everything about life at sea with Commander V was a lesson in the importance of structure and order.
 
-As their time together drew to a close, the boy felt heavy with the burden of a debt he knew he could never repay. Not for the years of food, shelter, and companionship – but for the gift of a new, or as he would one day come to describe it... _different_ way of thinking.
+As their time together drew to a close, the boy felt heavy with the burden of a debt he knew he could never repay. Not for the years of food, shelter, and companionship – but for the gift of a new, or as he would one day come to describe it... a _different_ way of thinking.
 
-In the years that followed he lost the burden of that debt. But never an opportunity to signal a public tribute to Commander V. Why, it's the reason every Apple Computer since 1983 has used "Command V" for paste <sup>[2](#itsajoke)</sup>. Because of a boy who grew into a man. A man we knew as **_STEVE JOBS_**.
+In the years that followed he lost the burden of that debt. But never missed an opportunity to signal a public tribute to Commander V. Why, it's the reason every Apple Computer since 1983 has used "Command V" for paste <sup>[2](#itsajoke)</sup>. Because of a boy who grew into a man. A man we knew as **_STEVE JOBS_**.
 
 ![steve_peace](https://github.com/kerns/commander-v/assets/20254/e86b32bd-1825-4949-8495-3ef7b7d24296)
 
 ### Feedback
 
-The Commander is listening. Bugs, ideas, feedback and pull requests can go to [GitHub issue tracker](https://github.com/kerns/commander-v/issues). If you're using and enjoying Commander V, please consider leaving a review on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v). This motivates Commander to stay sailin'.
+The Commander is listening. Bugs, ideas, feedback and pull requests can go to [GitHub issue tracker](https://github.com/kerns/commander-v/issues). If you're using and enjoying Commander V, please consider leaving a review on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v). This motivates The Commander to stay sailin'.
 
 ### Footnotes
 
-[<a name="donotaskwhy">1</a>] Do not ask why or how
+[<a name="donotaskwhy">1</a>] Unclear why or how
 
 [<a name="itsajoke">2</a>]</a> And/or Larry Tesler, Tim Mott, Xerox PARC
