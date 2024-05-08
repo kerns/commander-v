@@ -80,10 +80,10 @@ export default HelloWorld;
 
 /* --- Begin /style/global.css --- */
 h1 {
-  font-size: 24px;
+  font-size: 2em;
   font-weight: bold;
-  color: #333;
-  margin-bottom: 10px;
+  color: hsl(200 100% 50%);
+  margin-bottom: 1em;
 }
 
 /* --- End /style/global.css --- */
