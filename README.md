@@ -1,4 +1,4 @@
-# Commander V, Your AI Captain of Concatenation
+# Commander V for Visual Studio Code
 
 [![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/kerns.commander-v?label=Visual%20Studio%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v)
 [![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/kerns.commander-v?label=Installs)](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v)
@@ -6,22 +6,26 @@
 
 ![before-we-get-started](https://user-images.githubusercontent.com/20254/233304185-ceba2782-c8dc-4bc3-95de-18a9f7091f90.png)
 
-_To the humans working to fix their terrible code,  
-...and to the magical AIs racing ahead to help us.  
-To each and every one of us, GODSPEED.  
-**I am coming home**_
-
-<cite>— Last words of Commander V, spoken as he transformed into a VS Code extension</cite>
-
-## 🛳️🐬💦 SPRING 2024: Version 2.1 Hits the High Seas
-
-### New in v.2.1
-
-- **Folder Support** - Commander V now concatenates all non-binary files within any selected folder. Even select multiple folders, or mix and match a selection of files and folders. _All will be joined_.
-- **Improved KB Support** – Trigger Commander V on the active tab with `Shift + Cmd + V`
-- Improved **ASCII tree formatting**, **custom file separators**, and **more**
-
 ## Overview
+
+### For a Better AI Pair Programming Experience on the Open Seas of AI
+
+- Joins multiple project files into a single, shareable blueprint and pushes it to your clipboard
+- Adds an ASCII tree of your project's structure illustrating the relative location of files
+- Sensible comment structure to clearly demark file beginnings and ends
+- Optionally orders files after project's folder structure _or_ your selection order
+- Supports local configuration via optional `v.config.js` file
+- More, but not a lot more
+
+## 🛳️🐬💦 Spring 2024 – Version 2 Sets Sail
+
+### Adding...
+
+- **Folder Support** - Commander V now concatenates all non-binary files within any selected folder. Even select multiple folders, or mix and match a selection of files and folders. It works recursively. _All will be joined_.
+- **Improved KB Support** – Trigger Commander V on the active tab with `Shift + Cmd + V`
+- **Improved ASCII tree formatting**, **custom file separators**, and **more**
+
+## Details
 
 **Commander V was a gifted and beloved ship captain who gave his life to take the form of an extension for Microsoft's Visual Studio Code** <sup>[1](#donotaskwhy)</sup>. He did this in exchange for the power of combining multiple files, together with an ASCII tree view of your project's directory structure, to your clipboard – giving greater structure and context for the files and folders you share.
 
@@ -33,16 +37,7 @@ Watch...👇👀🍿
 
 ![sure-happy-to-help-demo](https://user-images.githubusercontent.com/20254/233346169-2d0d90c8-d948-415d-8041-f29d822ecb0f.gif)
 
-## Features
-
-- Concatenates files into a single, structured monolith of information and pushes it to your clipboard
-- Adds an ASCII tree of your project's structure illustrating the relative location of files
-- Sensible comment structure to clearly demark file beginning/end
-- Optionally orders files after project's folder structure _or_ your selection order
-- Supports local configuration via optional `v.config.js` file
-- More, but not a lot more
-
-## Commander V Enters the Chat
+### Commander V Enters the Chat
 
 Summon Commander V by selecting one or more items (files _or_ folders) from the file explorer sidebar in Visual Studio Code. Then right-click on the items, and choose **"Commander V"** (Shift + Cmd + V) to have them added to your clipboard as a highly digestible blob.
 
@@ -99,14 +94,14 @@ h1 {
 ## Installation Steps
 
 1. Open Visual Studio Code
-2. Open the command palette (Mac: `Cmd+P` / Win: `Ctrl+P`) and type `ext install kerns.commander-v` and press `Enter` – or just search for "Commander V" in the extensions tab
+2. Search for "Commander V" in the extensions tab. **Or** open the command palette (Mac: `Cmd+P` / Win: `Ctrl+P`) and type `ext install kerns.commander-v` and press `Enter`
 3. Enjoy Commander V
 
 ## Usage
 
 1. In the VSC explorer sidebar, hold down `Ctrl` (Windows) or `Cmd` (Mac) and select multiple files
 2. Right-click on one of the selected files and choose `Commander V` from the context menu – or use the keyboard shortcut `Shift + Cmd + V` to trigger Commander V on the active tab
-3. The content of the selected files with an ASCII tree view of your project is merged and pushed to your clipboard
+3. The content of the selected files with an ASCII tree view of your project is pushed to your clipboard
 
 ![commander_v_notification](https://github.com/kerns/commander-v/assets/20254/930f0c95-ba3f-4e7d-9c3d-e9afecb0a92f)
 
@@ -150,7 +145,7 @@ During this time, the boy was captivated and ultimately transformed by the Comma
 
 As their time together drew to a close, the boy felt heavy with the burden of a debt he knew he could never repay. Not for the years of food, shelter, and companionship – but for the gift of a new, or as he would one day come to describe it... a _different_ way of thinking.
 
-In the years that followed he lost the burden of that debt. But never missed an opportunity to signal a public tribute to Commander V. Why, it's the reason every Apple Computer since 1983 has used "Command V" for paste <sup>[2](#itsajoke)</sup>. Because of a boy who grew into a man. A man we knew as **_STEVE JOBS_**.
+In the years that followed he lost the burden of that debt. But never missed an opportunity to signal a public tribute to Commander V. Why, it's the reason every Apple Computer since 1983 has used "Command V" for paste <sup>[2](#justajoke)</sup>. Because of a boy who grew into a man. A man we knew as **_STEVE JOBS_**.
 
 ![steve_peace](https://github.com/kerns/commander-v/assets/20254/e86b32bd-1825-4949-8495-3ef7b7d24296)
 
@@ -162,4 +157,4 @@ The Commander is listening. Bugs, ideas, feedback and pull requests can go to [G
 
 [<a name="donotaskwhy">1</a>] Unclear why or how
 
-[<a name="itsajoke">2</a>]</a> And/or Larry Tesler, Tim Mott, Xerox PARC
+[<a name="justajoke">2</a>]</a> And/or Larry Tesler, Tim Mott, Xerox PARC
