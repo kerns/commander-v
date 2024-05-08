@@ -141,7 +141,7 @@ module.exports = {
 
 A restless boy, determined to see the world, lost his way back home at what he thought was the end of his journey. Fate had him spend a decade more at sea, in close quarters with a man he would come to know as Commander V.
 
-During this time, the boy was captivated and ultimately transformed by the Commander's unwavering passion for tidiness, coherence, and context in all aspects of his care for the ship. Everything about life at sea with Commander V was a lesson in the importance of structure and order.
+During this time, the boy was captivated and ultimately transformed by the Commander's unwavering passion for tidiness, coherence, and context in all aspects of his care for the ship that had become their home. Everything about life at sea with Commander V was a lesson in the importance of structure and order.
 
 As their time together drew to a close, the boy felt heavy with the burden of a debt he knew he could never repay. Not for the years of food, shelter, and companionship – but for the gift of a new, or as he would one day come to describe it... a _different_ way of thinking.
 
@@ -149,11 +149,11 @@ In the years that followed he lost the burden of that debt. But never missed an 
 
 ![steve_peace](https://github.com/kerns/commander-v/assets/20254/e86b32bd-1825-4949-8495-3ef7b7d24296)
 
-### Feedback
+## Feedback
 
 The Commander is listening. Bugs, ideas, feedback and pull requests can go to [GitHub issue tracker](https://github.com/kerns/commander-v/issues). If you're using and enjoying Commander V, please consider leaving a review on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v). This motivates The Commander to stay sailin'.
 
-### Footnotes
+## Footnotes
 
 [<a name="donotaskwhy">1</a>] Unclear why or how
 
