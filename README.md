@@ -6,6 +6,8 @@
 
 ![before-we-get-started](https://user-images.githubusercontent.com/20254/233304185-ceba2782-c8dc-4bc3-95de-18a9f7091f90.png)
 
+![commander_v_notification](https://github.com/kerns/commander-v/assets/20254/930f0c95-ba3f-4e7d-9c3d-e9afecb0a92f)
+
 ## Overview
 
 ### For a Better AI Pair Programming Experience on the Open Seas of AI
@@ -37,9 +39,21 @@ Watch...👇👀🍿
 
 ![sure-happy-to-help-demo](https://user-images.githubusercontent.com/20254/233346169-2d0d90c8-d948-415d-8041-f29d822ecb0f.gif)
 
-### Commander V Enters the Chat
+## Installation
 
-Summon Commander V by selecting one or more items (files _or_ folders) from the file explorer sidebar in Visual Studio Code. Then right-click on the items, and choose **"Commander V"** (Shift + Cmd + V) to have them added to your clipboard as a highly digestible blob of plaintext.
+1. Open Visual Studio Code
+2. Search for "Commander V" in the extensions tab. **Or** open the command palette (Mac: `Cmd+P` / Win: `Ctrl+P`) and type `ext install kerns.commander-v` and press `Enter`
+3. Enjoy Commander V
+
+## Usage
+
+### Commander V Enters the Chat...
+
+1. Summon Commander V by selecting one or more items (files and/or folders) from the file explorer sidebar in Visual Studio Code
+
+2. Right-click on the items, and choose **"Commander V"** from the context menu
+
+3. A blueprint of your project files is pushed to your clipboard
 
 ![my_project_demo](https://github.com/kerns/commander-v/assets/20254/3b6b84d4-4a7c-49d3-aca0-4e8dd1e1a947)
 
@@ -88,20 +102,6 @@ h1 {
 
 
 ```
-
-## Installation Steps
-
-1. Open Visual Studio Code
-2. Search for "Commander V" in the extensions tab. **Or** open the command palette (Mac: `Cmd+P` / Win: `Ctrl+P`) and type `ext install kerns.commander-v` and press `Enter`
-3. Enjoy Commander V
-
-## Usage
-
-1. In the VSC explorer sidebar, hold down `Ctrl` (Windows) or `Cmd` (Mac) and select multiple files
-2. Right-click on one of the selected files and choose `Commander V` from the context menu – or use the keyboard shortcut `Shift + Cmd + V` to trigger Commander V on the active tab
-3. The content of the selected files with an ASCII tree view of your project is pushed to your clipboard
-
-![commander_v_notification](https://github.com/kerns/commander-v/assets/20254/930f0c95-ba3f-4e7d-9c3d-e9afecb0a92f)
 
 ## Optional Configuration
 

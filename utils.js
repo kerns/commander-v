@@ -26,7 +26,7 @@ function showSuccessMessage(numberOfFiles, totalChars, manageExtensionLink, play
   vscode.window.showInformationMessage(`✌️ Commander copied ${numberOfFiles} ${fileOrFiles} (${totalChars} chars) to your clipboard`, manageExtensionLink);
 
   if (playSound) {
-    player.play(path.join(__dirname, 'src', 'success.wav'), (err) => {
+    player.play(path.join(__dirname, '..', 'src', 'success.wav'), (err) => {
       if (err) {
         console.error('Error playing sound:', err);
       }
@@ -111,19 +111,31 @@ async function getSelectedFilePaths(selectedItems, orderBy) {
 
   return orderedFilePaths;
 }
+
+
 /**
- * Read the contents of the selected files.
- * @param {string[]} filePaths - An array of file paths.
+ * Read the contents of the selected files, either from the editor or from the file system.
+ * @param {vscode.Uri[]} fileUris - An array of file URIs.
+ * @param {boolean} readFromEditor - Whether to read file contents from the editor if the file is open.
  * @returns {Promise<string[]>} - An array of file contents as strings.
  */
-async function readFileContents(filePaths) {
+async function readFileContents(fileUris, readFromEditor) {
   const fileContents = [];
 
-  // Read the content of each file and store it in the fileContents array
-  for (const filePath of filePaths) {
-    const fileUri = vscode.Uri.file(filePath);
-    const fileContent = await vscode.workspace.fs.readFile(fileUri);
-    fileContents.push(fileContent.toString());
+  for (const fileUri of fileUris) {
+    const filePath = fileUri.fsPath;
+
+    if (readFromEditor) {
+      const editor = vscode.window.visibleTextEditors.find(editor => editor.document.uri.toString() === fileUri.toString());
+
+      if (editor) {
+        fileContents.push(editor.document.getText());
+        continue;
+      }
+    }
+
+    const fileBytes = await vscode.workspace.fs.readFile(fileUri);
+    fileContents.push(fileBytes.toString());
   }
 
   return fileContents;
@@ -154,7 +166,7 @@ function orderFilesByPath(filePaths) {
  * @returns {string[]} - An array of relative file paths.
  */
 function getRelativeFilePaths(filePaths, workspaceRootPath) {
-  return filePaths.map(filePath => filePath.replace(workspaceRootPath, ''));
+  return filePaths.map(filePath => path.relative(workspaceRootPath, filePath));
 }
 
 /**
@@ -168,7 +180,7 @@ function getRelativeFilePaths(filePaths, workspaceRootPath) {
 function wrapWithComments(labels, contents, commentAtContentBegin, commentAtContentEnd) {
   return contents.map((content, index) => {
     const label = labels[index];
-    return `${commentAtContentBegin.replace('$file', label)}\n${content}\n${commentAtContentEnd.replace('$file', label)}\n`;
+    return `${commentAtContentBegin.replace('$file', label)}\n${content}\n${commentAtContentEnd.replace('$file', label)}`;
   });
 }
 
@@ -181,14 +193,12 @@ async function getNonBinaryFilesInFolder(folderPath) {
   const files = await vscode.workspace.fs.readDirectory(vscode.Uri.file(folderPath));
   const nonBinaryFiles = [];
 
-  // Iterate over the files and directories in the folder
   for (const [name, type] of files) {
     if (type === vscode.FileType.File) {
       const filePath = path.join(folderPath, name);
       const fileUri = vscode.Uri.file(filePath);
       const fileBytes = await vscode.workspace.fs.readFile(fileUri);
 
-      // Add non-binary files to the nonBinaryFiles array
       if (!isBinaryFile(fileBytes)) {
         nonBinaryFiles.push(filePath);
       }

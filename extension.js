@@ -1,143 +1,171 @@
 // extension.js
-// Description: Main extension file
+// Description: Main extension file for Commander V, handling commands and their execution
 // Author: David Kerns
 // Date: 2023-04-18
-// Last updated: 2024-04-29
+// Last updated: May 2024
 // License: MIT
 
-// Package imports
+// Module imports
 const vscode = require('vscode');
 const path = require('path');
 
-// Local imports
+// Import our helper functions from local modules
 const { generateProjectTree } = require('./src/projectTree');
-const { mergeConfigurations, getSelectedItems, getSelectedFilePaths, readFileContents, getRelativeFilePaths, wrapWithComments, showSuccessMessage } = require('./utils');
+const {
+  mergeConfigurations, getSelectedItems, getSelectedFilePaths, readFileContents,
+  getRelativeFilePaths, wrapWithComments, showSuccessMessage
+} = require('./utils');
+
+// Stores the file paths selected in previous executions for reuse
+let previouslySelectedFilePaths = [];
 
 /**
- * @param {vscode.ExtensionContext} context
+ * Extension activation function, initializes the context and registers commands.
+ * @param {vscode.ExtensionContext} context - Provides subscriptions to register commands.
  */
 function activate(context) {
-  let disposable = vscode.commands.registerCommand('extension.commanderV', async (uri, allUris) => {
-    // Check if no file or folder is selected
-    if (!uri) {
-      const activeEditor = vscode.window.activeTextEditor;
-      if (activeEditor && activeEditor.document.uri.scheme === 'file') {
-        uri = activeEditor.document.uri;
-        allUris = [uri];
-      } else {
-        vscode.window.showInformationMessage('No file or folder selected.');
-        return;
-      }
-    }
-
-    // Ensure allUris is an array
-    if (!Array.isArray(allUris)) {
-      allUris = [uri];
-    }
-
-    // Get global and local configurations
-    const globalConfig = vscode.workspace.getConfiguration('commanderV');
-    const workspaceRootPath = vscode.workspace.workspaceFolders[0].uri.fsPath;
-    const localConfigPath = path.join(workspaceRootPath, 'v.config.js');
-    const localConfigUri = vscode.Uri.file(localConfigPath);
-    let localConfig = {};
-
-    // Check for local configuration file
-    try {
-      await vscode.workspace.fs.stat(localConfigUri);
-      localConfig = require(localConfigPath);
-    } catch (err) {
-      // Local configuration not found, using global configuration
-    }
-
-    // Merge global and local configurations
-    const finalConfig = mergeConfigurations(globalConfig, localConfig);
-
-    // Get selected items and file paths
-    const selectedItems = await getSelectedItems(allUris);
-    const selectedFilePaths = await getSelectedFilePaths(selectedItems, finalConfig.orderFilesBy);
-
-    // Generate project tree if enabled
-    let projectTree = '';
-    if (finalConfig.includeProjectTree) {
-      projectTree = await generateProjectTree(
-        workspaceRootPath,
-        finalConfig.projectTreeDepth,
-        finalConfig.ignoreFile,
-        selectedFilePaths,
-        finalConfig.pruneProjectTree
-      );
-    }
-
-    // Read file contents and wrap with comments
-    const fileContents = await readFileContents(selectedFilePaths);
-    const relativeFilePaths = getRelativeFilePaths(selectedFilePaths, workspaceRootPath);
-    const formattedFileContents = wrapWithComments(
-      relativeFilePaths,
-      fileContents,
-      finalConfig.commentAtFileBegin,
-      finalConfig.commentAtFileEnd
-    );
-
-    // Format the final result string
-    const result = formatResult(
-      projectTree,
-      formattedFileContents,
-      finalConfig.includeSeparator,
-      finalConfig.separatorCharacter,
-      finalConfig.separatorLength,
-      finalConfig.wrapInCodeBlock
-    );
-
-    // Write the result to the clipboard
-    await vscode.env.clipboard.writeText(result);
-
-    // Get the number of files and total characters in the result
-    const numberOfFiles = selectedFilePaths.length;
-    const totalChars = result.length;
-
-    // Create a link to manage the extension
-    const manageExtensionLink = new vscode.MarkdownString(`[Manage Extension](command:workbench.extensions.action.showExtension?%22kerns.commander-v%22)`);
-
-    // Display success message and play sound if specified
-    showSuccessMessage(numberOfFiles, totalChars, manageExtensionLink, finalConfig.playSoundOnComplete);
+  // Register the primary command for new selections
+  let disposableNewSelection = vscode.commands.registerCommand('extension.commanderV', async (uri, allUris) => {
+    await handleNewSelection(uri, allUris);
   });
 
-  context.subscriptions.push(disposable);
+  // Register the command for reusing previous selections
+  let disposableReuseSelection = vscode.commands.registerCommand('extension.commanderVReusePreviousSelection', async () => {
+    await handleReuseSelection();
+  });
+
+  // Add to context subscriptions for cleanup
+  context.subscriptions.push(disposableNewSelection, disposableReuseSelection);
+}
+
+async function handleNewSelection(uri, allUris) {
+  if (!uri) {
+    uri = getActiveEditorUri();
+    if (!uri) {
+      vscode.window.showInformationMessage('No file or folder selected.');
+      return;
+    }
+    allUris = [uri];
+  } else {
+    allUris = ensureArray(allUris, uri);
+  }
+
+  const config = await fetchConfiguration();
+  const selectedItems = await getSelectedItems(allUris);
+  const selectedFilePaths = await getSelectedFilePaths(selectedItems, config.orderFilesBy);
+
+  // Update global state with current selection
+  previouslySelectedFilePaths = selectedFilePaths;
+  vscode.commands.executeCommand('setContext', 'commanderV.hasPreviousSelection', selectedFilePaths.length > 0);
+
+  // Process selection
+  const selectedFileUris = selectedFilePaths.map(filePath => vscode.Uri.file(filePath));
+  await processSelection(selectedFileUris, config);
+}
+
+async function handleReuseSelection() {
+  if (previouslySelectedFilePaths.length === 0) {
+    vscode.window.showInformationMessage('No previously selected files found.');
+    return;
+  }
+
+  const existingFileUris = await filterExistingFilePaths(previouslySelectedFilePaths);
+  if (existingFileUris.length === 0) {
+    vscode.window.showInformationMessage('All previously selected files have been deleted or moved.');
+    return;
+  }
+
+  const config = await fetchConfiguration();
+  await processSelection(existingFileUris, config);
 }
 
 /**
- * Format the result string based on the provided parameters.
- * @param {string} projectTree - The project tree string.
- * @param {string[]} formattedFileContents - An array of formatted file contents.
- * @param {boolean} includeSeparator - Whether to include a separator between file contents.
- * @param {string} separatorCharacter - The character to use for the separator.
- * @param {number} separatorLength - The length of the separator.
- * @param {boolean} wrapInCodeBlock - Whether to wrap the result in a code block.
- * @returns {string} - The formatted result string.
+ * Fetches global and optional local configurations, merging them.
+ * @returns {Promise<Object>} The merged configuration object.
  */
-function formatResult(projectTree, formattedFileContents, includeSeparator, separatorCharacter, separatorLength, wrapInCodeBlock) {
-  let result = '';
+async function fetchConfiguration() {
+  const globalConfig = vscode.workspace.getConfiguration('commanderV');
+  const workspaceRootPath = vscode.workspace.workspaceFolders[0].uri.fsPath;
+  const localConfigPath = path.join(workspaceRootPath, 'v.config.js');
 
-  // Wrap the result in a code block if specified
-  if (wrapInCodeBlock) {
-    result += '```\n';
+  let localConfig = {};
+  try {
+    localConfig = require(localConfigPath);
+  } catch (err) {
+    // Handle error if local configuration is not found
   }
 
-  // Add the project tree to the result if it exists
-  result += projectTree ? `${projectTree}\n\n` : '';
+  return mergeConfigurations(globalConfig, localConfig);
+}
 
-  // Join the formatted file contents with a separator if specified
-  if (includeSeparator) {
-    const separator = '\n' + separatorCharacter.repeat(separatorLength) + '\n\n';
-    result += formattedFileContents.join(separator);
-  } else {
-    result += formattedFileContents.join('\n\n');
+/**
+ * Processes file selections and generates the project output.
+ * This function orchestrates reading file contents, generating project trees,
+ * formatting the output, and handling the clipboard operations.
+ * 
+ * @param {vscode.Uri[]} fileUris - URIs of files to process.
+ * @param {Object} config - Configuration settings.
+ * @returns {Promise<void>} - A promise that resolves when the process is complete.
+ */
+async function processSelection(fileUris, config) {
+  try {
+    const filePaths = fileUris.map(uri => uri.fsPath);
+    const projectTree = config.includeProjectTree ? await generateProjectTreeFromConfig(filePaths, config) : '';
+    const fileContents = await readFileContents(fileUris, config.readFromEditor);
+    const relativeFilePaths = getRelativeFilePaths(filePaths, vscode.workspace.workspaceFolders[0].uri.fsPath);
+    const formattedContents = wrapWithComments(relativeFilePaths, fileContents, config.commentAtFileBegin, config.commentAtFileEnd);
+    const result = formatResult(projectTree, formattedContents, config);
+
+    await vscode.env.clipboard.writeText(result);
+    showSuccessMessage(filePaths.length, result.length, new vscode.MarkdownString(`[Manage Extension](command:workbench.extensions.action.showExtension?%22kerns.commander-v%22)`), config.playSoundOnComplete);
+  } catch (error) {
+    vscode.window.showErrorMessage(`Error processing selection: ${error.message}`);
   }
+}
 
-  // Close the code block if it was opened
-  if (wrapInCodeBlock) {
-    result += '\n```';
+function getActiveEditorUri() {
+  const activeEditor = vscode.window.activeTextEditor;
+  return activeEditor && activeEditor.document.uri.scheme === 'file' ? activeEditor.document.uri : null;
+}
+
+function ensureArray(allUris, uri) {
+  return Array.isArray(allUris) ? allUris : [uri];
+}
+
+async function filterExistingFilePaths(filePaths) {
+  const checks = filePaths.map(async (filePath) => {
+    try {
+      const uri = vscode.Uri.file(filePath);
+      await vscode.workspace.fs.stat(uri);
+      return uri;
+    } catch (err) {
+      return null;
+    }
+  });
+  const results = await Promise.all(checks);
+  return results.filter(uri => uri !== null);
+}
+
+async function generateProjectTreeFromConfig(filePaths, config) {
+  return generateProjectTree(
+    vscode.workspace.workspaceFolders[0].uri.fsPath,
+    config.projectTreeDepth,
+    config.ignoreFile,
+    filePaths,
+    config.pruneProjectTree
+  );
+}
+
+function formatResult(projectTree, formattedFileContents, config) {
+  const separator = config.includeSeparator ? `\n${config.separatorCharacter.repeat(config.separatorLength)}\n\n` : '\n\n';
+
+  let result = [
+    projectTree,
+    ...formattedFileContents
+  ].filter(Boolean).join(separator);
+
+  if (config.wrapInCodeBlock) {
+    result = `\`\`\`\n${result}\n\`\`\``;
   }
 
   return result;
@@ -147,5 +175,5 @@ function deactivate() { }
 
 module.exports = {
   activate,
-  deactivate,
+  deactivate
 };
