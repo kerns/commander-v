@@ -12,16 +12,14 @@
 
 ### For a Better AI Pair Programming Experience on the Open Seas of AI
 
-Better because you can instantly convert selected folders and files into a single, **shareable, plaintext blueprint** of your codebase.
-
-This blueprint includes an ASCII tree of your project's structure, and comments to clearly demark file beginnings, ends and relative paths.
+**Better because you can instantly convert selected folders and files into a single, shareable, plaintext blueprint of your codebase.** This blueprint includes an ASCII tree of your project's structure, and comments to clearly demark file beginnings, ends and relative paths.
 
 ## 🛳️🐬💦 Spring 2024 – Version 2 Sets Sail
 
-### With new features including...
+### New Features
 
-- **Select multiple folders** or mix and match a selection of files and folders. It works recursively. _All will be joined_.
-- Ability to read **open, unsaved files** directly from the editor
+- **Mix and match a selection of files and folders**. It works recursively. _All will be joined_.
+- **Ability to read open, unsaved files** directly from the editor
 - **Improved KB Support** allows `Shift + Cmd + V` to capture the active tab and `Cmd + Shift + R` to rerun Commander V on the previous selection
 - **Improved ASCII tree formatting**, **custom file separators**, and **more**
 
