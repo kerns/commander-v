@@ -87,9 +87,23 @@ function generateFilteredTree(treeObject, ignoredPaths, files, pruneProjectTree,
   const node = { label: treeObject.name };
 
   if (treeObject.children && treeObject.children.length > 0) {
+    // Sort the children array based on type (directory or file) and then alphabetically within each type
     node.nodes = treeObject.children
       .map(child => generateFilteredTree(child, ignoredPaths, files, pruneProjectTree, ignoreFile))
-      .filter(child => child !== null);
+      .filter(child => child !== null)
+      .sort((a, b) => {
+        const aIsDirectory = a.nodes !== undefined;
+        const bIsDirectory = b.nodes !== undefined;
+
+        if (aIsDirectory && !bIsDirectory) {
+          return -1;
+        } else if (!aIsDirectory && bIsDirectory) {
+          return 1;
+        } else {
+          return a.label.localeCompare(b.label, undefined, { sensitivity: 'base' });
+        }
+      });
+
     // Append '/' to directory names
     node.label += '/';
   }

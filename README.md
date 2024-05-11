@@ -12,19 +12,17 @@
 
 ### For a Better AI Pair Programming Experience on the Open Seas of AI
 
-- Joins multiple project files into a single, shareable blueprint and pushes it to your clipboard
-- Adds an ASCII tree of your project's structure illustrating the relative location of files
-- Sensible comment structure to clearly demark file beginnings and ends
-- Optionally orders files after project's folder structure _or_ your selection order
-- Supports local configuration via optional `v.config.js` file
-- More, but not a lot more
+Better because you can instantly convert selected folders and files into a single, **shareable, plaintext blueprint** of your codebase.
+
+This blueprint includes an ASCII tree of your project's structure, and comments to clearly demark file beginnings, ends and relative paths.
 
 ## 🛳️🐬💦 Spring 2024 – Version 2 Sets Sail
 
-### Adding...
+### With new features including...
 
-- **Folder Support** - Commander V now concatenates all non-binary files within any selected folder. Even select multiple folders, or mix and match a selection of files and folders. It works recursively. _All will be joined_.
-- **Improved KB Support** – Trigger Commander V on the active tab with `Shift + Cmd + V`
+- **Select multiple folders** or mix and match a selection of files and folders. It works recursively. _All will be joined_.
+- Ability to read **open, unsaved files** directly from the editor
+- **Improved KB Support** allows `Shift + Cmd + V` to capture the active tab and `Cmd + Shift + R` to rerun Commander V on the previous selection
 - **Improved ASCII tree formatting**, **custom file separators**, and **more**
 
 ## Details
@@ -120,6 +118,8 @@ Global settings can be configured in your Visual Studio Code extension settings,
 - **`separatorCharacter`**: The character to use for the separator between file contents _(string)_
 - **`separatorLength`**: The length of the separator between file contents _(number)_
 - **`wrapInCodeBlock`**: Wraps the concatenated file contents in a code block (```) _(boolean)_
+- **`playSoundOnComplete`**: Play a sound when operations are successful and output is delivered to your clipboard _(boolean)_
+- **`readFromEditor`**: Read unsaved file contents directly from the editor if the file is open, otherwise read from the last saved file _(boolean)_
 
 ### Sample `v.config.js` file
 

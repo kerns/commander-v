@@ -2,6 +2,10 @@
 
 Notable changes to the extension will be documented in this file. Reverse chron. order.
 
+## 2.4.x – May 2024
+
+Support for reading unsaved directly from the editor. Also a new "Rerun Commander V on Previous" feature. Refactored codebase.
+
 ## 2.3.x – May 2024
 
 Recursive folder support, bug fixes, and design + performance improvements.

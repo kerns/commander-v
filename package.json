@@ -10,7 +10,7 @@
     "url": "https://github.com/kerns/commander-v"
   },
   "description": "Improves AI pair programming workflows by making it easy to share the current state and structure of your code.",
-  "version": "2.3.4",
+  "version": "2.4.0",
   "keywords": [
     "Commander V",
     "AI",
@@ -36,7 +36,7 @@
       },
       {
         "command": "extension.commanderVReusePreviousSelection",
-        "title": "Reuse Previous Commander V Selection"
+        "title": "Reuse last Commander V Selection"
       }
     ],
     "menus": {
@@ -129,7 +129,7 @@
         "commanderV.includeSeparator": {
           "order": 9,
           "type": "boolean",
-          "default": true,
+          "default": false,
           "description": "Insert a visual separator between concatenated files to improve readability"
         },
         "commanderV.separatorCharacter": {
@@ -165,7 +165,7 @@
           "order": 14,
           "type": "boolean",
           "default": false,
-          "description": "Read file contents from the editor if the file is open, otherwise read from the file system"
+          "description": "Read unsaved file contents directly the editor if the file is open, otherwise read from the last saved file"
         }
       }
     }

@@ -1,5 +1,5 @@
 // utils.js
-// Description: Utility functions for managing configurations, file selections, and content processing.
+// Description: Utility functions for file handling, configuration management, and user interaction in Commander V extension.
 // Author: David Kerns
 // License: MIT
 
@@ -8,18 +8,18 @@ const path = require('path');
 const player = require('play-sound')({});
 
 /**
- * Display a message about unsupported binary files.
+ * Displays an error message for unsupported binary files.
  */
-function showBinaryFileError() {
-  vscode.window.showInformationMessage('👨🏾‍✈️ Commander V does not join binary files');
+function displayBinaryFileError() {
+  vscode.window.showInformationMessage('🤚 Commander V does not join binary files');
 }
 
 /**
- * Display a success message and play a sound if sound is enabled.
+ * Displays a success message and optionally plays a sound.
  * @param {number} numberOfFiles - Number of files that were concatenated.
  * @param {number} totalChars - Total number of characters in the result.
  * @param {string} manageExtensionLink - Markdown string for managing the extension.
- * @param {boolean} playSound - Whether to play a success sound.
+ * @param {boolean} playSound - Indicates whether a success sound should be played.
  */
 function showSuccessMessage(numberOfFiles, totalChars, manageExtensionLink, playSound) {
   const fileOrFiles = numberOfFiles === 1 ? 'file' : 'files';
@@ -35,21 +35,21 @@ function showSuccessMessage(numberOfFiles, totalChars, manageExtensionLink, play
 }
 
 /**
- * Merge global and local configurations.
+ * Combines global and local configuration settings into a single object.
  * @param {object} globalConfig - The global configuration object.
  * @param {object} localConfig - The local configuration object.
- * @returns {object} - The merged configuration object.
+ * @returns {object} - The combined configuration object.
  */
-function mergeConfigurations(globalConfig, localConfig) {
+function combineConfigurations(globalConfig, localConfig) {
   return { ...globalConfig, ...localConfig };
 }
 
 /**
- * Get selected items (files and folders) from the provided URIs.
+ * Identifies and categorizes selected files and folders from provided URIs.
  * @param {vscode.Uri[]} allUris - An array of URIs representing selected files and folders.
  * @returns {Promise<{ type: string, path: string }[]>} - An array of selected items with their type and path.
  */
-async function getSelectedItems(allUris) {
+async function identifySelectedFilesAndFolders(allUris) {
   const selectedItems = [];
   const binaryFiles = [];
 
@@ -59,13 +59,13 @@ async function getSelectedItems(allUris) {
 
     if (stat.type === vscode.FileType.File) {
       const fileBytes = await vscode.workspace.fs.readFile(fileUri);
-      if (!isBinaryFile(fileBytes)) {
+      if (!checkIfFileIsBinary(fileBytes)) {
         selectedItems.push({ type: 'file', path: filePath });
       } else {
         binaryFiles.push(filePath);
       }
     } else if (stat.type === vscode.FileType.Directory) {
-      const nonBinaryFiles = await getNonBinaryFilesInFolder(filePath);
+      const nonBinaryFiles = await filterNonBinaryFilesInFolder(filePath);
 
       if (nonBinaryFiles.length > 0) {
         selectedItems.push({ type: 'directory', path: filePath });
@@ -75,9 +75,8 @@ async function getSelectedItems(allUris) {
     }
   }
 
-  // If all selected items are binary files, show an error message and exit
-  if (binaryFiles.length > 0 && selectedItems.length == 0) {
-    showBinaryFileError();
+  if (binaryFiles.length > 0 && selectedItems.length === 0) {
+    displayBinaryFileError();
     return [];
   }
 
@@ -85,41 +84,38 @@ async function getSelectedItems(allUris) {
 }
 
 /**
- * Get selected file paths based on the provided selected items and order.
+ * Determines the order of file paths based on configuration settings.
  * @param {{ type: string, path: string }[]} selectedItems - An array of selected items with their type and path.
- * @param {string} orderBy - The order in which to arrange the selected file paths ('treeOrder' or 'selectionOrder').
- * @returns {Promise<string[]>} - An array of selected file paths.
+ * @param {string} orderBy - The ordering criterion ('treeOrder' or 'selectionOrder').
+ * @returns {Promise<string[]>} - An array of file paths in the specified order.
  */
-async function getSelectedFilePaths(selectedItems, orderBy) {
+async function determineFilePathsOrder(selectedItems, orderBy) {
   const selectedFilePaths = new Set();
 
-  // Collect file paths from selected items (files and directories)
   for (const item of selectedItems) {
     if (item.type === 'file') {
       selectedFilePaths.add(item.path);
     } else if (item.type === 'directory') {
-      const folderFiles = await getNonBinaryFilesInFolder(item.path);
+      const folderFiles = await filterNonBinaryFilesInFolder(item.path);
       folderFiles.forEach(filePath => selectedFilePaths.add(filePath));
     }
   }
 
-  // Convert the set to an array and order file paths based on the specified order (tree order or selection order)
   let orderedFilePaths = Array.from(selectedFilePaths);
   if (orderBy === 'treeOrder') {
-    orderedFilePaths = orderFilesByPath(orderedFilePaths);
+    orderedFilePaths = sortFilePathsAlphabetically(orderedFilePaths);
   }
 
   return orderedFilePaths;
 }
 
-
 /**
- * Read the contents of the selected files, either from the editor or from the file system.
+ * Fetches the contents of files, optionally from the editor if open.
  * @param {vscode.Uri[]} fileUris - An array of file URIs.
- * @param {boolean} readFromEditor - Whether to read file contents from the editor if the file is open.
- * @returns {Promise<string[]>} - An array of file contents as strings.
+ * @param {boolean} readFromEditor - Indicates whether to read contents from the editor.
+ * @returns {Promise<string[]>} - An array of file contents.
  */
-async function readFileContents(fileUris, readFromEditor) {
+async function fetchFileContents(fileUris, readFromEditor) {
   const fileContents = [];
 
   for (const fileUri of fileUris) {
@@ -142,42 +138,42 @@ async function readFileContents(fileUris, readFromEditor) {
 }
 
 /**
- * Check if the file is binary based on its content.
+ * Checks if a file is considered binary by examining its byte content.
  * @param {Uint8Array} fileBytes - The file content as a byte array.
- * @returns {boolean} - True if the file is considered binary, false otherwise.
+ * @returns {boolean} - True if the file is considered binary, otherwise false.
  */
-function isBinaryFile(fileBytes) {
+function checkIfFileIsBinary(fileBytes) {
   return fileBytes.some(byte => byte === 0);
 }
 
 /**
- * Sort the files by their paths.
+ * Sorts file paths alphabetically.
  * @param {string[]} filePaths - An array of file paths.
- * @returns {string[]} - An array of sorted file paths.
+ * @returns {string[]} - A sorted array of file paths.
  */
-function orderFilesByPath(filePaths) {
+function sortFilePathsAlphabetically(filePaths) {
   return filePaths.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
 }
 
 /**
- * Get relative file paths from the provided file paths and workspace root path.
+ * Calculates relative paths for files based on the workspace root.
  * @param {string[]} filePaths - An array of file paths.
  * @param {string} workspaceRootPath - The root path of the workspace.
  * @returns {string[]} - An array of relative file paths.
  */
-function getRelativeFilePaths(filePaths, workspaceRootPath) {
+function calculateRelativeFilePaths(filePaths, workspaceRootPath) {
   return filePaths.map(filePath => path.relative(workspaceRootPath, filePath));
 }
 
 /**
- * Wrap content with comments including the given label.
- * @param {string[]} labels - An array of labels to be used in comments.
- * @param {string[]} contents - An array of content as strings.
- * @param {string} commentAtContentBegin - The comment template to be placed at the beginning of each content.
- * @param {string} commentAtContentEnd - The comment template to be placed at the end of each content.
- * @returns {string[]} - An array of wrapped content.
+ * Encapsulates content within comments, using provided labels and templates.
+ * @param {string[]} labels - An array of labels for each content block.
+ * @param {string[]} contents - An array of content blocks.
+ * @param {string} commentAtContentBegin - The comment template for the beginning of each content block.
+ * @param {string} commentAtContentEnd - The comment template for the end of each content block.
+ * @returns {string[]} - An array of content blocks wrapped with comments.
  */
-function wrapWithComments(labels, contents, commentAtContentBegin, commentAtContentEnd) {
+function encapsulateContentWithComments(labels, contents, commentAtContentBegin, commentAtContentEnd) {
   return contents.map((content, index) => {
     const label = labels[index];
     return `${commentAtContentBegin.replace('$file', label)}\n${content}\n${commentAtContentEnd.replace('$file', label)}`;
@@ -185,11 +181,11 @@ function wrapWithComments(labels, contents, commentAtContentBegin, commentAtCont
 }
 
 /**
- * Get non-binary files in a folder recursively.
+ * Filters non-binary files from a folder, including its subdirectories.
  * @param {string} folderPath - The path to the folder.
  * @returns {Promise<string[]>} - An array of non-binary file paths.
  */
-async function getNonBinaryFilesInFolder(folderPath) {
+async function filterNonBinaryFilesInFolder(folderPath) {
   const files = await vscode.workspace.fs.readDirectory(vscode.Uri.file(folderPath));
   const nonBinaryFiles = [];
 
@@ -199,12 +195,12 @@ async function getNonBinaryFilesInFolder(folderPath) {
       const fileUri = vscode.Uri.file(filePath);
       const fileBytes = await vscode.workspace.fs.readFile(fileUri);
 
-      if (!isBinaryFile(fileBytes)) {
+      if (!checkIfFileIsBinary(fileBytes)) {
         nonBinaryFiles.push(filePath);
       }
     } else if (type === vscode.FileType.Directory) {
       const subfolderPath = path.join(folderPath, name);
-      const subfolderFiles = await getNonBinaryFilesInFolder(subfolderPath);
+      const subfolderFiles = await filterNonBinaryFilesInFolder(subfolderPath);
       nonBinaryFiles.push(...subfolderFiles);
     }
   }
@@ -213,15 +209,15 @@ async function getNonBinaryFilesInFolder(folderPath) {
 }
 
 module.exports = {
-  mergeConfigurations,
-  getSelectedItems,
-  getSelectedFilePaths,
-  readFileContents,
-  isBinaryFile,
-  orderFilesByPath,
-  getRelativeFilePaths,
-  wrapWithComments,
-  getNonBinaryFilesInFolder,
-  showBinaryFileError,
+  combineConfigurations,
+  identifySelectedFilesAndFolders,
+  determineFilePathsOrder,
+  fetchFileContents,
+  checkIfFileIsBinary,
+  sortFilePathsAlphabetically,
+  calculateRelativeFilePaths,
+  encapsulateContentWithComments,
+  filterNonBinaryFilesInFolder,
+  displayBinaryFileError,
   showSuccessMessage,
 };
