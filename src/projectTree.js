@@ -14,7 +14,6 @@ const path = require('path');
  * @param {string} ignoreFilePath - The path to the ignore file.
  * @returns {Promise<RegExp[]>} - An array of regular expressions representing ignored paths.
  */
-
 async function getIgnoredPaths(ignoreFilePath) {
   const ignoredPaths = [];
 
@@ -87,22 +86,11 @@ function generateFilteredTree(treeObject, ignoredPaths, files, pruneProjectTree,
   const node = { label: treeObject.name };
 
   if (treeObject.children && treeObject.children.length > 0) {
-    // Sort the children array based on type (directory or file) and then alphabetically within each type
-    node.nodes = treeObject.children
-      .map(child => generateFilteredTree(child, ignoredPaths, files, pruneProjectTree, ignoreFile))
-      .filter(child => child !== null)
-      .sort((a, b) => {
-        const aIsDirectory = a.nodes !== undefined;
-        const bIsDirectory = b.nodes !== undefined;
-
-        if (aIsDirectory && !bIsDirectory) {
-          return -1;
-        } else if (!aIsDirectory && bIsDirectory) {
-          return 1;
-        } else {
-          return a.label.localeCompare(b.label, undefined, { sensitivity: 'base' });
-        }
-      });
+    node.nodes = sortTreeNodes(
+      treeObject.children
+        .map(child => generateFilteredTree(child, ignoredPaths, files, pruneProjectTree, ignoreFile))
+        .filter(child => child !== null)
+    );
 
     // Append '/' to directory names
     node.label += '/';
@@ -112,12 +100,31 @@ function generateFilteredTree(treeObject, ignoredPaths, files, pruneProjectTree,
 }
 
 /**
+ * Sorts an array of tree nodes based on the type (directory or file) and alphabetically within each type.
+ * @param {object[]} nodes - An array of tree nodes.
+ * @returns {object[]} - The sorted array of tree nodes.
+ */
+function sortTreeNodes(nodes) {
+  return nodes.sort((a, b) => {
+    const aIsDirectory = a.nodes !== undefined;
+    const bIsDirectory = b.nodes !== undefined;
+
+    if (aIsDirectory && !bIsDirectory) {
+      return -1;
+    } else if (!aIsDirectory && bIsDirectory) {
+      return 1;
+    } else {
+      return a.label.localeCompare(b.label, undefined, { sensitivity: 'base' });
+    }
+  });
+}
+
+/**
  * Calculate the maximum depth of the selected files relative to the root path.
  * @param {string} rootPath - The root path of the workspace.
  * @param {string[]} files - An array of selected file paths.
  * @returns {number} - The maximum depth of the selected files.
  */
-
 function getMaxDepthOfSelectedFiles(rootPath, files) {
   const rootPathDepth = rootPath.split(path.sep).length;
   let maxDepth = 0;
