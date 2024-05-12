@@ -1,4 +1,4 @@
-# Commander V - _10x the Context✌️_
+# Commander V for VSC ✌️
 
 [![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/kerns.commander-v?label=Visual%20Studio%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v)
 [![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/kerns.commander-v?label=Installs)](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v)
@@ -14,7 +14,7 @@
 
 **Better because you can instantly convert selected folders and files into a single, shareable, blueprint of your codebase.**
 
-Enhancing context, this plaintext blueprint takes the form of an ASCII tree of your project's directory structure, joined with the full contents of the selected files. Comments are added between files to explain what and where everything is. (e.g. `/* --- Begin /path/to/file.js --- */`)
+This plaintext blueprint takes the form of an ASCII tree of your project's directory structure, joined with the full contents of the selected files. Comments are added between files to explain what and where everything is. (e.g. `/* --- Begin /path/to/file.js --- */`) A quick 10x for the context.
 
 ## 🛳️🐬💦 Spring 2024 – Version 2 Sets Sail
 
@@ -56,6 +56,8 @@ Watch...👇👀🍿
 3. A blueprint of your project files is pushed to your clipboard
 
 ![my_project_demo](https://github.com/kerns/commander-v/assets/20254/3b6b84d4-4a7c-49d3-aca0-4e8dd1e1a947)
+
+_<figcaption>This moves quickly but loops every 15 seconds. Watch it a few times to grasp the full banality of what you're seeing.</figcaption>_
 
 ### Sample Output
 
