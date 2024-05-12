@@ -1,4 +1,4 @@
-# Commander V for Visual Studio Code
+# Commander V - _10x the Context✌️_
 
 [![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/kerns.commander-v?label=Visual%20Studio%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v)
 [![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/kerns.commander-v?label=Installs)](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v)
@@ -12,7 +12,9 @@
 
 ### For a Better AI Pair Programming Experience on the Open Seas of AI
 
-**Better because you can instantly convert selected folders and files into a single, shareable, plaintext blueprint of your codebase.** This blueprint includes an ASCII tree of your project's structure, and comments to clearly demark file beginnings, ends and relative paths.
+**Better because you can instantly convert selected folders and files into a single, shareable, blueprint of your codebase.**
+
+Enhancing context, this plaintext blueprint takes the form of an ASCII tree of your project's directory structure, joined with the full contents of the selected files. Comments are added between files to explain what and where everything is. (e.g. `/* --- Begin /path/to/file.js --- */`)
 
 ## 🛳️🐬💦 Spring 2024 – Version 2 Sets Sail
 
@@ -25,11 +27,13 @@
 
 ## Details
 
-**Commander V was a gifted and beloved ship captain who gave his life to take the form of an extension for Microsoft's Visual Studio Code** <sup>[1](#donotaskwhy)</sup>. He did this in exchange for the power of combining multiple files, together with an ASCII tree view of your project's directory structure, to your clipboard – giving greater structure and context for the files and folders you share.
+**Commander V was a gifted and beloved Ship Captain who gave his life to take the form of an extension for Microsoft's Visual Studio Code** <sup>[1](#donotaskwhy)</sup>. He did this in exchange for the power of combining multiple files, together with an ASCII tree view of your project's directory structure, to your clipboard – giving greater context to the files and folders you share.
 
-Sharing in this way improves productivity when pair programming with an AI, and is more likely to solve problems in a way that makes sense for the system as a whole – not just for a single function or system in isolation.
+Sharing the updated state of your code in this way improves productivity when pair programming with an AI.
 
-Regularly reorienting your partner AI in the updated state of your code can also help overcome limits on memory, and can reduce the drift toward hallucination that smaller, self-hosted models are known to experience when pressed at length.
+Because regularly reorienting your partner AI is more likely to solve problems in a way that makes sense for the system as a whole – not just for a single function or system in isolation.
+
+It can also help overcome limits on memory, and can reduce the drift toward hallucination that smaller, self-hosted AI models are known to experience when pushed hard.
 
 Watch...👇👀🍿
 
@@ -101,7 +105,7 @@ h1 {
 
 ## Optional Configuration
 
-Global settings can be configured in your Visual Studio Code extension settings, under "Commander V". A local override can be configured on a per-project basis via a `v.config.js` placed on the root of your project. May require a restart of VS Code.
+Global settings can be configured in your Visual Studio Code extension settings, under "Commander V". A local override can be configured on a per-project basis via a `v.config.js` placed on the root of your project. May require a restart of VSC.
 
 ### Configurable settings (Optional):
 

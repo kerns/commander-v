@@ -10,13 +10,14 @@
     "url": "https://github.com/kerns/commander-v"
   },
   "description": "Improves AI pair programming workflows by making it easy to share the current state and structure of your code.",
-  "version": "2.4.3",
+  "version": "2.4.5",
   "keywords": [
     "Commander V",
     "AI",
     "Machine Learning",
     "Productivity",
-    "ChatGPT"
+    "ChatGPT",
+    "Claude AI"
   ],
   "icon": "src/commander_v_icon.png",
   "engines": {
