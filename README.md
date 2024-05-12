@@ -20,14 +20,14 @@
 
 - **Mix and match a selection of files and folders**. It works recursively. _All will be joined_.
 - **Ability to read open, unsaved files** directly from the editor
-- **Improved KB Support** allows `Shift + Cmd + V` to capture the active tab and `Cmd + Shift + R` to rerun Commander V on the previous selection
+- **Improved KB Support** allows `Cmd + Shift + V` to capture the active tab and `Cmd + Shift + R` to rerun Commander V on the previous selection
 - **Improved ASCII tree formatting**, **custom file separators**, and **more**
 
 ## Details
 
 **Commander V was a gifted and beloved ship captain who gave his life to take the form of an extension for Microsoft's Visual Studio Code** <sup>[1](#donotaskwhy)</sup>. He did this in exchange for the power of combining multiple files, together with an ASCII tree view of your project's directory structure, to your clipboard – giving greater structure and context for the files and folders you share.
 
-Sharing in this way makes it easier to pair with an AI for help with your code, and to solve problems with an approach that makes sense for the system as a whole – not just for a single function or system in isolation.
+Sharing in this way improves productivity when pair programming with an AI, and is more likely to solve problems in a way that makes sense for the system as a whole – not just for a single function or system in isolation.
 
 Regularly reorienting your partner AI in the updated state of your code can also help overcome limits on memory, and can reduce the drift toward hallucination that smaller, self-hosted models are known to experience when pressed at length.
 
