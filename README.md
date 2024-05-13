@@ -12,9 +12,7 @@
 
 ### For a Better AI Pair Programming Experience on the Open Seas of AI
 
-**Better because you can instantly convert selected folders and files into a single, shareable, blueprint of your codebase.**
-
-This plaintext blueprint takes the form of an ASCII tree of your project's directory structure, joined with the full contents of the selected files. Comments are added between files to explain what and where everything is. (e.g. `/* --- Begin /path/to/file.js --- */`) A quick 10x for the context.
+**Better because you can instantly convert selected folders and files into a single, shareable, blueprint of your codebase.** This plaintext blueprint takes the form of an ASCII tree of your project's directory structure, joined with the full contents of the selected files. Comments are added between files to explain what and where everything is. (e.g. `/* --- Begin /path/to/file.js --- */`)
 
 ## 🛳️🐬💦 Spring 2024 – Version 2 Sets Sail
 
@@ -38,6 +36,8 @@ It can also help overcome limits on memory, and can reduce the drift toward hall
 Watch...👇👀🍿
 
 ![sure-happy-to-help-demo](https://user-images.githubusercontent.com/20254/233346169-2d0d90c8-d948-415d-8041-f29d822ecb0f.gif)
+
+_<figcaption>A demonstration of Commander V in use, this clip loops every 30 seconds, and makes more sense on subsequent views.</figcaption>_
 
 ## Installation
 
