@@ -1,6 +1,6 @@
-# Commander V 3.0 release readiness
+# Commander V 3.0 release record
 
-Prepared 28 September 2026. **Publication was authorized by the user on 28 September 2026.** The final README has been packaged; cross-platform CI and Marketplace publisher authentication are being checked before publication.
+Published 28 September 2026 after the user's release command. **Commander V 3.0.0 is live on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v).** The Fall 2026 README, description, version, and existing reviews were verified on the public listing. A fresh installation from the Marketplace matched the tested VSIX, including its runtime files, README, dependencies, and manifest (excluding installation metadata).
 
 ## Release artifact
 
@@ -24,8 +24,9 @@ The release artifact includes the user's final README edits and a Windows path c
 | Dependency audit | Zero known findings; no outdated direct dependencies |
 | Package inspection | Correct identity/version; allowlist and README verified |
 | README display in VS Code | Context-bundler introduction, working badges, Fall 2026 / 3.0 heading |
+| Release CI: Windows, macOS, Linux × VS Code 1.105.0 and 1.139.1 | All six jobs passed, with 61 unit tests and 32 installed-VSIX integration checks per job |
 
-All editor runs above were on macOS arm64. The expanded integration suite covers both copy commands, reuse, unsaved background documents, saved-file mode, multi-root and loose files, default/project/custom ignores and opt-outs, custom labels/separators, Markdown fences, ASCII/raw trees, per-folder settings, trusted local config reloads, invalid-config recovery, binary/empty/error clipboard preservation, and native delayed progress.
+The local editor runs were on macOS arm64. The final [cross-platform CI run](https://github.com/kerns/commander-v/actions/runs/36451003312) tested the corrected release source at `5fab268`. The expanded integration suite covers both copy commands, reuse, unsaved background documents, saved-file mode, multi-root and loose files, default/project/custom ignores and opt-outs, custom labels/separators, Markdown fences, ASCII/raw trees, per-folder settings, trusted local config reloads, invalid-config recovery, binary/empty/error clipboard preservation, and native delayed progress.
 
 Hands-on tests used a separate VS Code profile and disposable project under `.dev/acceptance`, without running test copies against a live project:
 
@@ -42,21 +43,14 @@ The 1,000-file I/O benchmark reported 3,000 reads / 241 ms for the original pipe
 
 ## Remaining validation limits
 
-Windows/Linux keyboard shortcuts and audio, real SSH/container workspaces, and remote GitHub Actions have not been exercised here. The CI matrix is configured for all three desktop platforms and minimum/current-stable editors; it will run after a source push. Large copies still retain content in memory, and synchronous formatting or a single provider read cannot be interrupted mid-operation. See the [assessment](REVIEW-2026-09-28.md) for follow-up work.
+Windows/Linux keyboard shortcuts and audio and real SSH/container workspaces have not been exercised here. Command-level integration checks pass on all three desktop platforms. Large copies still retain content in memory, and synchronous formatting or a single provider read cannot be interrupted mid-operation. See the [assessment](REVIEW-2026-09-28.md) for follow-up work.
 
-GitHub authentication is available. `vsce ls-publishers` returned no stored publisher, and `VSCE_PAT` was not present in this shell. A valid publisher authentication path must therefore be established when publication is authorized; credentials must not be committed or added to this document.
+## Publication
 
-## On the user's release command
+- The tested release source was fast-forwarded to `main` before uploading, so the README's GitHub links resolve to the new source. The [main-branch CI run](https://github.com/kerns/commander-v/actions/runs/36451297785) also passed all six jobs.
+- The user signed in to the existing `kerns` publisher account. The exact VSIX identified above was uploaded through Microsoft's publisher dashboard and passed Marketplace verification. No publishing token was stored in this repository.
+- The public listing retains the same extension identity, install history, and reviews. Its overview now includes the context-bundler introduction, Fall 2026 / Commander V 3.0 update, latest README edits, and performance notes.
+- A fresh profile installed `kerns.commander-v@3.0.0` directly from the Marketplace. All 21 packaged non-manifest files matched the VSIX byte for byte; the manifest matched after removing installation metadata. The minimum editor requirement is `^1.105.0`.
+- The GitHub repository description was updated to match the extension's context-bundler description. Release notes use general maintenance wording and include the supported editor requirement.
 
-1. Confirm that the prepared commit is still the desired release and that the remote baseline has not changed. Integrate the release branch into `main` and push the source through the repository's normal workflow. Wait for the configured cross-platform CI and address any failures before publishing. The VSIX's relative README links point at GitHub's default branch, so the source must be available there.
-2. Check the artifact against the SHA-256 above with `shasum -a 256 builds/commander-v-3.0.0.vsix`. If the artifact or source changes, rebuild and rerun the affected validation; update this record with the newly tested checksum.
-3. Authenticate the existing `kerns` publisher securely if needed, using the official `vsce` login or supported environment authentication. Do not create a different extension identity.
-4. Publish the tested artifact, without rebuilding it during publication:
-
-   ```sh
-   npx --no-install vsce publish --packagePath builds/commander-v-3.0.0.vsix
-   ```
-
-5. Verify Marketplace version 3.0.0, the listing/README, minimum VS Code requirement, and an install/update from the Marketplace. Then create the `v3.0.0` tag and GitHub release from the published source commit as part of the authorized release workflow.
-
-The release command has been given. Complete and record the publication checks above before marking the release finished.
+For future releases, repeat the applicable checks, package once, and publish that exact tested artifact through the publisher dashboard or authenticated `vsce publish --packagePath <artifact>`.

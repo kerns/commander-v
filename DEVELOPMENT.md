@@ -25,7 +25,7 @@ npm run test:manual    # package + install in .dev/extensions + open fixture
 npm run install:local # package + install in the normal VS Code profile
 ```
 
-After replacing the same version, reload open test windows. Keep the version distinct from the published release when testing changes. **Commander V 3.0** uses package version `3.0.0` and is a local release candidate; nothing in these scripts publishes it publicly.
+After replacing the same version, reload open test windows. Keep the version distinct from the published release when testing changes. **Commander V 3.0** uses package version `3.0.0`; nothing in these scripts publishes it publicly.
 
 To roll back the normal installation, install the existing `builds/commander-v-2.4.7.vsix` with `code --install-extension builds/commander-v-2.4.7.vsix --force`, then reload. Alternatively use **Install Another Version** on Commander V's extension page. The repository's historical VSIX files are local artifacts, not tracked source.
 
@@ -48,9 +48,9 @@ VSCODE_EXECUTABLE_PATH='/Applications/Visual Studio Code.app/Contents/MacOS/Code
 
 On PowerShell, set environment variables with `$env:VSCODE_VERSION='1.105.0'` before running the npm command. The test runner accepts the native Code executable on Windows/Linux too.
 
-Each run creates disposable files and isolated settings under `.vscode-test/runs/`. Editor updates are disabled, and explicitly requested editor versions are checked at runtime to catch a stale or updated download cache. Tests restore the previous clipboard text on exit; avoid clipboard-dependent work while they run. Microsoft's test runner disables Workspace Trust in the test host, so restricted-mode configuration behavior is separately covered by unit tests. A real SSH/container environment, Windows/Linux audio playback, and the cross-platform CI matrix still need their respective environments to verify them.
+Each run creates disposable files and isolated settings under `.vscode-test/runs/`. Editor updates are disabled, and explicitly requested editor versions are checked at runtime to catch a stale or updated download cache. Tests restore the previous clipboard text on exit; avoid clipboard-dependent work while they run. Microsoft's test runner disables Workspace Trust in the test host, so restricted-mode configuration behavior is separately covered by unit tests. Real SSH/container behavior and Windows/Linux audio playback still need their respective environments to verify them.
 
-CI covers the minimum and current stable VS Code on macOS, Windows, and Linux, tests the installed VSIX, audits dependencies, and uploads the Linux stable build. CI starts when these changes are pushed; creating the workflow does not establish a passing remote CI run.
+CI covers the minimum and current stable VS Code on macOS, Windows, and Linux, tests the installed VSIX, audits dependencies, and uploads the Linux stable build. All six jobs passed for the 3.0 release on 28 September 2026; see the [release record](docs/RELEASE-3.0.md).
 
 ## Manual checklist
 
@@ -73,6 +73,6 @@ CI covers the minimum and current stable VS Code on macOS, Windows, and Linux, t
 
 See [the review](docs/REVIEW-2026-09-28.md) for remaining risks and follow-up work.
 
-The [3.0 release checklist](docs/RELEASE-3.0.md) records the acceptance results and the exact artifact to publish after approval. Building, installing, and committing do not publish the extension.
+The [3.0 release record](docs/RELEASE-3.0.md) records the acceptance results and exact release artifact. Building, installing, and committing do not publish the extension.
 
 Built-in exclusions live in `src/default.ignore` and ship inside the VSIX. See [the exclusion policy](docs/EXCLUSIONS.md) for scope, customization, and research sources. Keep the folder-content and tree paths on the same matcher; regression tests assert that excluded directories are never traversed.
