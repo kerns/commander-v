@@ -105,6 +105,17 @@ test('path boundaries exclude prefix collisions and other URI authorities', () =
   assert.equal(relativePath(Uri.parse('vscode-remote://a/repo'), Uri.parse('vscode-remote://b/repo/a.js')), null);
   assert.equal(renderTree(selectedTree({ root, name: 'repo', files: [{ uri: Uri.file('/repo-other/a.js') }] })), 'repo/\n');
 });
+test('Windows drive-letter casing preserves file labels and pruned tree paths', () => {
+  const root = Uri.parse('file:///D:/Project');
+  const file = { uri: Uri.parse('file:///d:/Project/src/App.js'), content: 'example' };
+  const group = { root, name: 'Project', files: [file] };
+  assert.equal(relativePath(root, file.uri), 'src/App.js');
+  assert.match(formatOutput([group], [file], [], defaults), /Begin src\/App\.js/);
+  assert.equal(renderTree(selectedTree(group)), 'Project/\n└── src/\n    └── App.js\n');
+  assert.equal(relativePath(root, Uri.parse('file:///E:/Project/a.js')), null);
+  assert.equal(relativePath(root, Uri.parse('file:///d:/Project-other/a.js')), null);
+  assert.equal(relativePath(Uri.parse('vscode-remote://host/Project'), Uri.parse('vscode-remote://host/project/a.js')), null);
+});
 test('loose files work without an open workspace', () => {
   const file = { uri: Uri.file('/tmp/loose.js'), content: 'ok' };
   const groups = groupFiles(makeApi(), [file]);

@@ -8,16 +8,16 @@ Prepared 28 September 2026. **Publication was authorized by the user on 28 Septe
 - Release name: **Commander V 3.0**; package version: **3.0.0**.
 - Requires VS Code **1.105.0 or newer**.
 - Local artifact: `builds/commander-v-3.0.0.vsix`, 24 files, approximately 2.16 MB compressed.
-- SHA-256: `f4cc96346a88818edf45903a1c3818d6fcd31963aa7a1e2ad0a2584e5b4965f1`.
+- SHA-256: `fb105bb55dd2b6a935bc8c8570cd6ad702f197464081fdcab5d2597fb9fe8360`.
 - Prepared source branch: `codex/commander-v-3.0`, based on `1782f87`. The remote baseline was checked and matched before committing.
 
-The tested runtime is installed in the normal local VS Code profile. The release artifact was rebuilt with the user's final README edits; its runtime code, manifest, and default ignore rules are unchanged. Only `ignore` ships as a runtime dependency. Developer tools, tests, reports, scratch files, and test profiles are excluded from the VSIX.
+The release artifact includes the user's final README edits and a Windows path correction found during release CI. Windows workspace/editor drive-letter casing now preserves file labels and pruned tree entries. The development launcher also follows the official Windows CLI path in both traditional and versioned package layouts. Only `ignore` ships as a runtime dependency. Developer tools, tests, reports, scratch files, and test profiles are excluded from the VSIX.
 
 ## Acceptance results
 
 | Check | Result |
 | --- | --- |
-| Lint and unit regressions | 59 tests passed |
+| Lint and unit regressions | 61 tests passed |
 | Packaged integration tests, VS Code 1.105.0 / Node 22.19.0 | 32 checks passed |
 | Packaged integration tests, installed VS Code 1.135.0 / Node 24.18.1 | 32 checks passed |
 | Packaged integration tests, VS Code 1.139.1 / Node 24.20.0 | 32 checks passed |

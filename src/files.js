@@ -90,8 +90,14 @@ async function collectFiles(api, uris, config, token, report = () => {}) {
 
 function relativePath(root, uri) {
   if (root.scheme !== uri.scheme || root.authority !== uri.authority) return null;
-  const relative = path.posix.relative(root.path, uri.path);
-  return relative === '..' || relative.startsWith('../') || path.posix.isAbsolute(relative) ? null : relative;
+  // VS Code can return a lowercase drive letter for an editor document and an
+  // uppercase one for its workspace. URI paths still use forward slashes.
+  const windows = root.scheme === 'file' && (process.platform === 'win32' || /^\/[a-z]:\//i.test(root.path));
+  const relative = windows
+    ? path.win32.relative(root.path, uri.path).replaceAll('\\', '/')
+    : path.posix.relative(root.path, uri.path);
+  return relative === '..' || relative.startsWith('../') || path.posix.isAbsolute(relative) ||
+    (windows && path.win32.isAbsolute(relative)) ? null : relative;
 }
 
 function groupFiles(api, files) {
