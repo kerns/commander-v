@@ -2,30 +2,25 @@
   "name": "commander-v",
   "displayName": "Commander V",
   "publisher": "kerns",
-  "activationEvents": [
-    "onCommand:extension.commanderV"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/kerns/commander-v"
   },
-  "description": "Improves AI pair programming workflows by making it easy to share the current state and structure of your code.",
-  "version": "2.4.7",
+  "description": "Bundle selected file contents and project trees into one clipboard snapshot for code reviews, documentation, and AI workflows.",
+  "version": "3.0.0",
   "keywords": [
-    "Commander V",
+    "clipboard",
+    "context",
+    "project tree",
     "AI",
-    "Machine Learning",
-    "ChatGPT",
-    "Claude AI",
-    "Productivity"
+    "productivity"
   ],
   "icon": "src/commander_v_icon.png",
   "engines": {
-    "vscode": "^1.77.0"
+    "vscode": "^1.105.0",
+    "node": ">=22.13.0"
   },
   "categories": [
-    "Data Science",
-    "Machine Learning",
     "Other"
   ],
   "main": "./extension.js",
@@ -38,6 +33,10 @@
       {
         "command": "extension.commanderVReusePreviousSelection",
         "title": "Reuse last Commander V Selection"
+      },
+      {
+        "command": "extension.commanderVCopyProjectTree",
+        "title": "Commander V: Copy Project Tree"
       }
     ],
     "menus": {
@@ -45,6 +44,10 @@
         {
           "command": "extension.commanderV",
           "when": "resource"
+        },
+        {
+          "command": "extension.commanderVCopyProjectTree",
+          "when": "explorerResourceIsFolder && (resourceScheme == file || resourceScheme == vscode-remote)"
         },
         {
           "command": "extension.commanderVReusePreviousSelection",
@@ -68,6 +71,12 @@
         "command": "extension.commanderVReusePreviousSelection",
         "key": "shift+ctrl+r",
         "mac": "shift+cmd+r"
+      },
+      {
+        "command": "extension.commanderVCopyProjectTree",
+        "key": "ctrl+k ctrl+shift+t",
+        "mac": "cmd+k cmd+shift+t",
+        "when": "!terminalFocus && !inQuickOpen"
       }
     ],
     "configuration": {
@@ -77,19 +86,24 @@
           "order": 1,
           "type": "boolean",
           "default": true,
-          "description": "Include an ASCII tree representing your project's directory structure in the payload sent to your clipboard"
+          "description": "Include a project tree alongside file contents. Turn off for files only. The Copy Project Tree command always copies only the tree.",
+          "scope": "resource"
         },
         "commanderV.projectTreeDepth": {
           "order": 2,
-          "type": "number",
+          "type": "integer",
           "default": 3,
-          "description": "The maximum depth of directories to include in the generated ASCII tree. Not applied when \"Prune Project Tree\" is enabled."
+          "description": "Maximum tree depth. Always applies to Copy Project Tree; for combined copies, not applied when Prune Project Tree is enabled.",
+          "minimum": 0,
+          "maximum": 100,
+          "scope": "resource"
         },
         "commanderV.pruneProjectTree": {
           "order": 4,
           "type": "boolean",
           "default": true,
-          "description": "Limit the tree to only include files that have been selected"
+          "description": "Limit the tree to only include files that have been selected",
+          "scope": "resource"
         },
         "commanderV.orderFilesBy": {
           "order": 5,
@@ -103,35 +117,47 @@
             "by position in the tree...",
             "by order of selection..."
           ],
-          "description": "Specify how to sort files when concatenating their content"
+          "description": "Specify how to sort files when concatenating their content",
+          "scope": "resource"
         },
         "commanderV.ignoreFile": {
           "order": 6,
           "type": "string",
           "default": ".gitignore",
           "title": "Ignore File",
-          "description": "Path to your ignore file, containing patterns to exclude from the generated ASCII tree. Not applied when \"Prune Project Tree\" is enabled.",
+          "description": "Ignore file path relative to the workspace folder (or the copied folder outside a workspace). Extends built-in exclusions for folder contents and project trees. Explicitly selected files are still copied. Set to an empty string to use only built-in exclusions.",
           "examples": [
             ".com-v.ignore"
-          ]
+          ],
+          "scope": "resource"
+        },
+        "commanderV.useDefaultIgnores": {
+          "order": 6.1,
+          "type": "boolean",
+          "default": true,
+          "description": "Skip common dependencies, build output, caches, repository internals, and local environment files when copying folders or trees. Project ignore rules can override these defaults; explicitly selected files are still copied.",
+          "scope": "resource"
         },
         "commanderV.commentAtFileBegin": {
           "order": 7,
           "type": "string",
           "default": "/* --- Begin $file --- */",
-          "description": "Opening comment shown at the beginning of every file. Use $file as a placeholder for the file path"
+          "description": "Opening comment shown at the beginning of every file. Use $file as a placeholder for the file path",
+          "scope": "resource"
         },
         "commanderV.commentAtFileEnd": {
           "order": 8,
           "type": "string",
           "default": "/* --- End $file --- */",
-          "description": "Closing comment shown at the end of every file. Use $file as a placeholder for the file path"
+          "description": "Closing comment shown at the end of every file. Use $file as a placeholder for the file path",
+          "scope": "resource"
         },
         "commanderV.includeSeparator": {
           "order": 9,
           "type": "boolean",
           "default": false,
-          "description": "Insert a visual separator between concatenated files to improve readability"
+          "description": "Insert a visual separator between concatenated files to improve readability",
+          "scope": "resource"
         },
         "commanderV.separatorCharacter": {
           "order": 10,
@@ -139,49 +165,95 @@
           "default": "-",
           "maxLength": 3,
           "description": "The character to use for the separator between file contents (max 3 characters)",
-          "visibleWhen": "commanderV.includeSeparator == true"
+          "scope": "resource"
         },
         "commanderV.separatorLength": {
           "order": 11,
-          "type": "number",
+          "type": "integer",
           "default": 16,
           "minimum": 1,
           "maximum": 120,
           "description": "The length of the separator between file contents (1-120)",
-          "visibleWhen": "commanderV.includeSeparator == true"
+          "scope": "resource"
         },
         "commanderV.wrapInCodeBlock": {
           "order": 12,
           "type": "boolean",
           "default": false,
-          "description": "Wrap the concatenated file contents in a code block (```)"
+          "description": "Wrap the concatenated file contents in a code block (```)",
+          "scope": "resource"
         },
         "commanderV.playSoundOnComplete": {
           "order": 13,
           "type": "boolean",
           "default": true,
-          "description": "Play a sound when operations are successful and output is delivered to you clipboard"
+          "description": "Play a sound after output is copied successfully to your clipboard",
+          "scope": "resource"
         },
         "commanderV.readFromEditor": {
           "order": 14,
           "type": "boolean",
           "default": false,
-          "description": "Read unsaved file contents directly the editor if the file is open, otherwise read from the last saved file"
+          "description": "Read unsaved contents from any open editor tab; otherwise read the last saved file",
+          "scope": "resource"
+        },
+        "commanderV.treeFormat": {
+          "order": 2.1,
+          "type": "string",
+          "default": "unicode",
+          "enum": [
+            "unicode",
+            "ascii"
+          ],
+          "enumDescriptions": [
+            "Box-drawing branches (├──, └──). Best with a monospace font.",
+            "Plain ASCII branches (|--, `--) for apps with limited font support."
+          ],
+          "description": "Branch characters used in project trees.",
+          "scope": "resource"
+        },
+        "commanderV.wrapTreeInCodeBlock": {
+          "order": 2.2,
+          "type": "boolean",
+          "default": true,
+          "description": "Wrap the project tree in a Markdown code block without a language label to preserve spacing in chat apps. Applies to tree-only and combined copies. Disable for raw tree text.",
+          "scope": "resource"
         }
       }
     }
   },
   "scripts": {
-    "prepublishOnly": "vsce package",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint .",
+    "test": "node --test test/unit/*.test.js",
+    "check": "npm run lint && npm test",
+    "test:integration": "node scripts/test-vscode.js",
+    "vscode:prepublish": "npm run check",
+    "package": "node scripts/package.js",
+    "install:local": "node scripts/vscode.js install",
+    "dev": "node scripts/vscode.js dev",
+    "test:manual": "node scripts/vscode.js test",
+    "audit:dependencies": "npm audit"
   },
   "devDependencies": {
-    "@types/node": "^18.0.0",
-    "@vscode/test-electron": "^2.3.0"
+    "@vscode/test-electron": "^3.1.0",
+    "@vscode/vsce": "^4.0.0",
+    "eslint": "^10.11.0"
   },
   "dependencies": {
-    "@agarimo/archy": "^1.0.0",
-    "directory-tree": "^3.5.0",
-    "play-sound": "^1.1.5"
+    "ignore": "^7.0.10"
+  },
+  "license": "MIT",
+  "extensionKind": [
+    "workspace"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "description": "Copying is supported. Executable v.config.js overrides are only loaded in trusted workspaces."
+    },
+    "virtualWorkspaces": {
+      "supported": false,
+      "description": "Commander V currently supports local files and remote filesystem workspaces."
+    }
   }
 }

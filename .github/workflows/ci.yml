@@ -1,0 +1,42 @@
+name: Validate Commander V
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        vscode: ['1.105.0', 'stable']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm audit
+      - run: npm run package
+      - name: Test installed VSIX (Linux)
+        if: runner.os == 'Linux'
+        run: xvfb-run -a npm run test:integration
+        env:
+          VSCODE_VERSION: ${{ matrix.vscode }}
+          COMMANDER_V_VSIX: auto
+      - name: Test installed VSIX (macOS / Windows)
+        if: runner.os != 'Linux'
+        run: npm run test:integration
+        env:
+          VSCODE_VERSION: ${{ matrix.vscode }}
+          COMMANDER_V_VSIX: auto
+      - uses: actions/upload-artifact@v7.0.1
+        if: matrix.os == 'ubuntu-latest' && matrix.vscode == 'stable'
+        with:
+          name: commander-v-test-build
+          path: builds/*.vsix

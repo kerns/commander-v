@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Commander V",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}",
+        "--user-data-dir=${workspaceFolder}/.dev/debug-user-data",
+        "--extensions-dir=${workspaceFolder}/.dev/debug-extensions",
+        "${workspaceFolder}/test/fixtures/project"
+      ]
+    }
+  ]
+}

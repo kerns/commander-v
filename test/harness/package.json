@@ -1,0 +1,6 @@
+{
+  "name": "commander-v-test-harness",
+  "publisher": "commander-v-tests",
+  "version": "0.0.0",
+  "engines": { "vscode": "^1.105.0" }
+}

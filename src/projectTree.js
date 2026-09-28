@@ -1,182 +1,66 @@
-// COMMANDER V
-// Description: Creates a tree in ASCII format
-// Author: David Kerns
-// Date: 2023-04-18
-// License: MIT
+const { compareNames, relativePath, checkCancellation } = require('./files');
+const { createIgnoreMatcher } = require('./exclusions');
 
-const archy = require('@agarimo/archy');
-const dirTree = require('directory-tree');
-const fs = require('fs');
-const path = require('path');
+function node(name, directory = true) {
+  return { name, directory, children: new Map() };
+}
 
-/**
- * Get a list of ignored paths from the specified ignore file (e.g., .gitignore).
- * @param {string} ignoreFilePath - The path to the ignore file.
- * @returns {Promise<RegExp[]>} - An array of regular expressions representing ignored paths.
- */
-async function getIgnoredPaths(ignoreFilePath) {
-  const ignoredPaths = [];
-
-  try {
-    const content = await fs.promises.readFile(ignoreFilePath, 'utf8');
-    const lines = content.split('\n').map(line => line.trim());
-
-    lines.forEach(line => {
-      if (line.startsWith('#') || line === '') {
-        return;
-      }
-      const regex = new RegExp(line.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
-      ignoredPaths.push(regex);
+function selectedTree(group) {
+  const root = node(group.name);
+  for (const file of group.files) {
+    const relative = relativePath(group.root, file.uri);
+    if (!relative) continue;
+    const segments = relative.split('/');
+    let parent = root;
+    segments.forEach((segment, index) => {
+      if (!parent.children.has(segment)) parent.children.set(segment, node(segment, index < segments.length - 1));
+      parent = parent.children.get(segment);
     });
-  } catch (err) {
-    console.error('Error reading ignore file:', err);
   }
-
-  return ignoredPaths;
+  return root;
 }
 
-/**
- * Check if the given path should be ignored based on the ignoredPaths list.
- * @param {string} path - The path to check.
- * @param {RegExp[]} ignoredPaths - An array of regular expressions representing ignored paths.
- * @returns {boolean} - True if the path should be ignored, false otherwise.
- */
-function shouldBeIgnored(path, ignoredPaths) {
-  return ignoredPaths.some(ignoredPathRegex => ignoredPathRegex.test(path));
-}
-
-/**
- * Check if the given path is included in the selected files list.
- * @param {string} path - The path to check.
- * @param {string[]} files - An array of selected file paths.
- * @returns {boolean} - True if the path is included in the selected files list, false otherwise.
- */
-function isPathInSelectedFiles(path, files) {
-  return files.some(file => file.includes(path));
-}
-
-/**
- * Check if the given path should be pruned based on pruneProjectTree and the selected files list.
- * @param {string} path - The path to check.
- * @param {boolean} pruneProjectTree - Whether to prune the project tree.
- * @param {string[]} files - An array of selected file paths.
- * @returns {boolean} - True if the path should be pruned, false otherwise.
- */
-function shouldBePruned(path, pruneProjectTree, files) {
-  return pruneProjectTree && !isPathInSelectedFiles(path, files);
-}
-
-/**
- * Recursively generate a filtered tree based on ignored paths and the selected files list.
- * @param {object} treeObject - The tree object to filter.
- * @param {RegExp[]} ignoredPaths - An array of regular expressions representing ignored paths.
- * @param {string[]} files - An array of selected file paths.
- * @param {boolean} pruneProjectTree - Whether to prune the project tree.
- * @param {string} ignoreFile - The path to the ignore file.
- * @returns {object|null} - The filtered tree object or null if the path should be ignored or pruned.
- */
-function generateFilteredTree(treeObject, ignoredPaths, files, pruneProjectTree, ignoreFile) {
-  const pathShouldBeIgnored = pruneProjectTree ? false : shouldBeIgnored(treeObject.path, ignoredPaths);
-  const pathShouldBePruned = shouldBePruned(treeObject.path, pruneProjectTree, files);
-
-  if (pathShouldBeIgnored || pathShouldBePruned) {
-    return null;
+function renderTree(root, format = 'unicode') {
+  const glyphs = format === 'ascii'
+    ? { branch: '|-- ', last: '`-- ', continuation: '|   ' }
+    : { branch: '├── ', last: '└── ', continuation: '│   ' };
+  const lines = [`${root.name}/`];
+  function render(parent, prefix) {
+    const children = [...parent.children.values()].sort((a, b) => Number(b.directory) - Number(a.directory) || compareNames(a.name, b.name));
+    children.forEach((child, index) => {
+      const last = index === children.length - 1;
+      lines.push(`${prefix}${last ? glyphs.last : glyphs.branch}${child.name}${child.directory ? '/' : ''}`);
+      render(child, `${prefix}${last ? '    ' : glyphs.continuation}`);
+    });
   }
-
-  const node = { label: treeObject.name };
-
-  if (treeObject.children && treeObject.children.length > 0) {
-    node.nodes = sortTreeNodes(
-      treeObject.children
-        .map(child => generateFilteredTree(child, ignoredPaths, files, pruneProjectTree, ignoreFile))
-        .filter(child => child !== null)
-    );
-
-    // Append '/' to directory names
-    node.label += '/';
-  }
-
-  return node;
+  render(root, '');
+  return lines.join('\n') + '\n';
 }
 
-/**
- * Sorts an array of tree nodes based on the type (directory or file) and alphabetically within each type.
- * @param {object[]} nodes - An array of tree nodes.
- * @returns {object[]} - The sorted array of tree nodes.
- */
-function sortTreeNodes(nodes) {
-  return nodes.sort((a, b) => {
-    const aIsDirectory = a.nodes !== undefined;
-    const bIsDirectory = b.nodes !== undefined;
-
-    if (aIsDirectory && !bIsDirectory) {
-      return -1;
-    } else if (!aIsDirectory && bIsDirectory) {
-      return 1;
-    } else {
-      return a.label.localeCompare(b.label, undefined, { sensitivity: 'base' });
+async function generateProjectTree(api, group, config, token) {
+  // The default path performs no filesystem I/O, regardless of workspace size.
+  if (config.pruneProjectTree) return renderTree(selectedTree(group), config.treeFormat);
+  const ignoreRoot = group.ignoreRoot ?? group.root;
+  const matcher = await createIgnoreMatcher(api, ignoreRoot, config);
+  async function walk(uri, current, depth) {
+    checkCancellation(token);
+    if (depth >= config.projectTreeDepth) return;
+    for (const [name, type] of await api.workspace.fs.readDirectory(uri)) {
+      checkCancellation(token);
+      const childUri = api.Uri.joinPath(uri, name);
+      const directory = Boolean(type & api.FileType.Directory);
+      const relative = relativePath(ignoreRoot, childUri);
+      if (!relative || matcher.ignores(relative + (directory ? '/' : ''))) continue;
+      const child = node(name, directory);
+      current.children.set(name, child);
+      if (directory && !(type & api.FileType.SymbolicLink)) await walk(childUri, child, depth + 1);
     }
-  });
+  }
+  const root = node(group.name);
+  const relative = relativePath(ignoreRoot, group.root);
+  // A directly requested ignored subtree still shows its root, but no contents.
+  if (!relative || !matcher.ignores(relative + '/')) await walk(group.root, root, 0);
+  return renderTree(root, config.treeFormat);
 }
 
-/**
- * Calculate the maximum depth of the selected files relative to the root path.
- * @param {string} rootPath - The root path of the workspace.
- * @param {string[]} files - An array of selected file paths.
- * @returns {number} - The maximum depth of the selected files.
- */
-function getMaxDepthOfSelectedFiles(rootPath, files) {
-  const rootPathDepth = rootPath.split(path.sep).length;
-  let maxDepth = 0;
-
-  files.forEach(file => {
-    const fileDepth = file.split(path.sep).length;
-    const relativeDepth = fileDepth - rootPathDepth;
-
-    if (relativeDepth > maxDepth) {
-      maxDepth = relativeDepth;
-    }
-  });
-
-  return maxDepth;
-}
-
-/**
- * Determine the appropriate directory tree depth based on the provided parameters.
- * @param {boolean} pruneProjectTree - Whether to prune the project tree.
- * @param {number} projectTreeDepth - The maximum depth of the project tree.
- * @param {string} workspaceRootPath - The root path of the workspace.
- * @param {string[]} files - An array of selected file paths.
- * @returns {number} - The appropriate directory tree depth.
- */
-function getDirectoryTreeDepth(pruneProjectTree, projectTreeDepth, workspaceRootPath, files) {
-  return pruneProjectTree ? getMaxDepthOfSelectedFiles(workspaceRootPath, files) : projectTreeDepth;
-}
-
-/**
- * Generate an ASCII tree for the directory structure based on provided parameters.
- * @param {string} workspaceRootPath - The root path of the workspace.
- * @param {number} projectTreeDepth - The maximum depth of the project tree.
- * @param {string} [ignoreFilePath='.gitignore'] - The path to the ignore file.
- * @param {string[]} [files=[]] - An array of selected file paths.
- * @param {boolean} [pruneProjectTree=false] - Whether to prune the project tree.
- * @returns {Promise<string>} - The generated ASCII tree.
- */
-async function generateProjectTree(workspaceRootPath, projectTreeDepth, ignoreFilePath = '.gitignore', files = [], pruneProjectTree = false) {
-  const ignoredPaths = await getIgnoredPaths(path.join(workspaceRootPath, ignoreFilePath));
-  const directoryTreeDepth = getDirectoryTreeDepth(pruneProjectTree, projectTreeDepth, workspaceRootPath, files);
-
-  const options = {
-    depth: directoryTreeDepth,
-  };
-
-  const treeObject = dirTree(workspaceRootPath, options);
-  const filteredTree = generateFilteredTree(treeObject, ignoredPaths, files, pruneProjectTree, ignoreFilePath);
-  const tree = archy(filteredTree);
-
-  return tree;
-}
-
-module.exports = {
-  generateProjectTree,
-};
+module.exports = { generateProjectTree, renderTree, selectedTree };

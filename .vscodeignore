@@ -1,12 +1,12 @@
-# The Basics
-test/
-
-# Exclude devDependencies from node_modules
-node_modules/**/devDependencies
-
-# Others
-src/*.psd
-*.DS_Store
-*.comv
-src/commanded-x.band/**/*
-builds/**/*
+**
+!package.json
+!README.md
+!CHANGELOG.md
+!LICENSE.md
+!License.md
+!extension.js
+!src/*.js
+!src/default.ignore
+!src/commander_v_icon.png
+!src/success.wav
+!node_modules/ignore/**

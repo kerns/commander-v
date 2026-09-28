@@ -1,45 +1,59 @@
-# Commander V for VSC ✌️
+# Commander V for VS Code ✌️
 
-[![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/kerns.commander-v?label=Visual%20Studio%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v)
-[![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/kerns.commander-v?label=Installs)](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v)
-[![Visual Studio Marketplace Rating](https://img.shields.io/visual-studio-marketplace/r/kerns.commander-v?label=Rating)](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v)
-
-![before-we-get-started](https://user-images.githubusercontent.com/20254/233304185-ceba2782-c8dc-4bc3-95de-18a9f7091f90.png)
-
-![commander_v_notification](https://github.com/kerns/commander-v/assets/20254/930f0c95-ba3f-4e7d-9c3d-e9afecb0a92f)
+[![VS Code Marketplace](https://img.shields.io/badge/VS_Code_Marketplace-Commander_V-007ACC)](https://marketplace.visualstudio.com/items?itemName=kerns.commander-v)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.md)
 
 ## Overview
 
-### For a Better AI Pair Programming Experience on the Open Seas of AI
+### The Context Bundler Loved by Humans and Agents Alike
 
-**Better because you can instantly convert selected folders and files into a single, shareable, blueprint of your codebase.** This plaintext blueprint takes the form of an ASCII tree of your project's directory structure, joined with the full contents of the selected files. Comments are added between files to explain what and where everything is. (e.g. `/* --- Begin /path/to/file.js --- */`)
+**Commander V is a context bundler for VS Code. It gathers selected file contents and a map of their folder structure into one clipboard snapshot, ready to paste.**
 
-## 🛳️🐬💦 Spring 2024 – Version 2 Sets Sail
+Select the files and folders you want to share. Commander V combines their text with a project tree and labels each file with its path, so the contents keep their context. Copy the files and tree together, just the files, or just the tree.
 
-### New Features
+Use it for code reviews, issue reports, documentation, handoffs, or a conversation with an AI coding assistant. One selection, one copy, wherever you need the context.
 
-- **Mix and match a selection of files and folders**. It works recursively. _All will be joined_.
-- **Ability to read open, unsaved files** directly from the editor
-- **Improved KB Support** allows `Cmd + Shift + V` to capture the active tab and `Cmd + Shift + R` to rerun Commander V on the previous selection
-- **Improved ASCII tree formatting**, **custom file separators**, and **more**
+## 🍂🎃🛳️ Fall 2026 – Commander V 3.0, Smoother Sailing
+
+The Commander is back from a little time in dry dock. This fall's tune-up is all about faster copies, smoother handling, and keeping your code-sharing routine shipshape.
+
+### What's Fresh on Deck
+
+- **Just the tree. 🌳** Share your project's shape without its file contents. **Commander V: Copy Project Tree** has its own shortcut and folder context-menu action.
+- **Trees that travel better.** Conventional branches, consistent spacing, and Markdown code blocks help keep your tree together when you paste it into a chat, issue, or document. Prefer plain ASCII? There is a setting for that, too.
+- **Less cargo you didn't ask for.** Folder copies and trees skip common dependency stores, generated output, and caches across modern web and Python projects. Project ignore rules help you tailor the bundle, and you can still select an individual file to copy it explicitly.
+- **Faster copies, lighter lifting.** Folder selections now read each text file once, cutting file reads by two-thirds. Overlapping selections are handled in the same pass.
+- **A quicker project tree.** With **Prune Project Tree** enabled, the tree is built straight from your selected paths. The rest of your project can stay ashore.
+- **Unsaved work stays on board.** **Read From Editor** now includes unsaved changes in background tabs, too. Working across multiple workspace folders or with a file on its own? The Commander has better bearings there as well.
+- **Smoother handling.** Quick copies finish with just the familiar completion message and optional sound. A Cancel notification appears only when a copy is still running after one second. Empty selections, cancelled copies, and read errors leave your clipboard as it was. File ordering and Markdown formatting have had a tidy-up, too.
+- **Fresh provisions for modern VS Code.** Updated dependencies, general security maintenance, code cleanup, and expanded automated testing keep the ship ready for its next voyage.
+
+Same familiar workflow: select your files and folders, summon the Commander, and paste. 🍁
 
 ## Details
 
-**Commander V was a gifted and beloved Ship Captain who gave his life to take the form of an extension for Microsoft's Visual Studio Code** <sup>[1](#donotaskwhy)</sup>. He did this in exchange for the power of combining multiple files, together with an ASCII tree view of your project's directory structure, to your clipboard – giving greater context to the files and folders you share.
+**Commander V was a gifted and beloved Ship Captain who gave his life to take the form of an extension for Microsoft's Visual Studio Code** <sup>[1](#donotaskwhy)</sup>. He did this in exchange for the power of combining multiple files, together with a plain-text tree view of your project's directory structure, to your clipboard – giving greater context to the files and folders you share.
 
-Sharing the updated state of your code in this way improves productivity when pair programming with an AI.
+Commander V began in the early days of AI pair programming, as a way to give an assistant the relevant code and show how it fit together. That is still a useful reason to call on the Commander.
 
-Because regularly reorienting your partner AI is more likely to solve problems in a way that makes sense for the system as a whole – not just for a single function or system in isolation.
+The same bundle can give your shipmates the files behind a change, put a small reproduction into an issue, or capture a folder layout for your documentation. You choose the slice of the project; Commander V packs it for the journey.
 
-It can also help overcome limits on memory, and can reduce the drift toward hallucination that smaller, self-hosted AI models are known to experience when pushed hard.
+<details>
+<summary>A postcard from the early days of AI pair programming</summary>
+
+![Commander V's original AI pair-programming illustration](https://user-images.githubusercontent.com/20254/233304185-ceba2782-c8dc-4bc3-95de-18a9f7091f90.png)
+
+</details>
 
 Watch...👇👀🍿
 
 ![sure-happy-to-help-demo](https://user-images.githubusercontent.com/20254/233346169-2d0d90c8-d948-415d-8041-f29d822ecb0f.gif)
 
-_<figcaption>A demonstration of Commander V in use, this clip loops every 30 seconds, and makes more sense on subsequent views.</figcaption>_
+_<figcaption>A demonstration of Commander V in use. This clip loops every 30 seconds and makes more sense on subsequent views.</figcaption>_
 
 ## Installation
+
+Requires **VS Code 1.105 or newer**.
 
 1. Open Visual Studio Code
 2. Search for "Commander V" in the extensions tab. **Or** open the command palette (Mac: `Cmd+P` / Win: `Ctrl+P`) and type `ext install kerns.commander-v` and press `Enter`
@@ -47,40 +61,74 @@ _<figcaption>A demonstration of Commander V in use, this clip loops every 30 sec
 
 ## Usage
 
-### Commander V Enters the Chat...
+### Pack Some Context for the Journey
 
 1. Summon Commander V by selecting one or more items (files and/or folders) from the file explorer sidebar in Visual Studio Code
 
 2. Right-click on the items, and choose **"Commander V"** from the context menu
 
-3. A blueprint of your project files is pushed to your clipboard
+3. Your selected file contents and project tree are copied together, ready to paste where you need them
+
+![Commander V's completion notification](https://github.com/kerns/commander-v/assets/20254/930f0c95-ba3f-4e7d-9c3d-e9afecb0a92f)
+
+| Action | Mac | Windows / Linux |
+| --- | --- | --- |
+| Copy active file, with tree | `Cmd + Shift + V` | `Ctrl + Shift + V` |
+| Copy project tree only | `Cmd + K`, then `Cmd + Shift + T` | `Ctrl + K`, then `Ctrl + Shift + T` |
+| Reuse last file selection | `Cmd + Shift + R` | `Ctrl + Shift + R` |
+
+For **file contents only**, turn off **Commander V: Include Project Tree** and use the regular Commander V command.
 
 ![my_project_demo](https://github.com/kerns/commander-v/assets/20254/3b6b84d4-4a7c-49d3-aca0-4e8dd1e1a947)
 
 _<figcaption>This moves quickly but loops every 15 seconds. Watch it a few times to grasp the full banality of what you're seeing.</figcaption>_
 
+### Copy Just the Project Tree 🌳
+
+Run **Commander V: Copy Project Tree** from the command palette or use its shortcut to copy the active file's workspace tree. Right-click a folder in the Explorer to copy that folder's tree instead. You can select several folders; overlapping subfolders appear only once.
+
+The command uses **Project Tree Depth** and **Ignore File**, includes names of binary files and empty folders, and copies no file contents. It works independently of **Include Project Tree** and **Prune Project Tree**, and leaves your last file selection ready to reuse. With no active editor, a single workspace folder is used automatically; multiple workspace folders offer a picker. A standalone file uses its parent folder.
+
+### Keeping Trees Readable When You Paste
+
+Tree branches use Unicode box-drawing characters by default. A proportional font or collapsed spaces can make them look misaligned, even when the copied text is intact. Commander V wraps trees in a Markdown code block without a language label, so compatible chats, issue trackers, and documentation tools preserve the spacing when they render it. Some apps may still display the backticks or show proportional text in their input box before you send or preview it.
+
+Set **Commander V: Tree Format** to **ascii** for simple `|--` branches, or turn off **Wrap Tree In Code Block** if you want raw text. Both tree styles look best in a monospace font. If **Wrap In Code Block** is already enabled for the whole payload, Commander V uses one outer block.
+
 ### Sample Output
 
+The default combined copy includes the tree's code-block markers:
+
+````
 ```
 My Project/
-├─┬ components/
-│ └── logo.tsx
-├── index.tsx
-└─┬ style/
-  └── global.css
+├── components/
+│   └── logo.tsx
+├── style/
+│   └── global.css
+└── index.tsx
+```
 
-
-/* --- Begin /components/logo.tsx --- */
+/* --- Begin components/logo.tsx --- */
 import React from "react";
 
 const Logo = ({ logoUrl }) => <img src={logoUrl} alt="" />;
 
 export default Logo;
 
-/* --- End /components/logo.tsx --- */
+/* --- End components/logo.tsx --- */
 
+/* --- Begin style/global.css --- */
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: hsl(200 100% 50%);
+  margin-bottom: 1em;
+}
 
-/* --- Begin /index.tsx --- */
+/* --- End style/global.css --- */
+
+/* --- Begin index.tsx --- */
 import React from "react";
 
 const HelloWorld = () => {
@@ -89,33 +137,52 @@ const HelloWorld = () => {
 
 export default HelloWorld;
 
-/* --- End /index.tsx --- */
-
-
-/* --- Begin /style/global.css --- */
-h1 {
-  font-size: 2em;
-  font-weight: bold;
-  color: hsl(200 100% 50%);
-  margin-bottom: 1em;
-}
-
-/* --- End /style/global.css --- */
-
-
-```
+/* --- End index.tsx --- */
+````
 
 ## Optional Configuration
 
-Global settings can be configured in your Visual Studio Code extension settings, under "Commander V". A local override can be configured on a per-project basis via a `v.config.js` placed on the root of your project. May require a restart of VSC.
+Settings can be configured in Visual Studio Code under "Commander V", globally or per workspace folder. A local override can be configured via a `v.config.js` in the workspace folder. This executable file is loaded only in trusted local filesystem workspaces, and is reloaded each time you run the command. In Restricted Mode, copying works using VS Code settings without executing `v.config.js`. For selections spanning several workspace folders, formatting settings come from the first selected item and file labels include the folder name.
+
+### What Gets Left Ashore
+
+Built-in exclusions apply to **file contents collected from folders and project trees**, even if your project has no `.gitignore`. They skip common generated files and directories before their contents are read:
+
+| Workflow | Examples excluded by default |
+| --- | --- |
+| JavaScript package managers | `node_modules/`, `.pnpm-store/`, `.npm/`, Yarn cache and unplugged directories |
+| Next.js, React/Vite, SvelteKit, and other web tools | `.next/`, `.svelte-kit/`, `.vite/`, `.nuxt/`, `.output/`, `.astro/`, `dist/`, `build/`, `out/` |
+| Build and test tools | `.turbo/`, Nx caches, coverage output, Playwright reports, Storybook output |
+| Python | `.venv/`, `venv/`, `__pycache__/`, Ruff/mypy/pytest caches, tox/nox environments, package metadata, notebook checkpoints |
+| Local generated files | Repository internals, OS metadata, package-manager debug logs, TypeScript build info |
+
+Lockfiles (`pnpm-lock.yaml`, `uv.lock`, and others), manifests, source, tests, migrations, notebooks, and editor configuration remain eligible. Yarn patches and configuration are kept; its cache is excluded. Local `.env` files are excluded, with exceptions for `.env.example`, `.env.sample`, and `.env.template`. See the [complete built-in rules](src/default.ignore).
+
+The configured **Ignore File** defaults to the workspace folder's `.gitignore`. Its rules are applied after the built-in defaults, using gitignore-style patterns and `!` exceptions. These are path rules, not a Git tracked-file check. Only that configured file is loaded; nested `.gitignore` files and global Git ignores are not read. Outside a workspace, the copied folder supplies the ignore file.
+
+**Selecting an individual file explicitly overrides exclusions.** This also applies to an active-file copy and reusing that selection. Folder selection still filters its contents. A pruned tree reflects the files actually copied; a full or tree-only tree follows the exclusion rules. Directly requesting an excluded folder's tree shows only its root.
+
+For custom rules without changing Git behavior, set **Ignore File** to a file such as `.commander-v.ignore`. This replaces the `.gitignore` layer while keeping the built-in defaults. For example, to include a source directory named `build` and omit a local data directory:
+
+```gitignore
+!build/
+local-data/
+```
+
+To include a file inside an excluded directory, first re-include its parent directory; `!dist/keep.js` alone cannot reopen an excluded `dist/`. Turn off **Use Default Ignores** to disable the built-in rules. Set **Ignore File** to an empty string as well to disable all exclusion rules. Custom cache locations and differently named virtual environments can be added to your ignore file.
+
+Binary file contents and symbolic links are skipped when copying files. Trees list non-excluded binary filenames and links without following links. Content is decoded as UTF-8; UTF-16 files are not supported. Selections with no eligible text files leave the clipboard unchanged. Copies start immediately; cancellable progress appears after one second only if still needed. Completion audio is best effort (macOS `afplay`, Windows PowerShell, Linux `paplay`) and is disabled on remote hosts.
 
 ### Configurable settings (Optional):
 
-- **`includeProjectTree`**: Prepends directory structure of your project to the output in ASCII format _(boolean)_
-- **`projectTreeDepth`**: Maximum depth for the project tree _(number)_
+- **`includeProjectTree`**: Includes a project tree with the copied files; turn off for files only _(boolean)_
+- **`projectTreeDepth`**: Maximum depth for tree-only copies and unpruned combined trees _(integer)_
+- **`treeFormat`**: Branch style: `unicode` (default) or `ascii` _(string)_
+- **`wrapTreeInCodeBlock`**: Wraps the tree in a Markdown code block without a language label; enabled by default _(boolean)_
 - **`pruneProjectTree`**: Limits the project tree to only show the files being concatenated _(boolean)_
 - **`orderFilesBy`:** Sets the order in which files should appear – their order in the tree or the order in which they were selected _('treeOrder' or 'selectionOrder')_
-- **`ignoreFile`**: File to use for ignoring files or folders from the project tree (defaults to `.gitignore`) _(string)_
+- **`ignoreFile`**: Project rules for excluding folder contents and tree entries (defaults to `.gitignore`) _(string)_
+- **`useDefaultIgnores`**: Apply the built-in web, Python, and general exclusion rules; enabled by default _(boolean)_
 - **`commentAtFileBegin`**: Comment to prepend before each file's content _(string)_
 - **`commentAtFileEnd`**: Comment to append after each file's content _(string)_
 - **`includeSeparator`**: Includes a separator between file contents when concatenating _(boolean)_
@@ -138,6 +205,20 @@ module.exports = {
   wrapInCodeBlock: false,
 };
 ```
+
+## Development and local test builds
+
+Working on the ship? See [DEVELOPMENT.md](DEVELOPMENT.md) for setup, testing, local builds, and installation. Development requires Node.js 22.13+ (Node.js 24 LTS recommended) and the `code` CLI on your PATH.
+
+```sh
+npm ci
+npm run check          # lint and regression tests
+npm run dev            # isolated VS Code window running this source checkout
+npm run test:manual    # build and install a VSIX into an isolated test window
+npm run install:local  # build and install in your normal VS Code profile
+```
+
+`npm run package` creates a local VSIX in `builds/`. After installing a new build, use **Developer: Reload Window** in VS Code to pick it up.
 
 ## The _Rest_ of the Story (Epilogue)
 
