@@ -2,6 +2,10 @@
 
 Notable changes to the extension will be documented in this file. Reverse chron. order.
 
+## 3.0.1 – September 28, 2026
+
+- Removed the historical AI conversation illustration from the README while keeping the animated demo. No extension behavior changes.
+
 ## 3.0.0 – Fall 2026
 
 - Quick copies show only their completion notification and optional sound. Cancellable progress appears only for copies still running after one second, and closes before the completion message is requested.

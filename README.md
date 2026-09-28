@@ -32,13 +32,6 @@ Same familiar workflow: select your files and folders, summon the Commander, and
 
 **Commander V was a gifted and beloved Ship Captain who gave his life to take the form of an extension for Microsoft's Visual Studio Code** <sup>[1](#donotaskwhy)</sup>. He did this in exchange for the power of combining multiple files, together with a plain-text tree view of your project's directory structure, to your clipboard – giving greater context to the files and folders you share.
 
-<details>
-<summary>Before we get started</summary>
-
-![Commander V's original AI pair-programming illustration](https://user-images.githubusercontent.com/20254/233304185-ceba2782-c8dc-4bc3-95de-18a9f7091f90.png)
-
-</details>
-
 Watch...👇👀🍿
 
 ![sure-happy-to-help-demo](https://user-images.githubusercontent.com/20254/233346169-2d0d90c8-d948-415d-8041-f29d822ecb0f.gif)

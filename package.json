@@ -7,7 +7,7 @@
     "url": "https://github.com/kerns/commander-v"
   },
   "description": "Bundle selected file contents and project trees into one clipboard snapshot for code reviews, documentation, and AI workflows.",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "keywords": [
     "clipboard",
     "context",
