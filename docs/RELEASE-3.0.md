@@ -1,6 +1,6 @@
 # Commander V 3.0 release readiness
 
-Prepared 28 September 2026. **Publication is on hold until the user gives the release command.** No Marketplace publish, GitHub release, remote push, or release tag has been performed as part of this preparation.
+Prepared 28 September 2026. **Publication was authorized by the user on 28 September 2026.** The final README has been packaged; cross-platform CI and Marketplace publisher authentication are being checked before publication.
 
 ## Release artifact
 
@@ -8,10 +8,10 @@ Prepared 28 September 2026. **Publication is on hold until the user gives the re
 - Release name: **Commander V 3.0**; package version: **3.0.0**.
 - Requires VS Code **1.105.0 or newer**.
 - Local artifact: `builds/commander-v-3.0.0.vsix`, 24 files, approximately 2.16 MB compressed.
-- SHA-256: `29ac58b7eb037fc56a04ee5e3aa110572703d251f87fc80bb045d64b272dee87`.
+- SHA-256: `f4cc96346a88818edf45903a1c3818d6fcd31963aa7a1e2ad0a2584e5b4965f1`.
 - Prepared source branch: `codex/commander-v-3.0`, based on `1782f87`. The remote baseline was checked and matched before committing.
 
-The final artifact is installed in the normal local VS Code profile. Its code, manifest, README, and default ignore rules were checked against the packaged files. Only `ignore` ships as a runtime dependency. Developer tools, tests, reports, scratch files, and test profiles are excluded from the VSIX.
+The tested runtime is installed in the normal local VS Code profile. The release artifact was rebuilt with the user's final README edits; its runtime code, manifest, and default ignore rules are unchanged. Only `ignore` ships as a runtime dependency. Developer tools, tests, reports, scratch files, and test profiles are excluded from the VSIX.
 
 ## Acceptance results
 
@@ -59,4 +59,4 @@ GitHub authentication is available. `vsce ls-publishers` returned no stored publ
 
 5. Verify Marketplace version 3.0.0, the listing/README, minimum VS Code requirement, and an install/update from the Marketplace. Then create the `v3.0.0` tag and GitHub release from the published source commit as part of the authorized release workflow.
 
-Until that command is given, retain the local commit and tested artifact without publishing or pushing release state.
+The release command has been given. Complete and record the publication checks above before marking the release finished.

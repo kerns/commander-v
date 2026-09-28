@@ -17,16 +17,14 @@ Use it for code reviews, issue reports, documentation, handoffs, or a conversati
 
 The Commander is back from a little time in dry dock. This fall's tune-up is all about faster copies, smoother handling, and keeping your code-sharing routine shipshape.
 
-### What's Fresh on Deck
+### Fresh on Deck
 
-- **Just the tree. 🌳** Share your project's shape without its file contents. **Commander V: Copy Project Tree** has its own shortcut and folder context-menu action.
-- **Trees that travel better.** Conventional branches, consistent spacing, and Markdown code blocks help keep your tree together when you paste it into a chat, issue, or document. Prefer plain ASCII? There is a setting for that, too.
-- **Less cargo you didn't ask for.** Folder copies and trees skip common dependency stores, generated output, and caches across modern web and Python projects. Project ignore rules help you tailor the bundle, and you can still select an individual file to copy it explicitly.
-- **Faster copies, lighter lifting.** Folder selections now read each text file once, cutting file reads by two-thirds. Overlapping selections are handled in the same pass.
-- **A quicker project tree.** With **Prune Project Tree** enabled, the tree is built straight from your selected paths. The rest of your project can stay ashore.
-- **Unsaved work stays on board.** **Read From Editor** now includes unsaved changes in background tabs, too. Working across multiple workspace folders or with a file on its own? The Commander has better bearings there as well.
-- **Smoother handling.** Quick copies finish with just the familiar completion message and optional sound. A Cancel notification appears only when a copy is still running after one second. Empty selections, cancelled copies, and read errors leave your clipboard as it was. File ordering and Markdown formatting have had a tidy-up, too.
-- **Fresh provisions for modern VS Code.** Updated dependencies, general security maintenance, code cleanup, and expanded automated testing keep the ship ready for its next voyage.
+- **Better trees. 🌳** Cleaner formatting and a new tree-only command, available by shortcut or folder menu.
+- **Faster copies.** Folder copies use two-thirds fewer file reads. Pruned trees no longer scan the workspace.
+- **Captures unsaved edits** in background tabs.
+- **Less noise.** Quick copies skip the progress popup. Longer copies still offer Cancel.
+- **Reduced cargo.** Updated defaults skip common web and Python dependencies, build output, and caches.
+- **Freshly provisioned.** Updated dependencies, general security maintenance, cleaner code, and more tests.
 
 Same familiar workflow: select your files and folders, summon the Commander, and paste. 🍁
 
@@ -34,12 +32,8 @@ Same familiar workflow: select your files and folders, summon the Commander, and
 
 **Commander V was a gifted and beloved Ship Captain who gave his life to take the form of an extension for Microsoft's Visual Studio Code** <sup>[1](#donotaskwhy)</sup>. He did this in exchange for the power of combining multiple files, together with a plain-text tree view of your project's directory structure, to your clipboard – giving greater context to the files and folders you share.
 
-Commander V began in the early days of AI pair programming, as a way to give an assistant the relevant code and show how it fit together. That is still a useful reason to call on the Commander.
-
-The same bundle can give your shipmates the files behind a change, put a small reproduction into an issue, or capture a folder layout for your documentation. You choose the slice of the project; Commander V packs it for the journey.
-
 <details>
-<summary>A postcard from the early days of AI pair programming</summary>
+<summary>Before we get started</summary>
 
 ![Commander V's original AI pair-programming illustration](https://user-images.githubusercontent.com/20254/233304185-ceba2782-c8dc-4bc3-95de-18a9f7091f90.png)
 
@@ -61,9 +55,9 @@ Requires **VS Code 1.105 or newer**.
 
 ## Usage
 
-### Pack Some Context for the Journey
+### Summon the Commander
 
-1. Summon Commander V by selecting one or more items (files and/or folders) from the file explorer sidebar in Visual Studio Code
+1. Select one or more items (files and/or folders) from the file explorer sidebar in Visual Studio Code
 
 2. Right-click on the items, and choose **"Commander V"** from the context menu
 
@@ -83,19 +77,19 @@ For **file contents only**, turn off **Commander V: Include Project Tree** and u
 
 _<figcaption>This moves quickly but loops every 15 seconds. Watch it a few times to grasp the full banality of what you're seeing.</figcaption>_
 
-### Copy Just the Project Tree 🌳
+### Project tree 🌳
 
 Run **Commander V: Copy Project Tree** from the command palette or use its shortcut to copy the active file's workspace tree. Right-click a folder in the Explorer to copy that folder's tree instead. You can select several folders; overlapping subfolders appear only once.
 
 The command uses **Project Tree Depth** and **Ignore File**, includes names of binary files and empty folders, and copies no file contents. It works independently of **Include Project Tree** and **Prune Project Tree**, and leaves your last file selection ready to reuse. With no active editor, a single workspace folder is used automatically; multiple workspace folders offer a picker. A standalone file uses its parent folder.
 
-### Keeping Trees Readable When You Paste
+### Readable trees
 
 Tree branches use Unicode box-drawing characters by default. A proportional font or collapsed spaces can make them look misaligned, even when the copied text is intact. Commander V wraps trees in a Markdown code block without a language label, so compatible chats, issue trackers, and documentation tools preserve the spacing when they render it. Some apps may still display the backticks or show proportional text in their input box before you send or preview it.
 
 Set **Commander V: Tree Format** to **ascii** for simple `|--` branches, or turn off **Wrap Tree In Code Block** if you want raw text. Both tree styles look best in a monospace font. If **Wrap In Code Block** is already enabled for the whole payload, Commander V uses one outer block.
 
-### Sample Output
+### Sample output
 
 The default combined copy includes the tree's code-block markers:
 
@@ -140,11 +134,11 @@ export default HelloWorld;
 /* --- End index.tsx --- */
 ````
 
-## Optional Configuration
+## Configuration
 
 Settings can be configured in Visual Studio Code under "Commander V", globally or per workspace folder. A local override can be configured via a `v.config.js` in the workspace folder. This executable file is loaded only in trusted local filesystem workspaces, and is reloaded each time you run the command. In Restricted Mode, copying works using VS Code settings without executing `v.config.js`. For selections spanning several workspace folders, formatting settings come from the first selected item and file labels include the folder name.
 
-### What Gets Left Ashore
+### Leaving things ashore
 
 Built-in exclusions apply to **file contents collected from folders and project trees**, even if your project has no `.gitignore`. They skip common generated files and directories before their contents are read:
 
