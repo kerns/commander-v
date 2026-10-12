@@ -36,7 +36,7 @@ jobs:
         env:
           VSCODE_VERSION: ${{ matrix.vscode }}
           COMMANDER_V_VSIX: auto
-      - uses: actions/upload-artifact@v7.0.1
+      - uses: actions/upload-artifact@v7.0.2
         if: matrix.os == 'ubuntu-latest' && matrix.vscode == 'stable'
         with:
           name: commander-v-test-build
