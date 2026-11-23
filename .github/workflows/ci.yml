@@ -16,13 +16,16 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v7.0.1
-      - uses: actions/setup-node@v7.0.0
+      - uses: actions/setup-node@v7.1.0
         with:
           node-version: 24
           cache: npm
       - run: npm ci
       - run: npm run check
-      - run: npm audit
+      - name: Audit shipped dependencies (any severity)
+        run: npm audit --omit=dev
+      - name: Audit build tooling (high and critical)
+        run: npm audit --audit-level=high
       - run: npm run package
       - name: Test installed VSIX (Linux)
         if: runner.os == 'Linux'
@@ -36,7 +39,7 @@ jobs:
         env:
           VSCODE_VERSION: ${{ matrix.vscode }}
           COMMANDER_V_VSIX: auto
-      - uses: actions/upload-artifact@v7.0.1
+      - uses: actions/upload-artifact@v7.0.2
         if: matrix.os == 'ubuntu-latest' && matrix.vscode == 'stable'
         with:
           name: commander-v-test-build

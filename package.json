@@ -7,7 +7,7 @@
     "url": "https://github.com/kerns/commander-v"
   },
   "description": "Bundle selected file contents and project trees into one clipboard snapshot for code reviews, documentation, and AI workflows.",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "keywords": [
     "clipboard",
     "context",
@@ -236,11 +236,11 @@
   },
   "devDependencies": {
     "@vscode/test-electron": "^3.1.0",
-    "@vscode/vsce": "^4.0.0",
-    "eslint": "^10.11.0"
+    "@vscode/vsce": "^4.1.1",
+    "eslint": "^10.15.0"
   },
   "dependencies": {
-    "ignore": "^7.0.10"
+    "ignore": "^7.0.16"
   },
   "license": "MIT",
   "extensionKind": [
