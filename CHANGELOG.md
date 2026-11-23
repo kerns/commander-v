@@ -2,6 +2,10 @@
 
 Notable changes to the extension will be documented in this file. Reverse chron. order.
 
+## 3.0.2 – November 23, 2026
+
+- Updated the `ignore` runtime dependency to 7.0.16 and refreshed development tooling (`@vscode/vsce` 4.1.1, ESLint 10.15.0, GitHub Actions). No extension behavior changes.
+
 ## 3.0.1 – September 28, 2026
 
 - Removed the historical AI conversation illustration from the README while keeping the animated demo. No extension behavior changes.
